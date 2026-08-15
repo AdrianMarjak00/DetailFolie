@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Autá | DetailFolie.sk</title>
+  <meta name="description" content="Všetko pre vaše auto na jednom mieste. Tónovacie fólie, prešívanie pásov a profesionálny detailing."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="DetailFolie domov">
+
+      <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item"><a href="index.html" class="nav-link" data-page="index.html">Domov</a></li>
+      <li class="nav-item">
+        <a href="auto.html" class="nav-link" data-page="auto.html">
+          Autá
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="auto-folie.html" class="dropdown-link" data-page="auto-folie.html">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovacie, vinyl, carbon fólie</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="presivanie.html" class="dropdown-link" data-page="presivanie.html" style="background:rgba(37,99,235,0.06);">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span style="color:var(--blue-h);">Prešívanie pásov</span><span class="dropdown-label">Bezpečnostné pásy na mieru</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="detailing.html" class="dropdown-link" data-page="detailing.html">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Detailing</span><span class="dropdown-label">Všetko pre vaše auto</span></div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="budovy.html" class="nav-link" data-page="budovy.html">Budovy</a></li>
+      <li class="nav-item"><a href="index.html#o-nas" class="nav-link">O nás</a></li>
+      <li class="nav-item"><a href="index.html#kontakt" class="nav-link nav-cta">Kontakt</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="index.html" class="nav-link">Domov</a>
+  <div class="mobile-sep"></div>
+  <div class="mobile-group-title">Autá</div>
+  <a href="auto.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prehľad Auto</span></div></a>
+  <a href="auto-folie.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Fólie pre auto</span></div></a>
+  <a href="presivanie.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prešívanie pásov</span></div></a>
+  <a href="detailing.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></div><div><span>Detailing</span></div></a>
+  <div class="mobile-sep"></div>
+  <a href="budovy.html" class="nav-link">Budovy</a>
+  <a href="index.html#kontakt" class="nav-link" style="color:var(--blue-h);font-weight:700">Kontakt</a>
+</div>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Domov</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Autá</span>
+    </div>
+  </div>
+</div>
+
+<header class="page-hero">
+  <div class="page-hero-bg">
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-orb"></div>
+  </div>
+  <img src="assets/hero_car_folie.jpg" alt="Všetko pre auto" class="page-hero-img"/>
+  <div class="container">
+    <div class="page-hero-content anim">
+      <span class="tag">Autá</span>
+      <h1 class="sec-title">Všetko pre vaše auto<br/>na <span class="gt-blue">jednom mieste.</span></h1>
+      <p class="sec-sub">Od tónovania okien a vinyl wrapov cez prešívanie bezpečnostných pásov až po profesionálny detailing — robíme to všetko na rovnakej vysokej úrovni.</p>
+    </div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="container">
+    <div class="sec-hdr anim">
+      <span class="tag">Naše auto služby</span>
+      <h2 class="sec-title">Tri špeciality.<br/>Jedna adresa.</h2>
+    </div>
+    
+    <div class="hub-grid">
+      <!-- Card 1: Fólie -->
+      <div class="hub-card anim anim-d1">
+        <div class="hub-card-bg"></div>
+        <div class="hub-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2M7 16v2M17 16v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Fólie pre auto</h3>
+        <p>Tónovacie fólie vo všetkých percentách VLT, vinyl wraps, carbon fólie a chrómové fólie. Každý centimeter aplikovaný s precíznosťou, ktorú auto-nadšenci očakávajú.</p>
+        <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--text-2); font-size: 15px;">
+          <li style="margin-bottom: 8px;">Tónovacie fólie (VLT 5% – 70%)</li>
+          <li style="margin-bottom: 8px;">Vinyl & Carbon wrap</li>
+          <li style="margin-bottom: 8px;">Chrómové a zrkadlové fólie</li>
+          <li>Farebné dekoratívne fólie</li>
+        </ul>
+        <a href="auto-folie.html" class="hub-card-link">
+          Zobraziť všetky fólie
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Card 2: Prešívanie -->
+      <div class="hub-card anim anim-d2">
+        <div class="hub-card-bg"></div>
+        <div class="hub-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Prešívanie bezpečnostných pásov</h3>
+        <p>Premeňte interiér svojho auta s farebnými bezpečnostnými pásmi prešitými na mieru. Desiatky farieb, profesionálne prešitie na Juki šijacích strojoch, certifikovaná bezpečnosť.</p>
+        <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--text-2); font-size: 15px;">
+          <li style="margin-bottom: 8px;">30+ farieb pásu</li>
+          <li style="margin-bottom: 8px;">Súpravy 2 alebo 4 pásy</li>
+          <li style="margin-bottom: 8px;">Certifikované spoje</li>
+          <li>Montáž do 2 hodín</li>
+        </ul>
+        <a href="presivanie.html" class="hub-card-link">
+          Vybrať farbu pásu
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Card 3: Detailing -->
+      <div class="hub-card anim anim-d3">
+        <div class="hub-card-bg"></div>
+        <div class="hub-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Detailing</h3>
+        <p>Profesionálna starostlivosť o auto od A po Z. Leštenie laku, keramická ochrana, hĺbkové čistenie interiéru, odstraňovanie poškriabaní. Váš voz opustí naše ruky ako nový.</p>
+        <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--text-2); font-size: 15px;">
+          <li style="margin-bottom: 8px;">Korekcia laku a leštenie</li>
+          <li style="margin-bottom: 8px;">Keramická ochrana (coating)</li>
+          <li style="margin-bottom: 8px;">Hĺbkové čistenie interiéru</li>
+          <li>Odstraňovanie škrabancov</li>
+        </ul>
+        <a href="detailing.html" class="hub-card-link">
+          Zobraziť detailing
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt">
+  <div class="container">
+    <div class="sec-hdr anim">
+      <span class="tag">Prečo nás</span>
+      <h2 class="sec-title">Tri dôvody,<br/>prečo si nás vyberajú autičkári.</h2>
+    </div>
+    <div class="feature-list" style="max-width: 800px; margin: 0 auto;">
+      <div class="feat-item anim anim-d1">
+        <div class="feat-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Presnosť</h4>
+          <p>Pracujeme s plottermi a šablónami – každý rez je na milimeter presný, bez viditeľných švov.</p>
+        </div>
+      </div>
+      <div class="feat-item anim anim-d2">
+        <div class="feat-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Čas</h4>
+          <p>Väčšina zákaziek hotová do 1-2 pracovných dní. Expresné termíny po dohode.</p>
+        </div>
+      </div>
+      <div class="feat-item anim anim-d3">
+        <div class="feat-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 15l-2 5l9-9H9l2-5L2 15h10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Skúsenosť</h4>
+          <p>Viac ako 8 rokov v odbore, 500+ realizácií na autách všetkých značiek a tried.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container">
+    <div class="cta-banner anim">
+      <h2>Máte otázku alebo chcete cenovú ponuku?</h2>
+      <p>Vyplňte náš kontaktný formulár alebo nám priamo zavolajte. Sme tu pre vás a radi vám poradíme s výberom najvhodnejšej služby.</p>
+      <div class="cta-btns">
+        <a href="index.html#kontakt" class="btn btn-primary">
+          Kontaktovať nás
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="tel:+421900000000" class="btn btn-ghost">
+          Volajte: +421 900 000 000
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:14px;display:inline-flex;">
+
+          <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+        </a>
+        <p class="footer-tagline">Profesionálna aplikácia fólií na autá a budovy. Prémiové materiály, bezchybná práca.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Autá</h4>
+        <ul>
+          <li><a href="auto.html">Prehľad</a></li>
+          <li><a href="auto-folie.html">Fólie pre auto</a></li>
+          <li><a href="presivanie.html">Prešívanie pásov</a></li>
+          <li><a href="detailing.html">Detailing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Budovy</h4>
+        <ul>
+          <li><a href="budovy.html">Prehľad</a></li>
+          <li><a href="budovy.html#typy">Typy fólií</a></li>
+          <li><a href="budovy.html#vzorkovnik">Vzorkovník</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+421947969264">+421 947 969 264</a></li>
+          <li><a href="mailto:mbazger85@gmail.com">mbazger85@gmail.com</a></li>
+          <li><a href="index.html#kontakt">Cenová ponuka</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DetailFolie.sk – Všetky práva vyhradené.</p>
+      <div class="footer-btm-links">
+        <a href="index.html">Domov</a>
+        <a href="auto.html">Autá</a>
+        <a href="budovy.html">Budovy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

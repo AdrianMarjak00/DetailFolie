@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vzorkovník fólií – Detail Folie</title>
+  <meta name="description" content="Interaktívny vzorkovník fólií pre autá a budovy. Tónovacie, solárne, bezpečnostné, dekoratívne a PPF fólie s technickými parametrami."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── Vzorkovník page styles ── */
+    .vz-hero {
+      padding: 120px 0 64px;
+      text-align: center;
+      background: linear-gradient(180deg, #0a0f1e 0%, var(--bg-dark) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .vz-hero .tag { margin-bottom: 16px; display: inline-block; }
+    .vz-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: var(--text-1);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .vz-hero p {
+      font-size: 17px;
+      color: var(--text-2);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* Category tabs */
+    .vz-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .vz-tab {
+      padding: 9px 22px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-2);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .vz-tab:hover { background: rgba(255,255,255,0.05); color: var(--text-1); }
+    .vz-tab.active {
+      background: var(--blue-h);
+      border-color: var(--blue-h);
+      color: #fff;
+    }
+
+    /* Category section */
+    .vz-cat {
+      margin-bottom: 72px;
+    }
+    .vz-cat-hdr {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .vz-cat-ico {
+      width: 40px; height: 40px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .vz-cat-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-1);
+      font-family: 'Poppins', sans-serif;
+    }
+    .vz-cat-sub {
+      font-size: 13px;
+      color: var(--text-3);
+      margin-top: 2px;
+    }
+    .vz-cat-count {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-3);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    /* Swatches grid */
+    .vz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    /* Individual swatch card */
+    .vz-swatch {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+    .vz-swatch:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    /* Color preview area */
+    .vz-preview {
+      width: 100%;
+      height: 110px;
+      position: relative;
+      overflow: hidden;
+    }
+    .vz-preview-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #c8d8f0 25%, #e0eaf8 50%, #b8ccec 75%);
+    }
+    .vz-tint {
+      position: absolute;
+      inset: 0;
+    }
+    .vz-preview-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 6px 10px;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .vz-vlt {
+      font-size: 11px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: .05em;
+    }
+    .vz-vlt-bar {
+      width: 48px; height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .vz-vlt-fill {
+      height: 100%;
+      background: rgba(255,255,255,0.7);
+      border-radius: 2px;
+    }
+
+    /* Card body */
+    .vz-body {
+      padding: 14px 14px 16px;
+    }
+    .vz-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 4px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .vz-desc {
+      font-size: 12px;
+      color: var(--text-3);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .vz-specs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .vz-spec {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-3);
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .vz-spec.uv    { color: #a78bfa; border-color: rgba(167,139,250,0.2); background: rgba(167,139,250,0.06); }
+    .vz-spec.heat  { color: #fb923c; border-color: rgba(251,146,60,0.2);  background: rgba(251,146,60,0.06);  }
+    .vz-spec.priv  { color: #34d399; border-color: rgba(52,211,153,0.2);  background: rgba(52,211,153,0.06);  }
+    .vz-spec.safe  { color: #60a5fa; border-color: rgba(96,165,250,0.2);  background: rgba(96,165,250,0.06);  }
+
+    /* Detail panel */
+    .vz-detail-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+    }
+    .vz-detail-panel.open { display: flex; }
+    .vz-detail-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      width: 100%;
+      max-width: 560px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+      animation: panelIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes panelIn {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .vz-detail-preview {
+      width: 100%;
+      height: 200px;
+      position: relative;
+    }
+    .vz-detail-preview .vz-preview-bg { height: 200px; }
+    .vz-detail-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s;
+    }
+    .vz-detail-close:hover { background: rgba(255,255,255,0.15); }
+    .vz-detail-body { padding: 24px 28px 28px; }
+    .vz-detail-name {
+      font-size: 22px; font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-1);
+      margin-bottom: 6px;
+    }
+    .vz-detail-type {
+      font-size: 13px; color: var(--text-3);
+      margin-bottom: 20px;
+    }
+    .vz-detail-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .vz-stat-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--r-md);
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .vz-stat-val {
+      font-size: 20px; font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-1);
+    }
+    .vz-stat-lbl {
+      font-size: 10px; font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: 3px;
+    }
+    .vz-detail-features {
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .vz-feat {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--text-2);
+    }
+    .vz-feat::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(52,211,153,0.12);
+      border: 1px solid rgba(52,211,153,0.2);
+      color: #34d399;
+      font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .vz-detail-cta {
+      display: flex; gap: 10px;
+    }
+    .vz-detail-cta .btn { flex: 1; justify-content: center; }
+
+    @media (max-width: 600px) {
+      .vz-grid { grid-template-columns: repeat(2, 1fr); }
+      .vz-detail-stats { grid-template-columns: repeat(3,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="DetailFolie domov">
+
+      <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item"><a href="index.html" class="nav-link" data-page="index.html">Domov</a></li>
+      <li class="nav-item">
+        <a href="auto.html" class="nav-link" data-page="auto.html">
+          Autá
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="auto-folie.html" class="dropdown-link" data-page="auto-folie.html">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovacie, vinyl, carbon fólie</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="presivanie.html" class="dropdown-link" data-page="presivanie.html" style="background:rgba(37,99,235,0.06);">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span style="color:var(--blue-h);">Prešívanie pásov</span><span class="dropdown-label">Bezpečnostné pásy na mieru</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="detailing.html" class="dropdown-link" data-page="detailing.html">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Detailing</span><span class="dropdown-label">Všetko pre vaše auto</span></div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="budovy.html" class="nav-link" data-page="budovy.html">Budovy</a></li>
+      <li class="nav-item"><a href="index.html#o-nas" class="nav-link">O nás</a></li>
+      <li class="nav-item"><a href="index.html#kontakt" class="nav-link nav-cta">Kontakt</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="index.html" class="nav-link">Domov</a>
+  <div class="mobile-sep"></div>
+
+<!-- HERO -->
+<section class="vz-hero">
+  <div class="container">
+    <span class="tag">Interaktívny prehliadač</span>
+    <h1>Vzorkovník fólií</h1>
+    <p>Prezrite si celé portfólio fólií pre budovy (a automobily). Kliknite na vzorku pre detailné technické parametre.</p>
+
+    <!-- Filter tabs -->
+    <div class="vz-tabs">
+      <button class="vz-tab active" data-cat="all">Všetky</button>
+      <button class="vz-tab" data-cat="solar">☀️ Solárne</button>
+      <button class="vz-tab" data-cat="deco">🪟 Dekoratívne</button>
+      <button class="vz-tab" data-cat="safe">🛡️ Bezpečnostné</button>
+      <button class="vz-tab" data-cat="auto">🚗 Autofólie</button>
+      <button class="vz-tab" data-cat="ppf">💎 PPF</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="sec">
+  <div class="container">
+
+    <!-- ══ SOLÁRNE / REFLEXNÉ PRE BUDOVY ══ -->
+    <div class="vz-cat" data-group="solar">
+      <div class="vz-cat-hdr">
+        <div class="vz-cat-ico" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);">☀️</div>
+        <div>
+          <div class="vz-cat-title">Solárne fólie pre budovy</div>
+          <div class="vz-cat-sub">Protislnečné a tepelnoizolačné fólie na okná budov</div>
+        </div>
+        <span class="vz-cat-count">5 vzoriek</span>
+      </div>
+      <div class="vz-grid">
+
+        <div class="vz-swatch" data-name="Solárna Neutrálna 33" data-type="Solárna fólia – neutrálna" data-vlt="33" data-uv="99" data-heat="65" data-priv="Stredné" data-features="Neutrálna sivá – nemení charakter budovy|Blokuje 65% slnečného tepla|Ochrana nábytku pred UV žiarením|Vhodná pre kancelárie a obchodné priestory" data-color="rgba(80,80,80,0.45)" data-cat="solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#d0dce8,#e8f0f8,#c8d8e8)"></div>
+            <div class="vz-tint" style="background:rgba(60,65,70,0.42)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 33%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:33%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Neutrálna 33</div>
+            <div class="vz-desc">Sivá fólia s výbornou tepelnou ochranou</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 65%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Solárna Neutrálna 17" data-type="Solárna fólia – neutrálna" data-vlt="17" data-uv="99" data-heat="72" data-priv="Vysoké" data-features="Výrazné tónovanie pre južné fasády|Blokuje až 72% tepla|Redukuje prevádzkové náklady na klimatizáciu|Pre extrémne slnečné polohy" data-color="rgba(50,55,60,0.62)" data-cat="solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#d0dce8,#e8f0f8,#c8d8e8)"></div>
+            <div class="vz-tint" style="background:rgba(40,45,50,0.6)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 17%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:17%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Neutrálna 17</div>
+            <div class="vz-desc">Pre intenzívne slnečné polohy – south facing</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 72%</span>
+              <span class="vz-spec priv">Súkromie ✓✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Reflexná Strieborná" data-type="Solárna fólia – reflexná" data-vlt="20" data-uv="99" data-heat="78" data-priv="Veľmi vysoké" data-features="Zrkadlový efekt zvonka|Maximálna tepelná ochrana|Ideálna pre presklené fasády|Znižuje prehrievanie o až 78%" data-color="rgba(180,190,200,0.6)" data-cat="solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#c8d8e8,#dce8f0,#b8c8d8)"></div>
+            <div class="vz-tint" style="background:linear-gradient(135deg,rgba(180,195,210,0.65),rgba(160,180,200,0.55));"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt" style="color:#fff">VLT 20%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:20%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Reflexná Strieborná</div>
+            <div class="vz-desc">Zrkadlový efekt – maximum súkromia cez deň</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 78%</span>
+              <span class="vz-spec priv">Súkromie ✓✓✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Reflexná Zlatá" data-type="Solárna fólia – reflexná" data-vlt="25" data-uv="99" data-heat="75" data-priv="Veľmi vysoké" data-features="Zlatý odtieň exteriéru|Exkluzívny vizuálny efekt|Vysoká tepelná ochrana|Vhodná pre reprezentatívne budovy" data-color="rgba(200,170,80,0.55)" data-cat="solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#e8d8a0,#f0e8b8,#d8c888)"></div>
+            <div class="vz-tint" style="background:linear-gradient(135deg,rgba(200,170,60,0.5),rgba(180,150,40,0.4))"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 25%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:25%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Reflexná Zlatá</div>
+            <div class="vz-desc">Zlatý odtieň fasády s vysokou ochranou</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 75%</span>
+              <span class="vz-spec priv">Súkromie ✓✓✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Modrá Reflexná" data-type="Solárna fólia – reflexná" data-vlt="22" data-uv="99" data-heat="76" data-priv="Veľmi vysoké" data-features="Modrý odtieň pre moderné budovy|Kompatibilná s dvojsklovom|Výborná tepelná ochrana|Minimalizuje oslnenie pracovníkov" data-color="rgba(60,100,180,0.55)" data-cat="solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#a8c0e8,#c0d4f8,#90b0d8)"></div>
+            <div class="vz-tint" style="background:linear-gradient(135deg,rgba(40,80,180,0.5),rgba(60,100,200,0.4))"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 22%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:22%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Modrá Reflexná</div>
+            <div class="vz-desc">Modrý odtieň fasády – moderný look</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 76%</span>
+              <span class="vz-spec priv">Súkromie ✓✓✓</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ DEKORATÍVNE ══ -->
+    <div class="vz-cat" data-group="deco">
+      <div class="vz-cat-hdr">
+        <div class="vz-cat-ico" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);">🪟</div>
+        <div>
+          <div class="vz-cat-title">Dekoratívne fólie</div>
+          <div class="vz-cat-sub">Matiace, farebné a dizajnové fólie pre interiéry</div>
+        </div>
+        <span class="vz-cat-count">4 vzorky</span>
+      </div>
+      <div class="vz-grid">
+
+        <div class="vz-swatch" data-name="Mliečna Matná" data-type="Dekoratívna fólia" data-vlt="55" data-uv="99" data-heat="20" data-priv="Stredné" data-features="Rozptyľuje svetlo rovnomerne|Zachováva prechod prirodzeného svetla|Vytvára matný efekt mliečneho skla|Ideálna pre kancelárske priečky" data-color="rgba(220,235,255,0.6)" data-cat="deco">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#e8f0f8,#f0f5ff,#dce8f4)"></div>
+            <div class="vz-tint" style="background:rgba(220,230,250,0.55);backdrop-filter:blur(3px)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 55%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:55%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Mliečna Matná</div>
+            <div class="vz-desc">Klasická matiaca fólia – priečky a kúpeľne</div>
+            <div class="vz-specs">
+              <span class="vz-spec priv">Súkromie ✓✓</span>
+              <span class="vz-spec uv">UV 99%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Pieskovaná" data-type="Dekoratívna fólia" data-vlt="45" data-uv="99" data-heat="18" data-priv="Stredné" data-features="Imituje pieskovaný povrch skla|Dekoratívny efekt pre recepcie|Jednoduchá aplikácia a údržba|Bez permanentnej zmeny skla" data-color="rgba(240,235,220,0.6)" data-cat="deco">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#ece8d8,#f4f0e0,#e4dfc8)"></div>
+            <div class="vz-tint" style="background:rgba(235,225,200,0.55)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 45%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:45%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Pieskovaná</div>
+            <div class="vz-desc">Imitácia pieskovaného skla – elegantný look</div>
+            <div class="vz-specs">
+              <span class="vz-spec priv">Súkromie ✓✓</span>
+              <span class="vz-spec uv">UV 99%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Číra Anti-UV" data-type="Dekoratívna / ochranná fólia" data-vlt="90" data-uv="99" data-heat="20" data-priv="Žiadne" data-features="Takmer neviditeľná na skle|Blokuje 99% UV žiarenia|Chráni nábytok a podlahy pred bielením|Pre múzeá, galérie a obchody" data-color="rgba(200,220,255,0.08)" data-cat="deco solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#dce8f8,#eef4ff,#d0e0f4)"></div>
+            <div class="vz-tint" style="background:rgba(200,220,255,0.07)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 90%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:90%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Číra Anti-UV</div>
+            <div class="vz-desc">Neviditeľná ochrana pred UV – pre muzea a obchody</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec safe">Číra</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Gradientná" data-type="Dekoratívna fólia" data-vlt="40" data-uv="99" data-heat="30" data-priv="Čiastočné" data-features="Prechod od matnej po priehľadnú|Moderný dizajnový efekt|Pre sklené zábradlia a priečky|Dostupná v rôznych farebných odtieňoch" data-color="linear-gradient(180deg,rgba(30,50,100,0.55) 0%,rgba(30,50,100,0) 100%)" data-cat="deco">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#d0e0f8,#e8f0ff,#c8d8f0)"></div>
+            <div class="vz-tint" style="background:linear-gradient(180deg,rgba(20,40,100,0.55) 0%,transparent 100%)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 40–90%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:60%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Gradientná</div>
+            <div class="vz-desc">Prechod z matnej po priehľadnú – moderný efekt</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec priv">Gradient</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ BEZPEČNOSTNÉ ══ -->
+    <div class="vz-cat" data-group="safe">
+      <div class="vz-cat-hdr">
+        <div class="vz-cat-ico" style="background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.2);">🛡️</div>
+        <div>
+          <div class="vz-cat-title">Bezpečnostné fólie</div>
+          <div class="vz-cat-sub">Zosilnené fólie udržiace sklenenú tabuľu vcelku pri rozbití</div>
+        </div>
+        <span class="vz-cat-count">3 vzorky</span>
+      </div>
+      <div class="vz-grid">
+
+        <div class="vz-swatch" data-name="Bezpečnostná 2 mil" data-type="Bezpečnostná fólia" data-vlt="88" data-uv="99" data-heat="15" data-priv="Nízke" data-features="Hrúbka 2 mil – základná ochrana|Drží črepiny skla vcelku|Číra – nemení vzhľad skla|Pre rodinné domy a predajne" data-color="rgba(200,220,255,0.1)" data-cat="safe">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#dce8f8,#eef4ff,#d0e0f4)"></div>
+            <div class="vz-tint" style="background:rgba(60,100,200,0.08)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 88%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:88%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Bezpečnostná 2 mil</div>
+            <div class="vz-desc">Základná bezpečnostná ochrana pre sklá</div>
+            <div class="vz-specs">
+              <span class="vz-spec safe">2 mil</span>
+              <span class="vz-spec uv">UV 99%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Bezpečnostná 4 mil" data-type="Bezpečnostná fólia" data-vlt="85" data-uv="99" data-heat="18" data-priv="Nízke" data-features="Hrúbka 4 mil – zvýšená odolnosť|Odolnosť voči vandalizmu|Spomaľuje prienik pri vlomení|Pre banky, klenoty a firemné priestory" data-color="rgba(200,220,255,0.14)" data-cat="safe">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#dce8f8,#eef4ff,#d0e0f4)"></div>
+            <div class="vz-tint" style="background:rgba(60,100,200,0.13)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 85%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:85%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Bezpečnostná 4 mil</div>
+            <div class="vz-desc">Zvýšená ochrana – odolná voči vandalizmu</div>
+            <div class="vz-specs">
+              <span class="vz-spec safe">4 mil</span>
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec priv">Anti-break</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Bezpečnostná 8 mil" data-type="Bezpečnostná fólia – anti-blast" data-vlt="82" data-uv="99" data-heat="20" data-priv="Nízke" data-features="Hrúbka 8 mil – anti-blast ochrana|Odolná voči výbuchovým vlnám|Pre sklenenú fasádu strategických budov|Certifikovaná podľa EN 12600" data-color="rgba(200,220,255,0.18)" data-cat="safe">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#dce8f8,#eef4ff,#d0e0f4)"></div>
+            <div class="vz-tint" style="background:rgba(60,100,200,0.17)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 82%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:82%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Bezpečnostná 8 mil</div>
+            <div class="vz-desc">Anti-blast – pre kritickú infraštruktúru</div>
+            <div class="vz-specs">
+              <span class="vz-spec safe">8 mil</span>
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec safe">EN 12600</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- ══ AUTO TÓNOVACIE FÓLIE ══ -->
+    <div class="vz-cat" data-group="auto">
+      <div class="vz-cat-hdr">
+        <div class="vz-cat-ico" style="background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);">🚗</div>
+        <div>
+          <div class="vz-cat-title">Tónovacie autofólie</div>
+          <div class="vz-cat-sub">Okenné fólie pre osobné a úžitkové vozidlá</div>
+        </div>
+        <span class="vz-cat-count">6 vzoriek</span>
+      </div>
+      <div class="vz-grid" id="gridAuto">
+
+        <div class="vz-swatch" data-name="Svetlá číra" data-type="Tónovacia autofólia" data-vlt="70" data-uv="99" data-heat="30" data-priv="Nízke" data-features="Minimálna zmena vzhľadu|Ochrana pred UV žiarením|Vhodná pre predné sklo|Celoročná ochrana interiéru" data-color="rgba(0,0,0,0.12)" data-cat="auto">
+          <div class="vz-preview">
+            <div class="vz-preview-bg"></div>
+            <div class="vz-tint" style="background:rgba(0,0,0,0.12)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 70%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:70%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Číra 70</div>
+            <div class="vz-desc">Minimálne tónovanie, maximálna viditeľnosť</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 30%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Medium Smoke" data-type="Tónovacia autofólia" data-vlt="50" data-uv="99" data-heat="45" data-priv="Stredné" data-features="Vyvážená viditeľnosť a tónovanie|Ochrana pred UV žiarením|Znižuje oslnenie slnkom|Populárna pre bočné sklá" data-color="rgba(0,0,0,0.3)" data-cat="auto">
+          <div class="vz-preview">
+            <div class="vz-preview-bg"></div>
+            <div class="vz-tint" style="background:rgba(0,0,0,0.3)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 50%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:50%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Medium Smoke 50</div>
+            <div class="vz-desc">Vyvážené tónovanie pre každodenné použitie</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 45%</span>
+              <span class="vz-spec priv">Súkromie ✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Dark Smoke" data-type="Tónovacia autofólia" data-vlt="35" data-uv="99" data-heat="55" data-priv="Vysoké" data-features="Výrazné vizuálne stmavenie|Ochrana pred UV žiarením|Silná ochrana súkromia|Znižuje zahrievanie interiéru" data-color="rgba(0,0,0,0.48)" data-cat="auto">
+          <div class="vz-preview">
+            <div class="vz-preview-bg"></div>
+            <div class="vz-tint" style="background:rgba(0,0,0,0.48)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 35%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:35%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Dark Smoke 35</div>
+            <div class="vz-desc">Výrazné tónovanie s dobrým súkromím</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 55%</span>
+              <span class="vz-spec priv">Súkromie ✓✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Very Dark" data-type="Tónovacia autofólia" data-vlt="20" data-uv="99" data-heat="62" data-priv="Veľmi vysoké" data-features="Maximálna ochrana súkromia|Ochrana pred UV žiarením|Výrazné zníženie tepla|Vhodné pre zadné sklá" data-color="rgba(0,0,0,0.62)" data-cat="auto">
+          <div class="vz-preview">
+            <div class="vz-preview-bg"></div>
+            <div class="vz-tint" style="background:rgba(0,0,0,0.62)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 20%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:20%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Very Dark 20</div>
+            <div class="vz-desc">Intenzívne tónovanie pre zadné sklá</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 62%</span>
+              <span class="vz-spec priv">Súkromie ✓✓✓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Nano Keramická 40" data-type="Nano-keramická autofólia" data-vlt="40" data-uv="99" data-heat="70" data-priv="Stredné" data-features="Nano-keramická technológia|Blokuje 70% tepla bez tmavnutia|Nerušuje GPS a mobilný signál|10-ročná záruka" data-color="rgba(10,20,60,0.38)" data-cat="auto solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg"></div>
+            <div class="vz-tint" style="background:linear-gradient(135deg,rgba(10,20,80,0.35),rgba(20,40,100,0.3))"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 40%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:40%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Nano Keramická 40</div>
+            <div class="vz-desc">Prémiová keramika – teplo bez tmy</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 70%</span>
+              <span class="vz-spec safe">Keramika</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="Nano Keramická 70" data-type="Nano-keramická autofólia" data-vlt="70" data-uv="99" data-heat="65" data-priv="Nízke" data-features="Vhodná pre predné sklo|Vysoká priepustnosť svetla|Nano-keramická technológia|Kompatibilná s Head-Up displejmi" data-color="rgba(10,20,60,0.18)" data-cat="auto solar">
+          <div class="vz-preview">
+            <div class="vz-preview-bg"></div>
+            <div class="vz-tint" style="background:linear-gradient(135deg,rgba(10,20,80,0.15),rgba(20,40,100,0.12))"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">VLT 70%</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:70%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">Nano Keramická 70</div>
+            <div class="vz-desc">Pre predné sklo – číra s tepelnou ochranou</div>
+            <div class="vz-specs">
+              <span class="vz-spec uv">UV 99%</span>
+              <span class="vz-spec heat">Teplo 65%</span>
+              <span class="vz-spec safe">Keramika</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ PPF / OCHRANA LAKU ══ -->
+    <div class="vz-cat" data-group="ppf">
+      <div class="vz-cat-hdr">
+        <div class="vz-cat-ico" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);">💎</div>
+        <div>
+          <div class="vz-cat-title">PPF – Ochrana laku karosérie</div>
+          <div class="vz-cat-sub">Paint Protection Film – neviditeľná ochrana pred poškodením</div>
+        </div>
+        <span class="vz-cat-count">3 vzorky</span>
+      </div>
+      <div class="vz-grid">
+
+        <div class="vz-swatch" data-name="PPF Číra Gloss" data-type="PPF – ochrana laku" data-vlt="95" data-uv="95" data-heat="5" data-priv="Žiadne" data-features="Samoregeneračný povrch|Chráni pred kamienkami a škrabancami|Zachováva pôvodnú farbu laku|Hydrofóbny povrch – ľahko sa čistí" data-color="rgba(220,230,255,0.12)" data-cat="ppf">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#e0e8f8,#f0f5ff,#d8e4f4)"></div>
+            <div class="vz-tint" style="background:linear-gradient(135deg,rgba(200,215,255,0.15),rgba(180,200,255,0.08))"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">Číra / Gloss</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:95%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">PPF Gloss – Číra</div>
+            <div class="vz-desc">Neviditeľná ochrana s leskom – samoregen.</div>
+            <div class="vz-specs">
+              <span class="vz-spec priv">Self-heal</span>
+              <span class="vz-spec safe">Anti-scratch</span>
+              <span class="vz-spec uv">UV 95%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="PPF Matná" data-type="PPF – ochrana laku, matný finish" data-vlt="95" data-uv="95" data-heat="5" data-priv="Žiadne" data-features="Matný povrch pre Satin/Matt autá|Samoregeneračný povrch|Mení lesklý lak na matný|Exkluzívny prémiový efekt" data-color="rgba(180,185,200,0.2)" data-cat="ppf">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:linear-gradient(135deg,#d8d8d8,#e8e8e8,#c8c8c8)"></div>
+            <div class="vz-tint" style="background:rgba(180,180,185,0.35)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">Matná / Satin</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:90%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">PPF Matná / Satin</div>
+            <div class="vz-desc">Matný efekt na laku – prémiový look</div>
+            <div class="vz-specs">
+              <span class="vz-spec priv">Self-heal</span>
+              <span class="vz-spec safe">Anti-scratch</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vz-swatch" data-name="PPF Carbon Look" data-type="PPF – carbon vizuál" data-vlt="0" data-uv="99" data-heat="10" data-priv="Žiadne" data-features="Vizuálny efekt karbónu bez ceny karbónu|Ochrana pred poškodením|Populárna pre strechy a zrkadlá|Odolná voči UV a blatnému postreku" data-color="repeating-linear-gradient(45deg,rgba(30,30,30,0.9) 0px,rgba(30,30,30,0.9) 4px,rgba(60,60,60,0.9) 4px,rgba(60,60,60,0.9) 8px)" data-cat="ppf">
+          <div class="vz-preview">
+            <div class="vz-preview-bg" style="background:#222"></div>
+            <div class="vz-tint" style="background:repeating-linear-gradient(45deg,rgba(20,20,20,0.95) 0px,rgba(20,20,20,0.95) 5px,rgba(50,50,50,0.95) 5px,rgba(50,50,50,0.95) 10px)"></div>
+            <div class="vz-preview-label">
+              <span class="vz-vlt">Carbon Look</span>
+              <div class="vz-vlt-bar"><div class="vz-vlt-fill" style="width:5%"></div></div>
+            </div>
+          </div>
+          <div class="vz-body">
+            <div class="vz-name">PPF Carbon Look</div>
+            <div class="vz-desc">Karbónový vizuál pre strechy a zrkadlá</div>
+            <div class="vz-specs">
+              <span class="vz-spec safe">Anti-scratch</span>
+              <span class="vz-spec uv">UV 99%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</main>
+
+<!-- DETAIL PANEL (modal) -->
+<div class="vz-detail-panel" id="vzDetailPanel">
+  <div class="vz-detail-box">
+    <div class="vz-detail-preview" id="vzDetailPreview">
+      <div class="vz-preview-bg" id="vzDetailBg" style="height:200px"></div>
+      <div class="vz-tint" id="vzDetailTint" style="position:absolute;inset:0"></div>
+      <button class="vz-detail-close" id="vzDetailClose">×</button>
+    </div>
+    <div class="vz-detail-body">
+      <div class="vz-detail-name" id="vzDetailName"></div>
+      <div class="vz-detail-type" id="vzDetailType"></div>
+      <div class="vz-detail-stats">
+        <div class="vz-stat-box">
+          <div class="vz-stat-val" id="vzStatVlt">–</div>
+          <div class="vz-stat-lbl">VLT (Svetlo)</div>
+        </div>
+        <div class="vz-stat-box">
+          <div class="vz-stat-val" id="vzStatUv">–</div>
+          <div class="vz-stat-lbl">UV blok</div>
+        </div>
+        <div class="vz-stat-box">
+          <div class="vz-stat-val" id="vzStatHeat">–</div>
+          <div class="vz-stat-lbl">Teplo blok</div>
+        </div>
+      </div>
+      <div class="vz-detail-features" id="vzDetailFeatures"></div>
+      <div class="vz-detail-cta">
+        <a href="index.html#kontakt" class="btn btn-primary">Mám záujem →</a>
+        <a href="index.html#kontakt" class="btn btn-secondary">Konzultácia zdarma</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Detail<span>Folie</span></a>
+        <p>Profesionálna aplikácia fólií pre autá a budovy. 10-ročná záruka.</p>
+      </div>
+      <div class="footer-links">
+        <a href="auto-folie.html">Autofólie</a>
+        <a href="budovy.html">Budovy</a>
+        <a href="presivanie.html">Prešívanie</a>
+        <a href="vzorkovnik.html">Vzorkovník</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DetailFolie. Všetky práva vyhradené.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+// ── Tab filtering ──
+const tabs    = document.querySelectorAll('.vz-tab');
+const cats    = document.querySelectorAll('.vz-cat');
+const swatches = document.querySelectorAll('.vz-swatch');
+
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    tab.classList.add('active');
+
+    var filter = tab.dataset.cat;
+
+    cats.forEach(function(cat) {
+      var group = cat.dataset.group;
+      if (filter === 'all') {
+        cat.style.display = '';
+      } else if (filter === 'solar') {
+        cat.style.display = (group === 'solar') ? '' : 'none';
+      } else if (filter === 'auto') {
+        cat.style.display = (group === 'auto') ? '' : 'none';
+      } else if (filter === 'deco') {
+        cat.style.display = (group === 'deco') ? '' : 'none';
+      } else if (filter === 'safe') {
+        cat.style.display = (group === 'safe') ? '' : 'none';
+      } else if (filter === 'ppf') {
+        cat.style.display = (group === 'ppf') ? '' : 'none';
+      }
+    });
+  });
+});
+
+// ── Swatch detail modal ──
+var panel = document.getElementById('vzDetailPanel');
+var closeBtn = document.getElementById('vzDetailClose');
+
+swatches.forEach(function(sw) {
+  sw.addEventListener('click', function() {
+    var d = sw.dataset;
+    document.getElementById('vzDetailName').textContent  = d.name;
+    document.getElementById('vzDetailType').textContent  = d.type;
+    document.getElementById('vzStatVlt').textContent     = d.vlt + '%';
+    document.getElementById('vzStatUv').textContent      = d.uv  + '%';
+    document.getElementById('vzStatHeat').textContent    = d.heat + '%';
+
+    // Set tint preview
+    document.getElementById('vzDetailTint').style.background = d.color;
+    document.getElementById('vzDetailBg').style.background   =
+      'linear-gradient(135deg, #c8d8f0 25%, #e0eaf8 50%, #b8ccec 75%)';
+
+    // Features list
+    var feat = document.getElementById('vzDetailFeatures');
+    feat.innerHTML = '';
+    if (d.features) {
+      d.features.split('|').forEach(function(f) {
+        var div = document.createElement('div');
+        div.className = 'vz-feat';
+        div.textContent = f.trim();
+        feat.appendChild(div);
+      });
+    }
+
+    panel.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+// Close modal
+function closePanel() {
+  panel.classList.remove('open');
+  document.body.style.overflow = '';
+}
+closeBtn.addEventListener('click', closePanel);
+panel.addEventListener('click', function(e) {
+  if (e.target === panel) closePanel();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePanel();
+});
+</script>
+</body>
+</html>
+

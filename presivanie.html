@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prešívanie bezpečnostných pásov | DetailFolie.sk</title>
+  <meta name="description" content="Štýlové a bezpečné prešívanie bezpečnostných pásov. Vyberte si farbu a obnovte vzhľad vášho vozidla."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── Presivanie-specific styles (on top of shared style.css) ── */
+    :root {
+      --pas-grad: linear-gradient(135deg,#2563eb 0%,#38bdf8 100%);
+      --pas-glow: 0 0 30px rgba(37,99,235,0.35);
+      --pas-r: 16px; --pas-r-lg: 24px;
+    }
+
+    /* Hero slideshow */
+    .pas-hero {
+      position:relative; min-height:100vh; display:flex; align-items:center;
+      justify-content:center; text-align:center; padding:80px 1rem 0; overflow:hidden;
+    }
+    .pas-slides { position:absolute; inset:0; }
+    .pas-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.5s ease-in-out; }
+    .pas-slide.active { opacity:1; }
+    .pas-hero-overlay {
+      position:absolute; inset:0;
+      background:radial-gradient(circle at center,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.75) 100%);
+      z-index:1;
+    }
+    .pas-hero-content { position:relative; z-index:2; max-width:900px; padding:3rem 0; animation:fadeUp .8s ease-out; }
+    .pas-badge {
+      display:inline-block; background:rgba(37,99,235,0.18); border:1px solid rgba(37,99,235,0.35);
+      color:var(--blue-h); padding:0.5rem 1.5rem; border-radius:50px; font-size:0.9rem;
+      font-weight:600; margin-bottom:2rem; backdrop-filter:blur(10px);
+    }
+    .pas-h1 { font-size:clamp(2.5rem,7vw,4.5rem); font-weight:800; line-height:1.1; margin-bottom:1.5rem; font-family:'Poppins',sans-serif; }
+    .pas-h1 .line { display:block; color:#fff; }
+    .pas-h1 .highlight { display:block; background:var(--pas-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0.4rem 0; }
+    .pas-hero-desc { font-size:clamp(1rem,2.5vw,1.25rem); color:var(--text-2); max-width:680px; margin:0 auto 2.5rem; line-height:1.8; }
+    .pas-hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:4rem; }
+    .pas-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:3rem; max-width:700px; margin:0 auto; padding-top:3rem; border-top:1px solid rgba(255,255,255,0.08); justify-items:center; }
+    .pas-stat-num { font-size:clamp(2rem,4vw,3rem); font-weight:800; background:var(--pas-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-family:'Poppins',sans-serif; }
+    .pas-stat-lbl { color:var(--text-2); font-size:0.9rem; font-weight:500; }
+    .pas-scroll-ind { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:2; }
+    .pas-mouse { width:30px; height:50px; border:2px solid rgba(255,255,255,0.4); border-radius:25px; position:relative; }
+    .pas-mouse::before { content:''; width:6px; height:6px; background:var(--blue); border-radius:50%; position:absolute; top:10px; left:50%; transform:translateX(-50%); animation:pasScroll 2s infinite; }
+    @keyframes pasScroll { 0%,100%{opacity:1;top:10px} 50%{opacity:0;top:30px} }
+
+    /* Sections */
+    .pas-section { padding:6rem 0; }
+    .pas-section.bg-alt { background:var(--bg-alt); }
+    .pas-section.bg-dark { background:var(--bg-dark); }
+    .pas-container { max-width:1280px; margin:0 auto; padding:0 2rem; }
+    .pas-sec-hdr { text-align:center; max-width:700px; margin:0 auto 4rem; }
+    .pas-sec-hdr h2 { font-size:clamp(2rem,5vw,3rem); font-weight:800; background:var(--pas-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-family:'Poppins',sans-serif; margin-bottom:1rem; }
+    .pas-sec-hdr p { color:var(--text-2); font-size:1.05rem; line-height:1.7; }
+
+    /* Service cards */
+    .pas-svc-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
+    .pas-svc-card {
+      background:var(--bg-card); padding:2.5rem; border-radius:var(--r-xl);
+      border:1px solid var(--border); transition:var(--ease); position:relative; overflow:hidden;
+    }
+    .pas-svc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--pas-grad); transform:scaleX(0); transition:var(--ease); }
+    .pas-svc-card:hover::before { transform:scaleX(1); }
+    .pas-svc-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-b); border-color:rgba(37,99,235,0.25); }
+    .pas-svc-icon { width:72px; height:72px; background:rgba(37,99,235,0.1); border:1px solid rgba(37,99,235,0.18); border-radius:var(--r-lg); display:flex; align-items:center; justify-content:center; font-size:2rem; margin-bottom:1.5rem; transition:var(--ease); }
+    .pas-svc-card:hover .pas-svc-icon { background:rgba(37,99,235,0.2); transform:scale(1.08); }
+    .pas-svc-card h3 { font-size:1.3rem; font-weight:700; margin-bottom:1rem; font-family:'Poppins',sans-serif; }
+    .pas-svc-card p { color:var(--text-2); margin-bottom:1.5rem; line-height:1.7; }
+    .pas-svc-link { color:var(--blue-h); text-decoration:none; font-weight:600; transition:var(--ease); font-size:0.95rem; }
+    .pas-svc-link:hover { color:var(--yellow); }
+
+    /* Vzorkovník */
+    .pas-vzorkovnik-wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    .pas-vzor-preview {
+      background:var(--bg-card); border-radius:var(--r-xl); overflow:hidden;
+      border:1px solid var(--border); position:relative; min-height:400px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .pas-vzor-placeholder { text-align:center; color:var(--text-2); padding:3rem; }
+    .pas-vzor-placeholder .ico { font-size:4rem; margin-bottom:1rem; }
+    #pasMainImg { width:100%; height:auto; object-fit:cover; border-radius:var(--r-xl); display:none; }
+    #pasCaption { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,0.9)); padding:1.5rem; font-weight:600; display:none; }
+    .pas-zoom-btn { position:absolute; top:12px; right:12px; background:rgba(0,0,0,0.6); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:8px; padding:8px; cursor:pointer; display:none; transition:var(--ease); }
+    .pas-zoom-btn:hover { background:var(--blue); }
+    .pas-vzor-colors { background:var(--bg-card); border-radius:var(--r-xl); padding:2rem; border:1px solid var(--border); }
+    .pas-vzor-colors h3 { font-size:1.2rem; font-weight:700; margin-bottom:0.5rem; font-family:'Poppins',sans-serif; }
+    .pas-vzor-hint { color:var(--text-2); font-size:0.9rem; margin-bottom:1.5rem; }
+    .pas-color-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:1rem; }
+    .pas-color-thumb { aspect-ratio:1; border-radius:var(--r-md); overflow:hidden; cursor:pointer; border:3px solid transparent; transition:var(--ease); position:relative; }
+    .pas-color-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pas-color-thumb:hover { border-color:var(--blue); transform:scale(1.05); box-shadow:var(--pas-glow); }
+    .pas-color-thumb.active { border-color:var(--yellow); box-shadow:0 0 20px rgba(255,211,61,0.5); }
+    .pas-color-name { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.8); font-size:0.65rem; font-weight:600; text-align:center; padding:4px 2px; }
+
+    /* Gallery */
+    .pas-gal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1.2rem; }
+    .pas-gal-thumb { aspect-ratio:1; object-fit:cover; border-radius:var(--r-md); cursor:pointer; transition:var(--ease); border:2px solid transparent; display:block; width:100%; }
+    .pas-gal-thumb:hover { transform:scale(1.04); box-shadow:var(--pas-glow); border-color:var(--blue); }
+
+    /* Process */
+    .pas-proc-list { display:flex; flex-direction:column; gap:2rem; max-width:800px; margin:0 auto; }
+    .pas-proc-item { display:flex; gap:2rem; align-items:flex-start; background:var(--bg-card); padding:2rem; border-radius:var(--r-xl); border:1px solid var(--border); transition:var(--ease); }
+    .pas-proc-item:hover { transform:translateX(8px); box-shadow:var(--shadow-b); border-color:rgba(37,99,235,0.3); }
+    .pas-krok-wrap { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+    .pas-krok { width:56px; height:56px; background:var(--pas-grad); color:#0a0a0a; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:800; font-family:'Poppins',sans-serif; box-shadow:0 0 16px rgba(37,99,235,0.3); }
+    .pas-krok-line { width:2px; height:80px; background:linear-gradient(to bottom,var(--blue),transparent); margin-top:1rem; opacity:0.25; }
+    .pas-proc-item:last-child .pas-krok-line { display:none; }
+    .pas-proc-content h3 { font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:0.5rem; font-family:'Poppins',sans-serif; }
+    .pas-proc-content p { color:var(--text-2); line-height:1.7; }
+
+    /* Opening hours */
+    .pas-hodiny-box { max-width:600px; margin:0 auto; background:var(--bg-card); padding:3rem; border-radius:var(--r-xl); border:1px solid var(--border); box-shadow:var(--shadow-c); }
+    .pas-den { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 0; border-bottom:1px solid var(--border); font-size:1.05rem; transition:var(--ease); }
+    .pas-den:last-child { border-bottom:none; }
+    .pas-den:hover { color:var(--blue-h); padding-left:1rem; }
+    .pas-den span:first-child { font-weight:600; }
+    .pas-den span:last-child { color:var(--yellow); font-weight:600; }
+    .pas-den.zatvorene { opacity:0.45; }
+    .pas-den.zatvorene span:last-child { color:var(--text-3); }
+
+    /* Contact cards */
+    .pas-kontakt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1000px; margin:0 auto; }
+    .pas-kontakt-link { text-decoration:none; color:inherit; display:block; }
+    .pas-kontakt-card {
+      background:var(--bg-card); padding:2.5rem; border-radius:var(--r-xl); text-align:center;
+      border:1px solid var(--border); transition:var(--ease); position:relative; overflow:hidden; height:100%;
+    }
+    .pas-kontakt-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%); opacity:0; transition:var(--ease); }
+    .pas-kontakt-link:hover .pas-kontakt-card::before { opacity:1; }
+    .pas-kontakt-link:hover .pas-kontakt-card { transform:translateY(-8px); box-shadow:var(--shadow-b); border-color:rgba(37,99,235,0.3); }
+    .pas-kontakt-ico { font-size:3rem; margin-bottom:1.5rem; display:block; }
+    .pas-kontakt-card h3 { font-size:1.4rem; font-weight:700; margin-bottom:1rem; font-family:'Poppins',sans-serif; }
+    .pas-kontakt-val { font-size:1.05rem; font-weight:700; color:var(--blue-h); margin-bottom:0.5rem; display:block; }
+    .pas-kontakt-note { color:var(--text-2); font-size:0.9rem; }
+
+    /* Lightbox */
+    .pas-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); justify-content:center; align-items:center; z-index:9000; }
+    .pas-lightbox.open { display:flex; }
+    .pas-lb-img { max-width:90vw; max-height:90vh; border-radius:var(--r-xl); box-shadow:0 0 50px rgba(37,99,235,0.4); object-fit:contain; }
+    .pas-lb-close { position:absolute; top:2rem; right:2rem; font-size:3rem; color:#fff; cursor:pointer; width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.1); border:none; transition:var(--ease); }
+    .pas-lb-close:hover { background:var(--blue); transform:rotate(90deg); }
+    .pas-lb-prev,.pas-lb-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.2); color:#fff; width:60px; height:60px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:var(--ease); backdrop-filter:blur(10px); font-size:1.5rem; }
+    .pas-lb-prev { left:2rem; }
+    .pas-lb-next { right:2rem; }
+    .pas-lb-prev:hover,.pas-lb-next:hover { background:var(--pas-grad); border-color:var(--blue); color:#0a0a0a; }
+    .pas-lb-counter { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); padding:0.7rem 1.5rem; border-radius:50px; font-weight:600; border:1px solid rgba(255,255,255,0.2); }
+
+    @media(max-width:900px){ .pas-kontakt-grid{grid-template-columns:1fr 1fr;} .pas-vzorkovnik-wrap{grid-template-columns:1fr;} }
+    @media(max-width:640px){ .pas-stats{grid-template-columns:1fr 1fr;gap:1.5rem;} .pas-kontakt-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<!-- SHARED NAVBAR (same as all other pages) -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="DetailFolie domov">
+
+      <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item"><a href="index.html" class="nav-link" data-page="index.html">Domov</a></li>
+      <li class="nav-item">
+        <a href="auto.html" class="nav-link" data-page="auto.html">
+          Autá
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="auto-folie.html" class="dropdown-link" data-page="auto-folie.html">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovacie, vinyl, carbon fólie</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="presivanie.html" class="dropdown-link" data-page="presivanie.html" style="background:rgba(37,99,235,0.06);">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span style="color:var(--blue-h);">Prešívanie pásov</span><span class="dropdown-label">Bezpečnostné pásy na mieru</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="detailing.html" class="dropdown-link" data-page="detailing.html">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Detailing</span><span class="dropdown-label">Všetko pre vaše auto</span></div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="budovy.html" class="nav-link" data-page="budovy.html">Budovy</a></li>
+      <li class="nav-item"><a href="index.html#o-nas" class="nav-link">O nás</a></li>
+      <li class="nav-item"><a href="index.html#kontakt" class="nav-link nav-cta">Kontakt</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="index.html" class="nav-link">Domov</a>
+  <div class="mobile-sep"></div>
+  <div class="mobile-group-title">Autá</div>
+  <a href="auto.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prehľad Auto</span></div></a>
+  <a href="auto-folie.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Fólie pre auto</span></div></a>
+  <a href="presivanie.html" class="dropdown-link" style="color:var(--blue-h)"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prešívanie pásov</span></div></a>
+  <a href="detailing.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></div><div><span>Detailing</span></div></a>
+  <div class="mobile-sep"></div>
+  <a href="budovy.html" class="nav-link">Budovy</a>
+  <a href="index.html#kontakt" class="nav-link" style="color:var(--blue-h);font-weight:700">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="pas-hero" id="home">
+  <div class="pas-slides">
+    <div class="pas-slide active" style="background-image:url('pasy/4.jpg');"></div>
+    <div class="pas-slide" style="background-image:url('pasy/3.jpg');"></div>
+    <div class="pas-slide" style="background-image:url('pasy/13.jpg');"></div>
+  </div>
+  <div class="pas-hero-overlay"></div>
+  <div class="pas-hero-content">
+    <div class="pas-badge">🧵 Prešívanie bezpečnostných pásov</div>
+    <h1 class="pas-h1">
+      <span class="line">Premeňte</span>
+      <span class="highlight">bežné pásy</span>
+      <span class="line">na štýlový doplnok</span>
+    </h1>
+    <p class="pas-hero-desc">Spoľahlivé prešívanie špeciálnymi niťami so zachovaním bezpečnosti. Vyberte si z palety farieb a obnovte dizajn vášho pásu.</p>
+    <div class="pas-hero-btns">
+      <a href="#kontakt" class="btn btn-primary">Kontaktujte nás</a>
+      <a href="#galeria" class="btn btn-ghost">Pozrite naše práce</a>
+    </div>
+    <div class="pas-stats">
+      <div><div class="pas-stat-num">50+</div><div class="pas-stat-lbl">Spokojných zákazníkov</div></div>
+      <div><div class="pas-stat-num">100%</div><div class="pas-stat-lbl">Bezpečnosť</div></div>
+    </div>
+  </div>
+  <div class="pas-scroll-ind" aria-hidden="true"><div class="pas-mouse"></div></div>
+</section>
+
+<!-- SERVICES -->
+<section class="pas-section bg-alt" id="sluzby">
+  <div class="pas-container">
+    <div class="pas-sec-hdr"><h2>Naše služby</h2></div>
+    <div class="pas-svc-grid">
+      <div class="pas-svc-card">
+        <div class="pas-svc-icon">🎨</div>
+        <h3>Výmena farby pásu</h3>
+        <p>Široká paleta farieb pre každý interiér. Vyberte si presne tú farbu, ktorá sa hodí k vašemu autu.</p>
+        <a href="#vzorkovnik" class="pas-svc-link">Pozrieť vzorkovník →</a>
+      </div>
+      <div class="pas-svc-card">
+        <div class="pas-svc-icon">🧵</div>
+        <h3>Prešívanie pásov</h3>
+        <p>Priemyselné nite pre maximálnu bezpečnosť. Zachovávame všetky bezpečnostné štandardy a OEM normy pevnosti.</p>
+        <a href="#kontakt" class="pas-svc-link">Viac info →</a>
+      </div>
+      <div class="pas-svc-card">
+        <div class="pas-svc-icon">🚚</div>
+        <h3>Rýchle doručenie</h3>
+        <p>Doručíme kamkoľvek a kedykoľvek. Zaistíme vyzdvihnutie a doručenie pásu priamo k vám.</p>
+        <a href="#kontakt" class="pas-svc-link">Viac info →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VZORKOVNÍK -->
+<section class="pas-section bg-dark" id="vzorkovnik">
+  <div class="pas-container">
+    <div class="pas-sec-hdr">
+      <h2>Vyberte si farbu</h2>
+      <p>Kliknite na miniatúru a uvidíte, ako vyzerá daná farba nití na bezpečnostnom páse.</p>
+    </div>
+    <div class="pas-vzorkovnik-wrap">
+      <div class="pas-vzor-preview" id="pasPreviewBox">
+        <div class="pas-vzor-placeholder" id="pasPlaceholder">
+          <div class="ico">👆</div>
+          <p>Vyberte farbu zo vzorkovníka</p>
+        </div>
+        <img id="pasMainImg" src="" alt="Vzorka"/>
+        <div id="pasCaption"></div>
+        <button class="pas-zoom-btn" id="pasZoomBtn" title="Otvoriť na celú obrazovku">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+      </div>
+      <div class="pas-vzor-colors">
+        <h3>Dostupné vzorky</h3>
+        <p class="pas-vzor-hint">Fotky sa priebežne dopĺňajú</p>
+        <div class="pas-color-grid" id="pasColorGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALÉRIA -->
+<section class="pas-section bg-alt" id="galeria">
+  <div class="pas-container">
+    <div class="pas-sec-hdr">
+      <h2>Galéria prác</h2>
+      <p>Prezrite si fotografie dokončených zákaziek a inšpirujte sa výsledkami.</p>
+    </div>
+    <div class="pas-gal-grid" id="pasGalGrid"></div>
+  </div>
+</section>
+
+<!-- POSTUP -->
+<section class="pas-section bg-dark" id="postup">
+  <div class="pas-container">
+    <div class="pas-sec-hdr"><h2>Ako to prebieha?</h2></div>
+    <div class="pas-proc-list">
+      <div class="pas-proc-item">
+        <div class="pas-krok-wrap"><div class="pas-krok">1</div><div class="pas-krok-line"></div></div>
+        <div class="pas-proc-content"><h3>Kontakt</h3><p>Kontaktujte nás telefonicky alebo emailom a dohodneme sa na všetkých detailoch.</p></div>
+      </div>
+      <div class="pas-proc-item">
+        <div class="pas-krok-wrap"><div class="pas-krok">2</div><div class="pas-krok-line"></div></div>
+        <div class="pas-proc-content"><h3>Výber</h3><p>Vyberte si farbu a typ opravy podľa vašich preferencií a dizajnu vozidla.</p></div>
+      </div>
+      <div class="pas-proc-item">
+        <div class="pas-krok-wrap"><div class="pas-krok">3</div><div class="pas-krok-line"></div></div>
+        <div class="pas-proc-content"><h3>Doručenie</h3><p>Zaistíme vyzdvihnutie a doručenie pásu. Rýchlo a bezpečne priamo k vám.</p></div>
+      </div>
+      <div class="pas-proc-item">
+        <div class="pas-krok-wrap"><div class="pas-krok">4</div></div>
+        <div class="pas-proc-content"><h3>Hotovo!</h3><p>Hotový pás vám bezpečne doručíme späť. Pripravený na okamžité použitie.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTVÁRACIE HODINY -->
+<section class="pas-section bg-alt">
+  <div class="pas-container">
+    <div class="pas-sec-hdr"><h2>Otváracie hodiny</h2></div>
+    <div class="pas-hodiny-box">
+      <div class="pas-den"><span>Pondelok – Štvrtok:</span><span>8:00 – 16:00</span></div>
+      <div class="pas-den"><span>Piatok:</span><span>8:00 – 14:00</span></div>
+      <div class="pas-den zatvorene"><span>Sobota – Nedeľa:</span><span>Zatvorené</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="pas-section bg-dark" id="kontakt">
+  <div class="pas-container">
+    <div class="pas-sec-hdr">
+      <h2>Kontaktujte nás</h2>
+      <p>Sme tu pre vás! Neváhajte nás kontaktovať pre akékoľvek otázky.</p>
+    </div>
+    <div class="pas-kontakt-grid">
+      <a href="tel:+421947969264" class="pas-kontakt-link">
+        <div class="pas-kontakt-card">
+          <span class="pas-kontakt-ico">📞</span>
+          <h3>Telefón</h3>
+          <span class="pas-kontakt-val">+421 947 969 264</span>
+          <span class="pas-kontakt-note">Zavolajte nám počas otváracích hodín</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/presivaniepasov/" target="_blank" class="pas-kontakt-link">
+        <div class="pas-kontakt-card">
+          <span class="pas-kontakt-ico">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <defs><linearGradient id="igGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#igGrad2)"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#igGrad2)"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#igGrad2)"></line>
+            </svg>
+          </span>
+          <h3>Instagram</h3>
+          <span class="pas-kontakt-val">@presivaniepasov</span>
+          <span class="pas-kontakt-note">Sledujte naše práce</span>
+        </div>
+      </a>
+      <a href="mailto:mbazger85@gmail.com" class="pas-kontakt-link">
+        <div class="pas-kontakt-card">
+          <span class="pas-kontakt-ico">📧</span>
+          <h3>Email</h3>
+          <span class="pas-kontakt-val">mbazger85@gmail.com</span>
+          <span class="pas-kontakt-note">Odpovieme do 24 hodín</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SHARED FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:14px;display:inline-flex;">
+
+          <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+        </a>
+        <p class="footer-tagline">Profesionálna aplikácia fólií na autá a budovy. Prémiové materiály, bezchybná práca.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Autá</h4>
+        <ul>
+          <li><a href="auto.html">Prehľad</a></li>
+          <li><a href="auto-folie.html">Fólie pre auto</a></li>
+          <li><a href="presivanie.html">Prešívanie pásov</a></li>
+          <li><a href="detailing.html">Detailing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Budovy</h4>
+        <ul>
+          <li><a href="budovy.html">Prehľad</a></li>
+          <li><a href="budovy.html#typy">Typy fólií</a></li>
+          <li><a href="budovy.html#vzorkovnik">Vzorkovník</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+421947969264">+421 947 969 264</a></li>
+          <li><a href="mailto:mbazger85@gmail.com">mbazger85@gmail.com</a></li>
+          <li><a href="index.html#kontakt">Cenová ponuka</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DetailFolie.sk – Všetky práva vyhradené.</p>
+      <div class="footer-btm-links">
+        <a href="index.html">Domov</a>
+        <a href="auto.html">Autá</a>
+        <a href="budovy.html">Budovy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="pas-lightbox" id="pasLightbox">
+  <button class="pas-lb-close" id="pasLbClose">×</button>
+  <button class="pas-lb-prev" id="pasLbPrev">&#8249;</button>
+  <img class="pas-lb-img" id="pasLbImg" src="" alt=""/>
+  <button class="pas-lb-next" id="pasLbNext">&#8250;</button>
+  <div class="pas-lb-counter" id="pasLbCounter"></div>
+</div>
+
+<script src="app.js"></script>
+<script>
+'use strict';
+const slides = document.querySelectorAll('.pas-slide');
+let curSlide = 0;
+if (slides.length > 1) {
+  setInterval(() => {
+    slides[curSlide].classList.remove('active');
+    curSlide = (curSlide + 1) % slides.length;
+    slides[curSlide].classList.add('active');
+  }, 5000);
+}
+
+const vzorky = [
+  {src:'vzorky/1.jpeg',name:'Vzorka 1'},{src:'vzorky/2.jpeg',name:'Vzorka 2'},
+  {src:'vzorky/3.jpeg',name:'Vzorka 3'},{src:'vzorky/4.jpeg',name:'Vzorka 4'},
+  {src:'vzorky/5.jpeg',name:'Vzorka 5'},{src:'vzorky/6.jpeg',name:'Vzorka 6'},
+];
+const colorGrid = document.getElementById('pasColorGrid');
+const mainImg   = document.getElementById('pasMainImg');
+const placeholder = document.getElementById('pasPlaceholder');
+const caption   = document.getElementById('pasCaption');
+const zoomBtn   = document.getElementById('pasZoomBtn');
+let currentPasImg = '';
+vzorky.forEach(v => {
+  const thumb = document.createElement('div');
+  thumb.className = 'pas-color-thumb';
+  thumb.innerHTML = `<img src="${v.src}" alt="${v.name}" loading="lazy"><div class="pas-color-name">${v.name}</div>`;
+  thumb.addEventListener('click', () => {
+    document.querySelectorAll('.pas-color-thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    mainImg.src = v.src; mainImg.alt = v.name; mainImg.style.display = 'block';
+    placeholder.style.display = 'none'; caption.textContent = v.name; caption.style.display = 'block';
+    zoomBtn.style.display = 'flex'; currentPasImg = v.src;
+  });
+  colorGrid.appendChild(thumb);
+});
+zoomBtn && zoomBtn.addEventListener('click', () => pasOpenLb(currentPasImg));
+
+const galeria = [
+  'pasy/13.jpg','pasy/14.jpg','pasy/15.jpg','pasy/16.jpg','pasy/17.jpg','pasy/19.jpeg',
+  'pasy/2.jpg','pasy/20.jpeg','pasy/21.jpeg','pasy/23.jpeg','pasy/25.jpeg',
+  'pasy/3.jpg','pasy/4.jpg','pasy/7.jpg','pasy/8.jpg','pasy/9.jpg',
+];
+const galGrid = document.getElementById('pasGalGrid');
+let curLbIdx = 0;
+galeria.forEach((src, i) => {
+  const img = document.createElement('img');
+  img.src = src; img.alt = 'Prešívanie pásov ' + (i + 1);
+  img.className = 'pas-gal-thumb'; img.loading = 'lazy';
+  img.addEventListener('click', () => pasOpenLbIdx(i));
+  galGrid.appendChild(img);
+});
+
+const lb = document.getElementById('pasLightbox');
+const lbImg = document.getElementById('pasLbImg');
+const lbCounter = document.getElementById('pasLbCounter');
+function pasOpenLb(src) { lbImg.src = src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; lbCounter.style.display = 'none'; }
+function pasOpenLbIdx(idx) { curLbIdx = idx; lbImg.src = galeria[idx]; lb.classList.add('open'); document.body.style.overflow = 'hidden'; lbCounter.textContent = (idx + 1) + ' / ' + galeria.length; lbCounter.style.display = 'block'; }
+function pasCloseLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('pasLbClose').addEventListener('click', pasCloseLb);
+lb.addEventListener('click', e => { if (e.target === lb) pasCloseLb(); });
+document.getElementById('pasLbPrev').addEventListener('click', () => pasOpenLbIdx((curLbIdx - 1 + galeria.length) % galeria.length));
+document.getElementById('pasLbNext').addEventListener('click', () => pasOpenLbIdx((curLbIdx + 1) % galeria.length));
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') pasCloseLb();
+  if (e.key === 'ArrowLeft') pasOpenLbIdx((curLbIdx - 1 + galeria.length) % galeria.length);
+  if (e.key === 'ArrowRight') pasOpenLbIdx((curLbIdx + 1) % galeria.length);
+});
+</script>
+</body>
+</html>
