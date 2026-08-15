@@ -1,5 +1,5 @@
 /* =========================================
-   DetailFolie.sk – Main Stylesheet v3
+   DetailFolie.com – Main Stylesheet v3
    Unified Design System – Black / Orange
    ========================================= */
 
@@ -1101,3 +1101,22 @@ a.contact-item:hover { border-color:rgba(37,99,235,.3);box-shadow:var(--shadow-b
   .belt-grid,.tint-grid { grid-template-columns:repeat(2,1fr); }
   .pricing-grid,.hub-grid { grid-template-columns:1fr; }
 }
+
+
+
+/* STATS GRID */
+.stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 32px; }
+.stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r-xl); padding: 40px 24px; text-align: center; transition: all 0.3s ease; position:relative; overflow:hidden; }
+.stat-card::before { content:''; position:absolute; inset:0; background: radial-gradient(circle at 50% -20%, rgba(56,189,248,0.1), transparent 70%); opacity:0; transition: opacity 0.3s; }
+.stat-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.stat-card:hover::before { opacity:1; }
+.stat-num { font-size: clamp(38px, 6vw, 52px); font-weight: 800; font-family: 'Poppins', sans-serif; margin-bottom: 4px; background: linear-gradient(135deg, #fff 20%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position:relative; z-index:1; }
+.stat-lbl { font-size: 14px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; position:relative; z-index:1; }
+
+
+
+/* RESPONSIVE CARDS GRID */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.cards-grid .hub-card { display: flex; flex-direction: column; }
+.cards-grid .hub-card p { flex-grow: 1; }
+

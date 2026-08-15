@@ -1,5 +1,5 @@
 /* =========================================
-   DetailFolie.sk – Shared JS v2
+   DetailFolie.com – Shared JS v2
    ========================================= */
 'use strict';
 
@@ -229,4 +229,5 @@ document.querySelectorAll('.hub-card, .why-card, .price-card').forEach(card => {
   });
 });
 
-console.log('%c DetailFolie.sk ⚡ ', 'background:#1d4ed8;color:#fff;font-size:14px;padding:5px 10px;border-radius:5px;font-weight:700');
+console.log('%c DetailFolie.com ⚡ ', 'background:#1d4ed8;color:#fff;font-size:14px;padding:5px 10px;border-radius:5px;font-weight:700');
+
