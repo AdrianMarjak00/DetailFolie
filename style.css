@@ -883,8 +883,8 @@ input, textarea, select { font-family: inherit; }
 .price-feat svg { color:var(--blue-h);flex-shrink:0; }
 
 /* === PROCESS === */
-.process-steps { display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative; }
-.process-steps::before { content:'';position:absolute;top:30px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:var(--grad);z-index:0; }
+.process-steps { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative; }
+.process-steps::before { content:'';position:absolute;top:30px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:2px;background:var(--grad);z-index:0; }
 .process-step { position:relative;z-index:1;text-align:center;padding:0 12px; }
 .step-num {
   width:60px;height:60px;border-radius:50%;margin:0 auto 20px;
@@ -934,7 +934,7 @@ input, textarea, select { font-family: inherit; }
 .cta-btns      { display:flex;gap:14px;justify-content:center;flex-wrap:wrap; }
 
 /* === TESTIMONIALS === */
-.testi-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:36px; }
+.testi-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:36px; }
 .testi-card { background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:28px;transition:var(--ease); }
 .testi-card:hover { border-color:rgba(37,99,235,.25);transform:translateY(-4px);box-shadow:var(--shadow-b); }
 .testi-stars { font-size:18px;color:#f59e0b;margin-bottom:14px;letter-spacing:2px; }
@@ -1120,3 +1120,95 @@ a.contact-item:hover { border-color:rgba(37,99,235,.3);box-shadow:var(--shadow-b
 .cards-grid .hub-card { display: flex; flex-direction: column; }
 .cards-grid .hub-card p { flex-grow: 1; }
 
+
+/* MODERN HOVER REVEAL CARDS (PRELÍNAČKY) */
+.hover-reveal-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-a);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+.hover-reveal-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.hrc-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-reveal-card:hover .hrc-img {
+  transform: scale(1.08);
+}
+.hrc-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  transition: background 0.5s ease;
+  z-index: 1;
+}
+.hover-reveal-card:hover .hrc-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.6) 100%);
+}
+.hrc-content {
+  position: relative;
+  z-index: 2;
+  padding: 36px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.hrc-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(37,99,235, 0.2);
+  border: 1px solid rgba(37,99,235, 0.3);
+  color: #60a5fa;
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  transition: transform 0.5s ease, background 0.5s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hover-reveal-card:hover .hrc-icon {
+  transform: translateY(-5px);
+  background: rgba(37,99,235, 0.5);
+  color: #fff;
+}
+.hrc-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-reveal-card:hover .hrc-title {
+  transform: translateY(-4px);
+}
+.hrc-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0;
+}
+.hover-reveal-card:hover .hrc-desc {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 12px;
+}
