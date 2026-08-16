@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8"/>
@@ -343,21 +343,24 @@
         <form id="cform" class="cform" novalidate>
           <div class="fg">
             <label for="fname">Vaše meno *</label>
-            <input type="text" id="fname" required placeholder="Ján Novák"/>
+            <input type="hidden" name="_subject" value="Nová správa z webu DetailFolie.com">
+            <input type="hidden" name="_autoresponse" value="Dobrý deň, ďakujeme za Váš záujem o služby DetailFolie. Vašu správu sme úspešne prijali a v krátkom čase sa Vám ozveme.">
+            <input type="hidden" name="_template" value="box">
+              <input type="text" id="fname" name="Meno" required placeholder="Ján Novák"/>
           </div>
           <div class="form-row">
             <div class="fg">
               <label for="femail">Email *</label>
-              <input type="email" id="femail" required placeholder="jan@email.sk"/>
+              <input type="email" id="femail" name="email" required placeholder="jan@email.sk"/>
             </div>
             <div class="fg">
               <label for="ftel">Telefón</label>
-              <input type="tel" id="ftel" placeholder="+421 900 000 000"/>
+              <input type="tel" id="ftel" name="Telefon" placeholder="+421 900 000 000"/>
             </div>
           </div>
           <div class="fg">
             <label for="fsvc">Služba *</label>
-            <select id="fsvc" required>
+            <select id="fsvc" name="Sluzba" required>
               <option value="">Vyberte službu...</option>
               <option value="auto">Fólie pre auto</option>
               <option value="pas">Prešívanie bezpečnostných pásov</option>
@@ -368,7 +371,7 @@
           </div>
           <div class="fg">
             <label for="fmsg">Správa</label>
-            <textarea id="fmsg" placeholder="Napíšte nám viac o vašom projekte..."></textarea>
+            <textarea id="fmsg" name="Sprava" placeholder="Napíšte nám viac o vašom projekte..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full" id="cformBtn">
             <span id="cformTxt">Odoslať dopyt</span>
@@ -421,7 +424,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 DetailFolie.com – Všetky práva vyhradené.</p>
+      <p>© 2024 DetailFolie.com – <a href="ochrana-osobnych-udajov.html" style="color: inherit; text-decoration: underline;">Ochrana osobných údajov</a></p>
       <div class="footer-btm-links">
         <a href="index.html">Domov</a>
         <a href="auto.html">Autá</a>
@@ -456,5 +459,8 @@ document.querySelectorAll('.ba-slider').forEach(function(slider) {
 </script>
 </body>
 </html>
+
+
+
 
 

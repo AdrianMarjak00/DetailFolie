@@ -198,20 +198,36 @@ initTesti();
 // ── Contact form ──────────────────────────
 const cform = document.getElementById('cform');
 if (cform) {
-  cform.addEventListener('submit', e => {
+  cform.addEventListener('submit', async e => {
     e.preventDefault();
     const required = cform.querySelectorAll('[required]');
     let ok = true;
     required.forEach(f => { f.style.borderColor=''; if (!f.value.trim()) { f.style.borderColor='#f87171'; ok=false; } });
     if (!ok) return;
     const btn = document.getElementById('cformBtn');
-    const txt = document.getElementById('cformTxt');
-    if(btn) { btn.disabled=true; if(txt) txt.textContent='Odosielam…'; btn.style.opacity='.7'; }
-    setTimeout(() => {
-      cform.style.display='none';
-      const suc = document.getElementById('cformSuccess');
-      if(suc) { suc.style.display='flex'; }
-    }, 1200);
+    if(btn) { btn.disabled=true; btn.innerHTML='Odosielam...'; btn.style.opacity='.7'; }
+    
+    try {
+      const fd = new FormData(cform);
+      fd.append("_captcha", "false");
+      
+      const res = await fetch("https://formsubmit.co/ajax/mbazger85@gmail.com", {
+        method: "POST",
+        body: fd
+      });
+      
+      if (res.ok) {
+        cform.style.display='none';
+        const suc = document.getElementById('cformSuccess');
+        if(suc) { suc.style.display='flex'; }
+      } else {
+        alert("Nastala chyba pri odosielaní. Skúste to prosím znova.");
+        if(btn) { btn.disabled=false; btn.innerHTML='Odoslať správu'; btn.style.opacity='1'; }
+      }
+    } catch (err) {
+      alert("Nastala chyba pri odosielaní. Skúste to prosím znova.");
+      if(btn) { btn.disabled=false; btn.innerHTML='Odoslať správu'; btn.style.opacity='1'; }
+    }
   });
 }
 
