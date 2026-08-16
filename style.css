@@ -1212,3 +1212,24 @@ a.contact-item:hover { border-color:rgba(37,99,235,.3);box-shadow:var(--shadow-b
   transform: translateY(0);
   margin-top: 12px;
 }
+
+/* DUAL PHONE LINKS */
+.phone-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.phone-link svg {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.phone-link:hover {
+  color: var(--blue-h);
+}
+.phone-link:hover svg {
+  transform: translateX(4px);
+  opacity: 1 !important;
+}
+.contact-item { transition: all 0.3s ease; }
+.contact-item:hover { border-color:rgba(37,99,235,.2); box-shadow:var(--shadow-a); }
