@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8"/>
@@ -22,22 +22,22 @@
     <ul class="nav-links" id="navLinks">
       <li class="nav-item"><a href="index.html" class="nav-link" data-page="index.html">Domov</a></li>
       <li class="nav-item">
-        <a href="#" class="nav-link" onclick="event.preventDefault();" data-page="auto.html">
+        <a href="auto.html" class="nav-link" data-page="auto.html">
           Autá
           <svg class="nav-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="nav-dropdown">
-          <a href="auto-folie.html" class="dropdown-link" style="display:none !important;" data-page="auto-folie.html">
+          <a href="auto-folie.html" class="dropdown-link" data-page="auto-folie.html">
             <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
             <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovacie, vinyl, carbon fólie</span></div>
           </a>
-          <div class="dropdown-sep" style="display:none !important;"></div>
+          <div class="dropdown-sep"></div>
           <a href="presivanie.html" class="dropdown-link" data-page="presivanie.html" style="background:rgba(37,99,235,0.06);">
             <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
             <div><span style="color:var(--blue-h);">Prešívanie pásov</span><span class="dropdown-label">Bezpečnostné pásy na mieru</span></div>
           </a>
-          <div class="dropdown-sep" style="display:none !important;"></div>
-          <a href="detailing.html" class="dropdown-link" style="display:none !important;" data-page="detailing.html">
+          <div class="dropdown-sep"></div>
+          <a href="detailing.html" class="dropdown-link" data-page="detailing.html">
             <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
             <div><span>Detailing</span><span class="dropdown-label">Všetko pre vaše auto</span></div>
           </a>
@@ -55,10 +55,10 @@
   <a href="index.html" class="nav-link">Domov</a>
   <div class="mobile-sep"></div>
   <div class="mobile-group-title">Autá</div>
-  <a href="auto.html" style="display:none !important;" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prehľad Auto</span></div></a>
-  <a href="auto-folie.html" class="dropdown-link" style="display:none !important;"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Fólie pre auto</span></div></a>
+  <a href="auto.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prehľad Auto</span></div></a>
+  <a href="auto-folie.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Fólie pre auto</span></div></a>
   <a href="presivanie.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prešívanie pásov</span></div></a>
-  <a href="detailing.html" class="dropdown-link" style="display:none !important;"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></div><div><span>Detailing</span></div></a>
+  <a href="detailing.html" class="dropdown-link"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></div><div><span>Detailing</span></div></a>
   <div class="mobile-sep"></div>
   <a href="budovy.html" class="nav-link">Budovy</a>
   <a href="index.html#kontakt" class="nav-link" style="color:var(--blue-h);font-weight:700">Kontakt</a>
@@ -69,199 +69,351 @@
     <div class="breadcrumb-inner">
       <a href="index.html">Domov</a>
       <span class="breadcrumb-sep">/</span>
-      <a href="#">Autá</a>
+      <a href="auto.html">Autá</a>
       <span class="breadcrumb-sep">/</span>
       <span>Fólie pre auto</span>
     </div>
   </div>
 </div>
 
-<header class="page-hero">
+<style>
+  .benefits-3d-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .card-3d {
+    background: rgba(20, 20, 20, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform-style: preserve-3d;
+    z-index: 1;
+  }
+  .card-3d::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(37, 99, 235, 0.15), transparent 40%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .card-3d:hover::before {
+    opacity: 1;
+  }
+  .card-3d:hover {
+    transform: translateY(-10px) scale(1.02) perspective(1000px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(37, 99, 235, 0.2);
+    border-color: rgba(37, 99, 235, 0.4);
+    z-index: 2;
+  }
+  .card-icon-3d {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+    margin-bottom: 12px;
+    transform: translateZ(40px);
+    color: white;
+  }
+  .card-title-3d {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+    transform: translateZ(30px);
+    font-family: 'Poppins', sans-serif;
+  }
+  .card-desc-3d {
+    color: #b0b0b0;
+    font-size: 16px;
+    line-height: 1.7;
+    transform: translateZ(20px);
+  }
+  .card-desc-3d strong {
+    color: #fff;
+  }
+  
+  .intro-text-3d {
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    font-size: 18px;
+    color: #d0d0d0;
+    line-height: 1.8;
+    position: relative;
+    padding: 40px;
+    background: linear-gradient(145deg, rgba(30,30,30,0.6) 0%, rgba(10,10,10,0.8) 100%);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 24px 24px 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 1px 1px 0 rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+  }
+  .intro-text-3d p {
+    margin-bottom: 16px;
+  }
+  .intro-text-3d p:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  .gallery-3d-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 60px;
+    overflow-x: auto;
+    padding: 20px 0 60px;
+    perspective: 1200px;
+    scroll-snap-type: x mandatory;
+  }
+  .gallery-3d-wrapper::-webkit-scrollbar {
+    height: 6px;
+  }
+  .gallery-item-3d {
+    min-width: 320px;
+    height: 450px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: -15px 15px 35px rgba(0,0,0,0.6);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: rotateY(-15deg) scale(0.95);
+    flex-shrink: 0;
+    cursor: pointer;
+    scroll-snap-align: center;
+  }
+  .gallery-item-3d::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+    border-radius: 24px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .gallery-item-3d:hover {
+    transform: rotateY(0deg) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(37,99,235,0.3);
+    z-index: 10;
+  }
+  .gallery-item-3d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.5s, transform 0.5s;
+    filter: brightness(0.7) contrast(1.1);
+  }
+  .gallery-item-3d:hover img {
+    filter: brightness(1) contrast(1.1);
+    transform: scale(1.05);
+  }
+  .gallery-overlay-3d {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 24px 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    color: white;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 3;
+  }
+  .gallery-item-3d:hover .gallery-overlay-3d {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .gallery-tag-3d {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--blue);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .gallery-overlay-3d h4 {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 4px;
+  }
+  
+  .img-showcase {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    margin: 60px 0;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 50px rgba(37,99,235,0.15);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .img-showcase img {
+    width: 100%;
+    display: block;
+    filter: contrast(1.05);
+  }
+  .img-showcase::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.4), transparent);
+    pointer-events: none;
+  }
+</style>
+
+<header class="page-hero" style="min-height: 85vh; display:flex; align-items:center;">
   <div class="page-hero-bg">
     <div class="page-hero-grid"></div>
-    <div class="page-hero-orb"></div>
+    <div class="page-hero-orb" style="background:radial-gradient(circle, rgba(37,99,235,0.4) 0%, transparent 60%);"></div>
   </div>
-  <img src="assets/hero_car_folie.jpg" alt="Fólie pre auto" class="page-hero-img"/>
-  <div class="container">
-    <div class="page-hero-content anim">
-      <span class="tag">Fólie pre auto</span>
-      <h1 class="sec-title">Dajte svojmu autu<br/><span class="gt-blue">osobnosť a ochranu.</span></h1>
-      <p class="sec-sub">Či už hľadáte dokonalé súkromie cez tónovanie okien, alebo chcete kompletne zmeniť vizuál auta vďaka vinyl wrapu, naša práca je synonymom kvality.</p>
-      <div style="margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap;">
-        <a href="#cennik" class="btn btn-primary">Cenník a rezervácia</a>
-        <a href="#ukazky" class="btn btn-ghost">Ukážky práce</a>
+  <img src="assets/hero_car_folie.jpg" alt="Tónovanie autoskiel" class="page-hero-img" style="filter: brightness(0.4) contrast(1.1);"/>
+  <div class="container" style="position:relative; z-index:2; width:100%;">
+    <div class="page-hero-content anim" style="max-width: 800px;">
+      <span class="tag">Tónovanie autoskiel</span>
+      <h1 class="sec-title" style="font-size: clamp(32px, 5vw, 64px);">Oveľa viac, než len<br/><span class="gt-blue">"tmavé okná".</span></h1>
+      <p class="sec-sub" style="font-size: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); max-width:100%; margin: 0 0 40px 0; text-align: left;">
+        Premeňte svoje auto na zónu absolútneho komfortu.
+      </p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="#vyhody" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">Objaviť výhody</a>
+        <a href="index.html#kontakt" class="btn btn-ghost" style="padding: 16px 32px; font-size: 16px;">Rezervovať termín</a>
       </div>
     </div>
   </div>
 </header>
 
-<section class="sec">
+<section id="vyhody" class="sec" style="position:relative; z-index:5;">
   <div class="container">
-    <div class="svc-grid">
-      <div class="svc-txt-col anim">
-        <h2 class="sec-title">Tónovacie fólie</h2>
-        <p class="svc-lead">Viac súkromia, lepšia klíma a dokonalý vzhľad. Pracujeme výlučne s prémiovými autofóliami (3M, LLumar), ktoré garantujú dlhú životnosť bez zmeny farby (žiadne fialové okná po dvoch rokoch).</p>
-        <div class="feature-list">
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Ochrana pred UV</h4>
-              <p>Zadržiavajú 99% škodlivého UV žiarenia, chránia vás aj interiér auta.</p>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Súkromie a bezpečnosť</h4>
-              <p>Zabraňujú zvedavým pohľadom a pri rozbití držia črepiny pohromade.</p>
-            </div>
-          </div>
-        </div>
-        <a href="#vzorkovnik" class="btn btn-outline">Pozrieť odtiene (VLT)</a>
-      </div>
-      <div class="svc-img-col anim anim-d2">
-        <div class="svc-img-stack">
-          <img src="assets/hero_car_folie.jpg" alt="Tónovacie fólie" class="svc-img"/>
-          <div class="svc-badge">
-            <span class="svc-badge-num">10r</span>
-            <span class="svc-badge-lbl">Záruka</span>
-          </div>
-        </div>
-      </div>
+    <div class="intro-text-3d anim">
+      <p>Keď sa povie fólia na okná, väčšina ľudí si predstaví len lepší vzhľad auta. Pravdou však je, že inštalácia prémiových autofólií je jednou z najlepších investícií do vášho každodenného komfortu, zdravia a bezpečia.</p>
+      <p>Nie je to len estetický doplnok. Je to <strong>inteligentný štít</strong>, ktorý okamžite po inštalácii začne pracovať pre vás.</p>
+      <p>Prečo by prémiové fólie nemali chýbať na žiadnom aute?</p>
     </div>
-  </div>
-</section>
 
-<section class="sec-alt">
-  <div class="container">
-    <div class="svc-grid rev">
-      <div class="svc-txt-col anim anim-d1">
-        <h2 class="sec-title">Vinyl, Carbon a Chróm (Wraps)</h2>
-        <p class="svc-lead">Celopolepy alebo čiastočné polepy (strecha, spätné zrkadlá, detaily). Premeňte svoje auto s matnými, saténovými alebo lesklými odtieňmi. Chrómové a carbonové textúry pre maximálny vizuálny efekt.</p>
-        <div class="feature-list">
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Široká paleta farieb</h4>
-              <p>Viac ako 200 farieb od výrobcov Avery Dennison, 3M, a Inozetek.</p>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Reverzibilná zmena</h4>
-              <p>Chráni pôvodný lak auta. Fóliu je možné kedykoľvek bezpečne odstrániť.</p>
-            </div>
-          </div>
-        </div>
-        <a href="#cennik" class="btn btn-outline">Zobraziť cenník</a>
-      </div>
-      <div class="svc-img-col anim">
-        <div class="svc-img-stack">
-          <img src="assets/before_after_car_1786467654497.jpg" alt="Zmena farby auta" class="svc-img"/>
+    <div class="benefits-3d-grid anim">
+      <!-- Karta 1 -->
+      <div class="card-3d">
+        <div class="card-icon-3d">🔥</div>
+        <h3 class="card-title-3d">1. Extrémna redukcia tepla</h3>
+        <div class="card-desc-3d">
+          <strong>Dokonalá izolácia.</strong> Leto v aute s čírymi sklami pripomína jazdu v skleníku. Naše fólie fungujú ako neviditeľná bariéra, ktorá odráža spaľujúce slnečné lúče ešte predtým, ako preniknú dovnútra.<br><br>
+          Výsledok? Interiér sa prestane extrémne prehrievať. Vaša klimatizácia interiér vychladí za zlomok času, šetríte palivo a užívate si tichšiu jazdu. V zime zasa fólia pomáha udržať teplo v kabíne.
         </div>
       </div>
-    </div>
-  </div>
-</section>
+      
+      <!-- Karta 2 -->
+      <div class="card-3d">
+        <div class="card-icon-3d">🛡️</div>
+        <h3 class="card-title-3d">2. VIP Súkromie a majetok</h3>
+        <div class="card-desc-3d">
+          <strong>Nekompromisná bezpečnosť.</strong> Stojíte v kolóne alebo parkujete pred nákupným centrom a máte pocit, že vám každý pozerá do auta? Fólie vám vrátia váš osobný priestor.<br><br>
+          Čo zlodej nevidí, to neukradne. Zabudnutý notebook, kabelka či drahé náradie na zadných sedadlách sú vďaka tmavým fóliám v absolútnom bezpečí pred zvedavými očami z ulice.
+        </div>
+      </div>
 
-<section id="vzorkovnik" class="sec">
-  <div class="container">
-    <div class="sec-hdr anim">
-      <h2 class="sec-title">Priepustnosť svetla (VLT)</h2>
-      <p class="sec-sub">Čím nižšie percento, tým tmavšia fólia. 5% je maximálne zatmavenie (tzv. Limo tint), 70% je veľmi jemné tónovanie.</p>
+      <!-- Karta 3 -->
+      <div class="card-3d">
+        <div class="card-icon-3d">☀️</div>
+        <h3 class="card-title-3d">3. 99,9 % UV Štít</h3>
+        <div class="card-desc-3d">
+          <strong>Ochrana zdravia a interiéru.</strong> Slnko cez bežné sklo nemilosrdne páli. Naše fólie blokujú takmer 100 % škodlivého UV žiarenia.<br><br>
+          Pre pasažierov to znamená koniec otravným roletkám. Fólia chráni zrak a citlivú pokožku detí pred spálením. Pre vaše auto je to záchrana pred tichým zabijakom – fólia spoľahlivo chráni drahé kožené sedačky pred popraskaním a plastové diely pred vyblednutím.
+        </div>
+      </div>
+
+      <!-- Karta 4 -->
+      <div class="card-3d">
+        <div class="card-icon-3d">💥</div>
+        <h3 class="card-title-3d">4. Pasívna bezpečnosť</h3>
+        <div class="card-desc-3d">
+          <strong>Ochrana pri nehode.</strong> Toto je vlastnosť, ktorú oceníte, keď ide o život. Pri bočnom náraze alebo havárii sa obyčajné sklo rozletí na stovky nebezpečných ostrých črepín.<br><br>
+          Kvalitná fólia pôsobí ako záchranná sieť – udrží rozbité sklo pevne pohromade a chráni vás aj vaše deti pred fatálnymi reznými poraneniami.
+        </div>
+      </div>
+
+      <!-- Karta 5 -->
+      <div class="card-3d">
+        <div class="card-icon-3d">✨</div>
+        <h3 class="card-title-3d">5. Prémiový vzhľad</h3>
+        <div class="card-desc-3d">
+          <strong>Dizajn, ktorý priťahuje pohľady.</strong> Funkcionalita je na prvom mieste, ale estetika je čerešničkou na torte.<br><br>
+          Čierne okná v elegantnom kontraste s lakom dodajú vášmu autu ucelený, dravší a luxusnejší vzhľad. Každé auto vyzerá s fóliami jednoducho lepšie a hodnotnejšie.
+        </div>
+      </div>
     </div>
     
-    <div class="tint-grid anim">
-      <div class="tint-swatch">
-        <div class="tint-color" style="background: rgba(10, 10, 10, 0.95);"></div>
-        <div class="tint-info">
-          <div class="tint-pct">5%</div>
-          <div class="tint-name">Limo Tint</div>
-          <div class="tint-desc">Max. súkromie, z vonku nepriehľadné</div>
+    <div class="img-showcase anim">
+      <img src="assets/before_after_car_1786467654497.jpg" alt="Transformácia auta fóliami" />
+    </div>
+
+    <div class="sec-hdr anim" style="margin-top: 100px;">
+      <h2 class="sec-title">Galéria inštalácií</h2>
+      <p class="sec-sub">Presvedčte sa o kvalite našej práce na vlastné oči a nechajte sa inšpirovať.</p>
+    </div>
+    
+    <div class="gallery-3d-wrapper anim">
+      <div class="gallery-item-3d">
+        <img src="assets/hero_car_folie.jpg" alt="Tónovanie" />
+        <div class="gallery-overlay-3d">
+          <span class="gallery-tag-3d">Tónovanie</span>
+          <h4>VIP Súkromie</h4>
+          <p>5% Limo tint na zadných oknách pre maximálny vizuálny efekt.</p>
         </div>
       </div>
-      <div class="tint-swatch">
-        <div class="tint-color" style="background: rgba(15, 15, 15, 0.85);"></div>
-        <div class="tint-info">
-          <div class="tint-pct">15%</div>
-          <div class="tint-name">Dark</div>
-          <div class="tint-desc">Ideálne pre zadné okná suv</div>
+      <div class="gallery-item-3d">
+        <img src="assets/car_detailing_hero.jpg" alt="Ochrana laku" />
+        <div class="gallery-overlay-3d">
+          <span class="gallery-tag-3d">Prémiový vzhľad</span>
+          <h4>Luxus a kontrast</h4>
+          <p>Dokonalý kontrast čiernych okien a žiarivého laku.</p>
         </div>
       </div>
-      <div class="tint-swatch">
-        <div class="tint-color" style="background: rgba(25, 25, 25, 0.70);"></div>
-        <div class="tint-info">
-          <div class="tint-pct">30%</div>
-          <div class="tint-name">Medium</div>
-          <div class="tint-desc">Vyvážený odtieň, dobrá viditeľnosť</div>
-        </div>
-      </div>
-      <div class="tint-swatch">
-        <div class="tint-color" style="background: rgba(35, 35, 35, 0.50);"></div>
-        <div class="tint-info">
-          <div class="tint-pct">50%</div>
-          <div class="tint-name">Light</div>
-          <div class="tint-desc">Továrenský vzhľad (OEM)</div>
-        </div>
-      </div>
-      <div class="tint-swatch">
-        <div class="tint-color" style="background: rgba(45, 45, 45, 0.30);"></div>
-        <div class="tint-info">
-          <div class="tint-pct">70%</div>
-          <div class="tint-name">Ultra Light</div>
-          <div class="tint-desc">Neviditeľná UV ochrana</div>
+      <div class="gallery-item-3d">
+        <img src="assets/before_after_car.jpg" alt="Wrap" />
+        <div class="gallery-overlay-3d">
+          <span class="gallery-tag-3d">Estetika</span>
+          <h4>Ucelený dizajn</h4>
+          <p>Auto pôsobí na ceste dravšie, dynamickejšie a hodnotnejšie.</p>
         </div>
       </div>
     </div>
+    
   </div>
 </section>
 
-
-<section id="ukazky" class="sec">
-  <div class="container">
-    <div class="sec-hdr anim">
-      <h2 class="sec-title">Naša práca</h2>
-    </div>
-    <div class="gal-grid anim">
-      <div class="gal-item wide">
-        <img src="assets/before_after_car_1786467654497.jpg" alt="Celopolep"/>
-        <div class="gal-overlay">
-          <span class="gal-tag">Vinyl Wrap</span>
-          <p>Kompletná zmena farby vozidla</p>
-        </div>
-      </div>
-      <div class="gal-item tall">
-        <img src="assets/hero_car_folie.jpg" alt="Tónovanie"/>
-        <div class="gal-overlay">
-          <span class="gal-tag">Tónovanie</span>
-          <p>Limo Tint 5% vzadu</p>
-        </div>
-      </div>
-      <div class="gal-item">
-        <img src="assets/hero_car_folie.jpg" alt="Detail"/>
-        <div class="gal-overlay">
-          <span class="gal-tag">Dechrome</span>
-          <p>Blackout okenných líšt</p>
-        </div>
-      </div>
-      <div class="gal-item">
-        <img src="assets/before_after_car_1786467654497.jpg" alt="Carbon polep"/>
-        <div class="gal-overlay">
-          <span class="gal-tag">Carbon</span>
-          <p>Carbon polep strechy</p>
-        </div>
-      </div>
-      <div class="gal-item wide">
-        <img src="assets/hero_car_folie.jpg" alt="Celopolep matny"/>
-        <div class="gal-overlay">
-          <span class="gal-tag">Vinyl Wrap</span>
-          <p>Matná sivá úprava</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<script>
+  // Dynamic glow effect for 3D cards
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card-3d");
+    cards.forEach(card => {
+      card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      });
+    });
+  });
+</script>
 
 <footer class="footer">
   <div class="container">
@@ -276,10 +428,10 @@
       <div class="footer-col">
         <h4>Autá</h4>
         <ul>
-          <li style="display:none !important;"><a href="auto.html">Prehľad</a></li>
-          <li style="display:none !important;"><a href="auto-folie.html">Fólie pre auto</a></li>
+          <li><a href="auto.html">Prehľad</a></li>
+          <li><a href="auto-folie.html">Fólie pre auto</a></li>
           <li><a href="presivanie.html">Prešívanie pásov</a></li>
-          <li style="display:none !important;"><a href="detailing.html">Detailing</a></li>
+          <li><a href="detailing.html">Detailing</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -303,7 +455,7 @@
       <p>© 2024 DetailFolie.com – <a href="ochrana-osobnych-udajov.html" style="color: inherit; text-decoration: underline;">Ochrana osobných údajov</a>.</p>
       <div class="footer-btm-links">
         <a href="index.html">Domov</a>
-        <a href="#">Autá</a>
+        <a href="auto.html">Autá</a>
         <a href="budovy.html">Budovy</a>
       </div>
     </div>
