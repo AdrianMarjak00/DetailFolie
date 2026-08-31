@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prešívanie bezpečnostných pásov na mieru | DetailFolie - Najlepšie riešenie</title>
+  <title>Farebné bezpečnostné pásy | DetailFolie</title>
   <meta name="description" content="Profesionálne a certifikované prešívanie bezpečnostných pásov. Výmena farby bezpečnostných pásov na mieru. Najlepšie a najbezpečnejšie riešenie pre váš interiér so 100% zárukou kvality."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -13,7 +13,7 @@
     /* ── Presivanie-specific styles (on top of shared style.css) ── */
     :root {
       --pas-grad: linear-gradient(135deg,#2563eb 0%,#38bdf8 100%);
-      --pas-glow: 0 0 30px rgba(37,99,235,0.35);
+      --pas-glow: 0 0 30px rgba(0,102,255,0.35);
       --pas-r: 16px; --pas-r-lg: 24px;
     }
 
@@ -32,7 +32,7 @@
     }
     .pas-hero-content { position:relative; z-index:2; max-width:900px; padding:3rem 0; animation:fadeUp .8s ease-out; }
     .pas-badge {
-      display:inline-block; background:rgba(37,99,235,0.18); border:1px solid rgba(37,99,235,0.35);
+      display:inline-block; background:rgba(0,102,255,0.18); border:1px solid rgba(0,102,255,0.35);
       color:var(--blue-h); padding:0.5rem 1.5rem; border-radius:50px; font-size:0.9rem;
       font-weight:600; margin-bottom:2rem; backdrop-filter:blur(10px);
     }
@@ -66,9 +66,9 @@
     }
     .pas-svc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--pas-grad); transform:scaleX(0); transition:var(--ease); }
     .pas-svc-card:hover::before { transform:scaleX(1); }
-    .pas-svc-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-b); border-color:rgba(37,99,235,0.25); }
-    .pas-svc-icon { width:72px; height:72px; background:rgba(37,99,235,0.1); border:1px solid rgba(37,99,235,0.18); border-radius:var(--r-lg); display:flex; align-items:center; justify-content:center; font-size:2rem; margin-bottom:1.5rem; transition:var(--ease); }
-    .pas-svc-card:hover .pas-svc-icon { background:rgba(37,99,235,0.2); transform:scale(1.08); }
+    .pas-svc-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-b); border-color:rgba(0,102,255,0.25); }
+    .pas-svc-icon { width:72px; height:72px; background:rgba(0,102,255,0.1); border:1px solid rgba(0,102,255,0.18); border-radius:var(--r-lg); display:flex; align-items:center; justify-content:center; font-size:2rem; margin-bottom:1.5rem; transition:var(--ease); }
+    .pas-svc-card:hover .pas-svc-icon { background:rgba(0,102,255,0.2); transform:scale(1.08); }
     .pas-svc-card h3 { font-size:1.3rem; font-weight:700; margin-bottom:1rem; font-family:'Poppins',sans-serif; }
     .pas-svc-card p { color:var(--text-2); margin-bottom:1.5rem; line-height:1.7; }
     .pas-svc-link { color:var(--blue-h); text-decoration:none; font-weight:600; transition:var(--ease); font-size:0.95rem; }
@@ -105,9 +105,9 @@
     /* Process */
     .pas-proc-list { display:flex; flex-direction:column; gap:2rem; max-width:800px; margin:0 auto; }
     .pas-proc-item { display:flex; gap:2rem; align-items:flex-start; background:var(--bg-card); padding:2rem; border-radius:var(--r-xl); border:1px solid var(--border); transition:var(--ease); }
-    .pas-proc-item:hover { transform:translateX(8px); box-shadow:var(--shadow-b); border-color:rgba(37,99,235,0.3); }
+    .pas-proc-item:hover { transform:translateX(8px); box-shadow:var(--shadow-b); border-color:rgba(0,102,255,0.3); }
     .pas-krok-wrap { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
-    .pas-krok { width:56px; height:56px; background:var(--pas-grad); color:#0a0a0a; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:800; font-family:'Poppins',sans-serif; box-shadow:0 0 16px rgba(37,99,235,0.3); }
+    .pas-krok { width:56px; height:56px; background:var(--pas-grad); color:#0a0a0a; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:800; font-family:'Poppins',sans-serif; box-shadow:0 0 16px rgba(0,102,255,0.3); }
     .pas-krok-line { width:2px; height:80px; background:linear-gradient(to bottom,var(--blue),transparent); margin-top:1rem; opacity:0.25; }
     .pas-proc-item:last-child .pas-krok-line { display:none; }
     .pas-proc-content h3 { font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:0.5rem; font-family:'Poppins',sans-serif; }
@@ -130,9 +130,9 @@
       background:var(--bg-card); padding:2.5rem; border-radius:var(--r-xl); text-align:center;
       border:1px solid var(--border); transition:var(--ease); position:relative; overflow:hidden; height:100%;
     }
-    .pas-kontakt-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%); opacity:0; transition:var(--ease); }
+    .pas-kontakt-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle,rgba(0,102,255,0.08) 0%,transparent 70%); opacity:0; transition:var(--ease); }
     .pas-kontakt-link:hover .pas-kontakt-card::before { opacity:1; }
-    .pas-kontakt-link:hover .pas-kontakt-card { transform:translateY(-8px); box-shadow:var(--shadow-b); border-color:rgba(37,99,235,0.3); }
+    .pas-kontakt-link:hover .pas-kontakt-card { transform:translateY(-8px); box-shadow:var(--shadow-b); border-color:rgba(0,102,255,0.3); }
     .pas-kontakt-ico { font-size:3rem; margin-bottom:1.5rem; display:block; }
     .pas-kontakt-card h3 { font-size:1.4rem; font-weight:700; margin-bottom:1rem; font-family:'Poppins',sans-serif; }
     .pas-kontakt-val { font-size:1.05rem; font-weight:700; color:var(--blue-h); margin-bottom:0.5rem; display:block; }
@@ -141,7 +141,7 @@
     /* Lightbox */
     .pas-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); justify-content:center; align-items:center; z-index:9000; }
     .pas-lightbox.open { display:flex; }
-    .pas-lb-img { max-width:90vw; max-height:90vh; border-radius:var(--r-xl); box-shadow:0 0 50px rgba(37,99,235,0.4); object-fit:contain; }
+    .pas-lb-img { max-width:90vw; max-height:90vh; border-radius:var(--r-xl); box-shadow:0 0 50px rgba(0,102,255,0.4); object-fit:contain; }
     .pas-lb-close { position:absolute; top:2rem; right:2rem; font-size:3rem; color:#fff; cursor:pointer; width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.1); border:none; transition:var(--ease); }
     .pas-lb-close:hover { background:var(--blue); transform:rotate(90deg); }
     .pas-lb-prev,.pas-lb-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.2); color:#fff; width:60px; height:60px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:var(--ease); backdrop-filter:blur(10px); font-size:1.5rem; }
@@ -191,16 +191,18 @@
   </script>
 
   <link rel="canonical" href="https://detailfolie.com/presivanie.html" />
+
 </head>
 <body>
 
 <!-- SHARED NAVBAR (same as all other pages) -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
+    
     <a href="index.html" class="nav-logo" aria-label="DetailFolie domov">
-
       <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
     </a>
+
     <ul class="nav-links" id="navLinks">
       <li class="nav-item"><a href="index.html" class="nav-link" data-page="index.html">Domov</a></li>
       <li class="nav-item">
@@ -214,7 +216,7 @@
             <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovacie, vinyl, carbon fólie</span></div>
           </a>
           <div class="dropdown-sep"></div>
-          <a href="presivanie.html" class="dropdown-link" data-page="presivanie.html" style="background:rgba(37,99,235,0.06);">
+          <a href="presivanie.html" class="dropdown-link" data-page="presivanie.html" style="background:rgba(0,102,255,0.06);">
             <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
             <div><span style="color:var(--blue-h);">Prešívanie pásov</span><span class="dropdown-label">Bezpečnostné pásy na mieru</span></div>
           </a>
@@ -227,7 +229,7 @@
       </li>
       <li class="nav-item"><a href="budovy.html" class="nav-link" data-page="budovy.html">Budovy</a></li>
       <li class="nav-item"><a href="index.html#o-nas" class="nav-link">O nás</a></li>
-      <li class="nav-item"><a href="index.html#kontakt" class="nav-link nav-cta">Kontakt</a></li>
+      <li class="nav-item"><a href="index.html#kontakt" class="nav-link nav-cta">Cenová ponuka</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -261,14 +263,10 @@
       <span class="highlight">bežné pásy</span>
       <span class="line">na štýlový doplnok</span>
     </h1>
-    <p class="pas-hero-desc">Spoľahlivé prešívanie špeciálnymi niťami so zachovaním bezpečnosti. Vyberte si z palety farieb a obnovte dizajn vášho pásu.</p>
+    <p class="pas-hero-desc">Vymeňte farbu pásov a dodajte autu šmrnc. 30+ farieb, hotové za 2 hodiny, 100% bezpečné.</p>
     <div class="pas-hero-btns">
       <a href="#kontakt" class="btn btn-primary">Kontaktujte nás</a>
       <a href="#galeria" class="btn btn-ghost">Pozrite naše práce</a>
-    </div>
-    <div class="pas-stats">
-      <div><div class="pas-stat-num">50+</div><div class="pas-stat-lbl">Spokojných zákazníkov</div></div>
-      <div><div class="pas-stat-num">100%</div><div class="pas-stat-lbl">Bezpečnosť</div></div>
     </div>
   </div>
   <div class="pas-scroll-ind" aria-hidden="true"><div class="pas-mouse"></div></div>
@@ -282,19 +280,19 @@
       <div class="pas-svc-card">
         <div class="pas-svc-icon">🎨</div>
         <h3>Výmena farby pásu</h3>
-        <p>Široká paleta farieb pre každý interiér. Vyberte si presne tú farbu, ktorá sa hodí k vašemu autu.</p>
+        <p>Vyberte si z 30+ farieb. Každá sa dá skombinovať s vaším interiérom. Pomôžeme vám vybrať.</p>
         <a href="#vzorkovnik" class="pas-svc-link">Pozrieť vzorkovník →</a>
       </div>
       <div class="pas-svc-card">
         <div class="pas-svc-icon">🧵</div>
         <h3>Prešívanie pásov</h3>
-        <p>Priemyselné nite pre maximálnu bezpečnosť. Zachovávame všetky bezpečnostné štandardy a OEM normy pevnosti.</p>
+        <p>Používame priemyselné nite a certifikované postupy. Bezpečnosť na prvom mieste — vždy.</p>
         <a href="#kontakt" class="pas-svc-link">Viac info →</a>
       </div>
       <div class="pas-svc-card">
         <div class="pas-svc-icon">🚚</div>
         <h3>Rýchle doručenie</h3>
-        <p>Doručíme kamkoľvek a kedykoľvek. Zaistíme vyzdvihnutie a doručenie pásu priamo k vám.</p>
+        <p>Pošlite nám pásy poštou a my ich prešijeme a pošleme späť. Alebo prídeme k vám.</p>
         <a href="#kontakt" class="pas-svc-link">Viac info →</a>
       </div>
     </div>
@@ -374,7 +372,7 @@
         <p class="contact-sub">Napíšte nám, zavolajte, alebo vyplňte formulár. Bezplatná konzultácia a cenová ponuka do 24 hodín.</p>
         <div class="contact-items">
           <div class="contact-item" style="align-items: flex-start;">
-            <div class="c-ico" style="background:rgba(37,99,235,.1); border-color:rgba(37,99,235,.2); color:var(--blue-h); margin-top: 2px;">
+            <div class="c-ico" style="background:rgba(0,102,255,.1); border-color:rgba(0,102,255,.2); color:var(--blue-h); margin-top: 2px;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -390,14 +388,14 @@
             </div>
           </div>
           <a href="mailto:mbazger85@gmail.com" class="contact-item">
-            <div class="c-ico" style="background:rgba(37,99,235,.1); border-color:rgba(37,99,235,.2); color:var(--blue-h);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="c-ico" style="background:rgba(0,102,255,.1); border-color:rgba(0,102,255,.2); color:var(--blue-h);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
               <span class="c-lbl">Email</span>
               <span class="c-val">mbazger85@gmail.com</span>
             </div>
           </a>
           <div class="contact-item">
-            <div class="c-ico" style="background:rgba(37,99,235,.1); border-color:rgba(37,99,235,.2); color:var(--blue-h);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="c-ico" style="background:rgba(0,102,255,.1); border-color:rgba(0,102,255,.2); color:var(--blue-h);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
               <span class="c-lbl">Lokácia</span>
               <span class="c-val">Podvysoká</span>
@@ -473,7 +471,7 @@
 
           <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
         </a>
-        <p class="footer-tagline">Profesionálna aplikácia fólií na autá a budovy. Prémiové materiály, bezchybná práca.</p>
+        <p class="footer-tagline">Autofólie · Budovy · Detailing · Pásy</p>
       </div>
       <div class="footer-col">
         <h4>Autá</h4>
