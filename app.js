@@ -48,13 +48,16 @@ if (navToggle && drawer) {
 // ── Smooth scroll for same-page anchors ───
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
+    const href = a.getAttribute('href');
+    if (href === '#') { e.preventDefault(); return; } // dropdown trigger, ignore
+    const t = document.querySelector(href);
     if (!t) return;
     e.preventDefault();
     const offset = (navbar ? navbar.offsetHeight : 0) + 20;
     window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
   });
 });
+
 
 // ── Scroll-reveal ─────────────────────────
 const revealObs = new IntersectionObserver((entries) => {
