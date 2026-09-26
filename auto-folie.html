@@ -173,89 +173,73 @@
     color: #fff;
   }
   
-  .gallery-3d-wrapper {
-    display: flex;
-    gap: 30px;
-    margin-top: 60px;
-    overflow-x: auto;
-    padding: 20px 0 60px;
-    perspective: 1200px;
-    scroll-snap-type: x mandatory;
+  .auto-gallery {
+    columns: 3 250px;
+    column-gap: 18px;
+    margin-top: 40px;
   }
-  .gallery-3d-wrapper::-webkit-scrollbar {
-    height: 6px;
-  }
-  .gallery-item-3d {
-    min-width: 320px;
-    height: 450px;
-    border-radius: 24px;
-    overflow: hidden;
+  .auto-gallery-item {
+    display: block;
     position: relative;
-    box-shadow: -15px 15px 35px rgba(0,0,0,0.6);
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform: rotateY(-15deg) scale(0.95);
-    flex-shrink: 0;
-    cursor: pointer;
-    scroll-snap-align: center;
+    overflow: hidden;
+    margin: 0 0 18px;
+    break-inside: avoid;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.03);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.32);
   }
-  .gallery-item-3d::before {
+  .auto-gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+  .auto-gallery-item::after {
     content: '';
     position: absolute;
-    inset: 0;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
-    border-radius: 24px;
-    z-index: 2;
+    inset: 40% 0 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.72));
     pointer-events: none;
   }
-  .gallery-item-3d:hover {
-    transform: rotateY(0deg) scale(1.05);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(37,99,235,0.3);
-    z-index: 10;
+  .auto-gallery-item:hover img,
+  .auto-gallery-item:focus-visible img {
+    transform: scale(1.035);
   }
-  .gallery-item-3d img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: filter 0.5s, transform 0.5s;
-    filter: brightness(0.7) contrast(1.1);
+  .auto-gallery-item:focus-visible {
+    outline: 3px solid var(--blue-h);
+    outline-offset: 3px;
   }
-  .gallery-item-3d:hover img {
-    filter: brightness(1) contrast(1.1);
-    transform: scale(1.05);
-  }
-  .gallery-overlay-3d {
+  .auto-gallery-caption {
     position: absolute;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    padding: 40px 24px 24px;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
-    color: white;
-    transform: translateY(10px);
-    opacity: 0;
-    transition: all 0.4s ease;
-    z-index: 3;
-  }
-  .gallery-item-3d:hover .gallery-overlay-3d {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .gallery-tag-3d {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--blue);
-    color: white;
-    font-size: 12px;
+    z-index: 1;
+    padding: 18px;
+    color: #fff;
+    font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 100px;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
   }
-  .gallery-overlay-3d h4 {
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 4px;
+  @media (max-width: 620px) {
+    .auto-gallery {
+      columns: 2;
+      column-gap: 12px;
+    }
+    .auto-gallery-item {
+      margin-bottom: 12px;
+      border-radius: 14px;
+    }
+    .auto-gallery-caption {
+      padding: 12px;
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 420px) {
+    .auto-gallery {
+      columns: 1;
+    }
   }
   
   .img-showcase {
@@ -295,6 +279,7 @@
       </p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="#vyhody" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">Objaviť výhody</a>
+        <a href="#galeria" class="btn btn-ghost" style="padding: 16px 32px; font-size: 16px;">Pozrieť galériu</a>
         <a href="index.html#kontakt" class="btn btn-ghost" style="padding: 16px 32px; font-size: 16px;">Rezervovať termín</a>
       </div>
     </div>
@@ -361,34 +346,50 @@
 
     <div class="sec-hdr anim" style="margin-top: 100px;">
       <h2 class="sec-title">Galéria inštalácií</h2>
-      <p class="sec-sub">Pozrite si výsledky priamo z našej dielne.</p>
+      <p class="sec-sub">Pozrite si fotografie tónovania skiel priamo z našej dielne.</p>
     </div>
     
-    <div class="gallery-3d-wrapper anim">
-      <div class="gallery-item-3d">
-        <img src="assets/hero_car_folie.jpg" alt="Tónovanie" />
-        <div class="gallery-overlay-3d">
-          <span class="gallery-tag-3d">Tónovanie</span>
-          <h4>VIP Súkromie</h4>
-          <p>5% Limo tint na zadných oknách pre maximálny vizuálny efekt.</p>
-        </div>
-      </div>
-      <div class="gallery-item-3d">
-        <img src="assets/car_detailing_hero.jpg" alt="Ochrana laku" />
-        <div class="gallery-overlay-3d">
-          <span class="gallery-tag-3d">Prémiový vzhľad</span>
-          <h4>Luxus a kontrast</h4>
-          <p>Dokonalý kontrast čiernych okien a žiarivého laku.</p>
-        </div>
-      </div>
-      <div class="gallery-item-3d">
-        <img src="assets/before_after_car.jpg" alt="Wrap" />
-        <div class="gallery-overlay-3d">
-          <span class="gallery-tag-3d">Estetika</span>
-          <h4>Ucelený dizajn</h4>
-          <p>Auto pôsobí na ceste dravšie, dynamickejšie a hodnotnejšie.</p>
-        </div>
-      </div>
+    <div class="auto-gallery" id="galeria" aria-label="Fotogaléria tónovania skiel">
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-01.jpg" target="_blank" rel="noopener" aria-label="Zatmavené bočné okná sivého auta v dielni – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-01.jpg" alt="Zatmavené bočné okná sivého auta v dielni" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · bočný pohľad</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-02.jpg" target="_blank" rel="noopener" aria-label="Zatmavené zadné sklo sivého auta – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-02.jpg" alt="Zatmavené zadné sklo sivého auta" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · zadné sklo</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-03.jpg" target="_blank" rel="noopener" aria-label="Pohľad na zadné sklo po tónovaní – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-03.jpg" alt="Pohľad na zadné sklo sivého auta po tónovaní" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · zadná časť</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-04.jpg" target="_blank" rel="noopener" aria-label="Detail tónovaných bočných okien sivého auta – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-04.jpg" alt="Detail tónovaných bočných okien sivého auta" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · detail</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-05.jpg" target="_blank" rel="noopener" aria-label="Detail bočných skiel s autofóliou – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-05.jpg" alt="Detail bočných skiel sivého auta s autofóliou" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · detail</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-06.jpg" target="_blank" rel="noopener" aria-label="Zatmavené bočné okná sivého auta – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-06.jpg" alt="Zatmavené bočné okná sivého auta zblízka" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · bočný pohľad</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-07.jpg" target="_blank" rel="noopener" aria-label="Bočný pohľad na sivé auto s tónovanými sklami – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-07.jpg" alt="Bočný pohľad na sivé auto s tónovanými sklami" width="1800" height="1350" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · pohľad z boku</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-08.jpg" target="_blank" rel="noopener" aria-label="Detail zadného bočného okna s autofóliou – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-08.jpg" alt="Detail zadného bočného okna sivého auta s autofóliou" width="1800" height="818" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · detail okna</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-09.jpg" target="_blank" rel="noopener" aria-label="Sivé auto s tónovanými bočnými oknami – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-09.jpg" alt="Sivé auto s tónovanými bočnými oknami" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · výsledná realizácia</span>
+      </a>
+      <a class="auto-gallery-item" href="assets/auto-gallery/auto-folie-10.jpg" target="_blank" rel="noopener" aria-label="Detail hotového tónovania okien sivého auta – otvoriť fotografiu v plnej veľkosti">
+        <img src="assets/auto-gallery/auto-folie-10.jpg" alt="Detail hotového tónovania okien sivého auta" width="1350" height="1800" loading="lazy" decoding="async" />
+        <span class="auto-gallery-caption">Tónovanie skiel · výsledná realizácia</span>
+      </a>
     </div>
     
   </div>
@@ -460,5 +461,3 @@
 <script src="app.js"></script>
 </body>
 </html>
-
-
