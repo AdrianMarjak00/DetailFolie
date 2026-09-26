@@ -214,9 +214,15 @@ if (cform) {
       const fd = new FormData(cform);
       fd.append("_captcha", "false");
       
+      const payload = Object.fromEntries(fd.entries());
+      
       const res = await fetch("https://formsubmit.co/ajax/mbazger85@gmail.com", {
         method: "POST",
-        body: fd
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
       
       if (res.ok) {
@@ -224,12 +230,78 @@ if (cform) {
         const suc = document.getElementById('cformSuccess');
         if(suc) { suc.style.display='flex'; }
       } else {
-        alert("Nastala chyba pri odosielaní. Skúste to prosím znova.");
-        if(btn) { btn.disabled=false; btn.innerHTML='Odoslať správu'; btn.style.opacity='1'; }
+        throw new Error("AJAX failed, falling back to standard submit");
       }
     } catch (err) {
-      alert("Nastala chyba pri odosielaní. Skúste to prosím znova.");
-      if(btn) { btn.disabled=false; btn.innerHTML='Odoslať správu'; btn.style.opacity='1'; }
+      // Ak zlyhá AJAX (napríklad kvôli CORS pri lokálnom súbore), odošleme to klasicky
+      cform.action = "https://formsubmit.co/mbazger85@gmail.com";
+      cform.method = "POST";
+      cform.submit();
+    }
+  });
+}
+
+// ── Review form ──────────────────────────
+const reviewForm = document.getElementById('reviewForm');
+if (reviewForm) {
+  reviewForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const required = reviewForm.querySelectorAll('[required]');
+    let ok = true;
+    required.forEach(f => { f.style.borderColor=''; if (!f.value.trim()) { f.style.borderColor='#f87171'; ok=false; } });
+    
+    // Check star rating
+    const ratingInput = document.getElementById('rrating');
+    if (ratingInput && !ratingInput.value) {
+      document.getElementById('starPicker').style.border = '1px solid #f87171';
+      document.getElementById('starPicker').style.borderRadius = '8px';
+      ok = false;
+    } else if (ratingInput) {
+      document.getElementById('starPicker').style.border = 'none';
+    }
+
+    if (!ok) return;
+    const btn = document.getElementById('reviewSubmitBtn');
+    if(btn) { btn.disabled=true; btn.innerHTML='Odosielam...'; btn.style.opacity='.7'; }
+    
+    try {
+      const fd = new FormData(reviewForm);
+      fd.append("_captcha", "false");
+      fd.append("_subject", "Nová recenzia z webu DetailFolie.com");
+      
+      const payload = Object.fromEntries(fd.entries());
+      
+      const res = await fetch("https://formsubmit.co/ajax/mbazger85@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      
+      if (res.ok) {
+        reviewForm.style.display='none';
+        const suc = document.getElementById('reviewSuccess');
+        if(suc) { suc.style.display='flex'; }
+      } else {
+        throw new Error("AJAX failed, falling back to standard submit");
+      }
+    } catch (err) {
+      reviewForm.action = "https://formsubmit.co/mbazger85@gmail.com";
+      reviewForm.method = "POST";
+      
+      // We need to add subject dynamically for standard submit since we append it in JS
+      let subjInput = reviewForm.querySelector('input[name="_subject"]');
+      if (!subjInput) {
+        subjInput = document.createElement('input');
+        subjInput.type = 'hidden';
+        subjInput.name = '_subject';
+        subjInput.value = 'Nová recenzia z webu DetailFolie.com';
+        reviewForm.appendChild(subjInput);
+      }
+      
+      reviewForm.submit();
     }
   });
 }
