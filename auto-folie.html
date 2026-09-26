@@ -278,15 +278,157 @@
     background: linear-gradient(to top, rgba(10,10,10,0.4), transparent);
     pointer-events: none;
   }
+
+  /* ── Premium Masonry Gallery ── */
+  .folie-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .folie-gal-item {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: #111;
+    aspect-ratio: 4/3;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .folie-gal-item:nth-child(3n+1) { aspect-ratio: 4/3; }
+  .folie-gal-item:nth-child(3n+2) { aspect-ratio: 3/4; }
+  .folie-gal-item:nth-child(3n)   { aspect-ratio: 16/10; }
+  .folie-gal-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 20px rgba(37,99,235,0.25);
+    border-color: rgba(37,99,235,0.35);
+    z-index: 2;
+  }
+  .folie-gal-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.4s ease;
+    filter: brightness(0.88);
+  }
+  .folie-gal-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(1);
+  }
+  .folie-gal-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 16px 20px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .folie-gal-item:hover .folie-gal-overlay { opacity: 1; }
+  .folie-gal-tag {
+    display: inline-block;
+    background: rgba(37,99,235,0.9);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+  }
+  .folie-gal-zoom {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: #fff;
+    transition: background 0.2s ease;
+  }
+  .folie-gal-zoom:hover { background: rgba(37,99,235,0.8); }
+
+  /* ── Gallery Lightbox ── */
+  .folie-lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.97);
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(16px);
+  }
+  .folie-lightbox.open { display: flex; }
+  .folie-lb-img {
+    max-width: 92vw; max-height: 88vh;
+    border-radius: 16px;
+    box-shadow: 0 0 60px rgba(37,99,235,0.3);
+    object-fit: contain;
+    animation: folieZoom .3s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes folieZoom { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .folie-lb-close {
+    position: absolute; top: 20px; right: 20px;
+    width: 46px; height: 46px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; font-size: 24px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .folie-lb-close:hover { background: #2563eb; transform: rotate(90deg); }
+  .folie-lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
+    color: #fff; font-size: 22px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    backdrop-filter: blur(10px);
+  }
+  .folie-lb-nav:hover { background: linear-gradient(135deg,#2563eb,#38bdf8); border-color: #2563eb; color: #fff; }
+  .folie-lb-prev { left: 20px; }
+  .folie-lb-next { right: 20px; }
+  .folie-lb-counter {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+    padding: 6px 18px; border-radius: 50px; font-weight: 600; font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  }
+  @media (max-width: 640px) {
+    .folie-gallery { grid-template-columns: repeat(2, 1fr); }
+    .folie-gal-item { aspect-ratio: 1 !important; }
+  }
 </style>
 
-<header class="page-hero" style="min-height: 85vh; display:flex; align-items:center;">
-  <div class="page-hero-bg">
+<style>
+  .folie-slides { position: absolute; inset: 0; z-index: 1; }
+  .folie-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
+  .folie-slide.active { opacity: 1; }
+  .folie-hero-overlay {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(10,10,10,0.9) 100%);
+    z-index: 2;
+  }
+</style>
+
+<header class="page-hero" style="min-height: 85vh; display:flex; align-items:center; position:relative; overflow:hidden;">
+  <div class="page-hero-bg" style="z-index: 3; pointer-events: none;">
     <div class="page-hero-grid"></div>
     <div class="page-hero-orb" style="background:radial-gradient(circle, rgba(37,99,235,0.4) 0%, transparent 60%);"></div>
   </div>
-  <img src="assets/hero_car_folie.jpg" alt="Tónovanie autoskiel" class="page-hero-img" style="filter: brightness(0.4) contrast(1.1);"/>
-  <div class="container" style="position:relative; z-index:2; width:100%;">
+  
+  <div class="folie-slides">
+    <div class="folie-slide active" style="background-image:url('folie_auta/IMG_4148.JPEG'); filter: brightness(0.7) contrast(1.1);"></div>
+    <div class="folie-slide" style="background-image:url('folie_auta/IMG_4147.JPEG'); filter: brightness(0.7) contrast(1.1);"></div>
+    <div class="folie-slide" style="background-image:url('folie_auta/IMG_4141.JPEG'); filter: brightness(0.7) contrast(1.1);"></div>
+  </div>
+  <div class="folie-hero-overlay"></div>
+
+  <div class="container" style="position:relative; z-index:4; width:100%;">
     <div class="page-hero-content anim" style="max-width: 800px;">
       <span class="tag">Tónovanie autoskiel</span>
       <h1 class="sec-title" style="font-size: clamp(32px, 5vw, 64px);">Fólie pre auto.<br/><span class="gt-blue">Viac než len tmavé okná.</span></h1>
@@ -356,38 +498,54 @@
     </div>
     
     <div class="img-showcase anim">
-      <img src="assets/before_after_car.jpg" alt="Transformácia auta fóliami" />
+      <img src="folie_auta/IMG_4149.JPEG" alt="Tónovanie autoskiel – reálny výsledok" />
     </div>
 
     <div class="sec-hdr anim" style="margin-top: 100px;">
       <h2 class="sec-title">Galéria inštalácií</h2>
-      <p class="sec-sub">Pozrite si výsledky priamo z našej dielne.</p>
+      <p class="sec-sub">Skutočné výsledky z našej dielne – žiadne AI fotky.</p>
     </div>
-    
-    <div class="gallery-3d-wrapper anim">
-      <div class="gallery-item-3d">
-        <img src="assets/hero_car_folie.jpg" alt="Tónovanie" />
-        <div class="gallery-overlay-3d">
-          <span class="gallery-tag-3d">Tónovanie</span>
-          <h4>VIP Súkromie</h4>
-          <p>5% Limo tint na zadných oknách pre maximálny vizuálny efekt.</p>
-        </div>
+
+    <div class="folie-gallery anim" id="folieGallery">
+      <div class="folie-gal-item" data-idx="0">
+        <img src="folie_auta/IMG_4141.JPEG" alt="Tónovanie autoskiel 1" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Tónovanie</span><div class="folie-gal-zoom">⛶</div></div>
       </div>
-      <div class="gallery-item-3d">
-        <img src="assets/car_detailing_hero.jpg" alt="Ochrana laku" />
-        <div class="gallery-overlay-3d">
-          <span class="gallery-tag-3d">Prémiový vzhľad</span>
-          <h4>Luxus a kontrast</h4>
-          <p>Dokonalý kontrast čiernych okien a žiarivého laku.</p>
-        </div>
+      <div class="folie-gal-item" data-idx="1">
+        <img src="folie_auta/IMG_4142.JPEG" alt="Tónovanie autoskiel 2" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Fólie</span><div class="folie-gal-zoom">⛶</div></div>
       </div>
-      <div class="gallery-item-3d">
-        <img src="assets/before_after_car.jpg" alt="Wrap" />
-        <div class="gallery-overlay-3d">
-          <span class="gallery-tag-3d">Estetika</span>
-          <h4>Ucelený dizajn</h4>
-          <p>Auto pôsobí na ceste dravšie, dynamickejšie a hodnotnejšie.</p>
-        </div>
+      <div class="folie-gal-item" data-idx="2">
+        <img src="folie_auta/IMG_4143.JPEG" alt="Tónovanie autoskiel 3" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Tónovanie</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="3">
+        <img src="folie_auta/IMG_4145.JPEG" alt="Tónovanie autoskiel 4" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Wrap</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="4">
+        <img src="folie_auta/IMG_4147.JPEG" alt="Tónovanie autoskiel 5" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Fólie</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="5">
+        <img src="folie_auta/IMG_4148.JPEG" alt="Tónovanie autoskiel 6" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Tónovanie</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="6">
+        <img src="folie_auta/IMG_4149.JPEG" alt="Tónovanie autoskiel 7" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Wrap</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="7">
+        <img src="folie_auta/IMG_4159.JPEG" alt="Tónovanie autoskiel 8" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Tónovanie</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="8">
+        <img src="folie_auta/IMG_4161.JPEG" alt="Tónovanie autoskiel 9" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Fólie</span><div class="folie-gal-zoom">⛶</div></div>
+      </div>
+      <div class="folie-gal-item" data-idx="9">
+        <img src="folie_auta/IMG_4162.JPG" alt="Tónovanie autoskiel 10" loading="lazy" />
+        <div class="folie-gal-overlay"><span class="folie-gal-tag">Tónovanie</span><div class="folie-gal-zoom">⛶</div></div>
       </div>
     </div>
     
@@ -458,6 +616,77 @@
 </footer>
 
 <script src="app.js"></script>
+
+<!-- FOLIE AUTA LIGHTBOX -->
+<div class="folie-lightbox" id="folieLightbox">
+  <button class="folie-lb-close" id="folieLbClose">&#x2715;</button>
+  <button class="folie-lb-nav folie-lb-prev" id="folieLbPrev">&#8249;</button>
+  <img class="folie-lb-img" id="folieLbImg" src="" alt="" />
+  <button class="folie-lb-nav folie-lb-next" id="folieLbNext">&#8250;</button>
+  <div class="folie-lb-counter" id="folieLbCounter"></div>
+</div>
+
+<script>
+(function() {
+  const fSlides = document.querySelectorAll('.folie-slide');
+  let curSlide = 0;
+  if (fSlides.length > 1) {
+    setInterval(() => {
+      fSlides[curSlide].classList.remove('active');
+      curSlide = (curSlide + 1) % fSlides.length;
+      fSlides[curSlide].classList.add('active');
+    }, 5000);
+  }
+
+  const images = [
+    'folie_auta/IMG_4141.JPEG',
+    'folie_auta/IMG_4142.JPEG',
+    'folie_auta/IMG_4143.JPEG',
+    'folie_auta/IMG_4145.JPEG',
+    'folie_auta/IMG_4147.JPEG',
+    'folie_auta/IMG_4148.JPEG',
+    'folie_auta/IMG_4149.JPEG',
+    'folie_auta/IMG_4159.JPEG',
+    'folie_auta/IMG_4161.JPEG',
+    'folie_auta/IMG_4162.JPG'
+  ];
+  const lb = document.getElementById('folieLightbox');
+  const lbImg = document.getElementById('folieLbImg');
+  const lbCounter = document.getElementById('folieLbCounter');
+  let cur = 0;
+
+  function openLb(idx) {
+    cur = idx;
+    lbImg.src = images[idx];
+    lbImg.alt = 'Fólie pre auto ' + (idx + 1);
+    lbCounter.textContent = (idx + 1) + ' / ' + images.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function prev() { openLb((cur - 1 + images.length) % images.length); }
+  function next() { openLb((cur + 1) % images.length); }
+
+  // Attach click handlers to gallery items
+  document.querySelectorAll('.folie-gal-item').forEach(item => {
+    item.addEventListener('click', () => openLb(parseInt(item.dataset.idx)));
+  });
+
+  document.getElementById('folieLbClose').addEventListener('click', closeLb);
+  document.getElementById('folieLbPrev').addEventListener('click', prev);
+  document.getElementById('folieLbNext').addEventListener('click', next);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+})();
+</script>
 </body>
 </html>
 

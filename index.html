@@ -110,10 +110,10 @@
 <header class="hero">
   <div class="hero-bg">
     <div class="hero-slideshow" id="heroSlides">
-      <div class="hero-slide active" style="background-image: url('assets/hero_car_folie.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('assets/hero_building_folie.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('assets/seatbelt_stitching.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('assets/car_detailing_hero.jpg');"></div>
+      <div class="hero-slide active" style="background-image: url('folie_auta/IMG_4145.JPEG');"></div>
+      <div class="hero-slide" style="background-image: url('folie_auta/IMG_4149.JPEG');"></div>
+      <div class="hero-slide" style="background-image: url('pasy/28.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('folie_auta/IMG_4148.JPEG');"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-orb hero-orb-1"></div>
@@ -157,7 +157,7 @@
       <!-- Fólie pre auto -->
       <a href="auto-folie.html" class="hub-card svc-card anim anim-d1">
         <div class="svc-photo-wrap">
-          <img src="assets/hero_car_folie.jpg" alt="Fólie pre auto" class="svc-photo"/>
+          <img src="folie_auta/IMG_4148.JPEG" alt="Fólie pre auto" class="svc-photo"/>
           <div class="svc-photo-fade"></div>
           <div class="svc-card-icon svc-icon-blue svc-icon-over">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -285,6 +285,111 @@
   </div>
 </section>
 
+<!-- GALLERY SECTION ON HOMEPAGE -->
+<section id="galeria-praci" class="sec">
+  <div class="container">
+    <div class="sec-hdr anim">
+      <span class="tag">Galéria prác</span>
+      <h2 class="sec-title">Výsledky, ktoré hovoria <span class="gt-blue">za seba.</span></h2>
+      <p class="sec-sub">Skutočné fotky od skutočných zákazníkov — žiadne AI generované obrázky.</p>
+    </div>
+    <div class="home-gallery anim">
+      <a href="auto-folie.html" class="hg-item hg-wide">
+        <img src="folie_auta/IMG_4141.JPEG" alt="Fólie pre auto" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Fólie pre auto</span></div>
+      </a>
+      <a href="auto-folie.html" class="hg-item">
+        <img src="folie_auta/IMG_4143.JPEG" alt="Tónovanie" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Tónovanie</span></div>
+      </a>
+      <a href="auto-folie.html" class="hg-item">
+        <img src="folie_auta/IMG_4147.JPEG" alt="Vinyl wrap" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Vinyl wrap</span></div>
+      </a>
+      <a href="presivanie.html" class="hg-item">
+        <img src="pasy/29.jpeg" alt="Prešívanie pásov" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Prešívanie pásov</span></div>
+      </a>
+      <a href="auto-folie.html" class="hg-item hg-tall">
+        <img src="folie_auta/IMG_4142.JPEG" alt="Fólie auto" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Fólie auto</span></div>
+      </a>
+      <a href="presivanie.html" class="hg-item">
+        <img src="pasy/27.jpeg" alt="Farebné pásy" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Farebné pásy</span></div>
+      </a>
+      <a href="auto-folie.html" class="hg-item">
+        <img src="folie_auta/IMG_4148.JPEG" alt="Tónovanie skiel" loading="lazy" />
+        <div class="hg-overlay"><span class="hg-tag">Tónovanie skiel</span></div>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top: 40px;">
+      <a href="auto-folie.html" class="btn btn-ghost" style="margin-right: 16px;">Fólie pre auto →</a>
+      <a href="presivanie.html" class="btn btn-ghost">Prešívanie pásov →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 14px;
+    margin-top: 48px;
+  }
+  .hg-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    aspect-ratio: 4/3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+  .hg-item.hg-wide { grid-column: span 2; aspect-ratio: 16/9; }
+  .hg-item.hg-tall { grid-row: span 2; aspect-ratio: auto; min-height: 400px; }
+  .hg-item:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 16px rgba(37,99,235,0.2);
+    border-color: rgba(37,99,235,0.3);
+  }
+  .hg-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.5s ease, filter 0.3s ease;
+    filter: brightness(0.82);
+  }
+  .hg-item:hover img { transform: scale(1.06); filter: brightness(1); }
+  .hg-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%);
+    display: flex; align-items: flex-end; padding: 16px 18px;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .hg-item:hover .hg-overlay { opacity: 1; }
+  .hg-tag {
+    background: rgba(37,99,235,0.9);
+    color: #fff; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+    backdrop-filter: blur(6px);
+  }
+  @media (max-width: 900px) {
+    .home-gallery { grid-template-columns: repeat(2, 1fr); }
+    .hg-item.hg-wide { grid-column: span 2; }
+    .hg-item.hg-tall { grid-row: span 1; min-height: unset; aspect-ratio: 4/3; }
+  }
+  @media (max-width: 560px) {
+    .home-gallery { grid-template-columns: 1fr; }
+    .hg-item.hg-wide, .hg-item.hg-tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 4/3; min-height: unset; }
+  }
+</style>
+
 <section id="recenzie" class="sec-alt">
   <div class="container">
     <div class="sec-hdr anim">
@@ -336,12 +441,232 @@
           </div>
         </div>
       </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Nechala som urobiť červené pásy na Golfe. Sú famózne, každý sa pýta odkiaľ to mám. Hotové za dve hodiny, cena férová. Vrátim sa určite.“</p>
+        <div class="testi-author">
+          <div class="testi-av">ZB</div>
+          <div>
+            <strong>Zuzana B.</strong>
+            <span>Prešívanie pásov – VW Golf</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Objednal som tónovacie fólie na celé auto – predné aj zadné. Výsledok som nečakal taký dobrý. Robia to s chuťou a vidno že ich to baví.“</p>
+        <div class="testi-author">
+          <div class="testi-av">TO</div>
+          <div>
+            <strong>Tomáš O.</strong>
+            <span>Tónovanie – Škoda Octavia</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Fólie na okná kancelárie – výrazne menej tepla aj súkromie voči ulici. Komunikácia super, prišli načas a zanechali po sebe poriadok.“</p>
+        <div class="testi-author">
+          <div class="testi-av">RK</div>
+          <div>
+            <strong>Roman K.</strong>
+            <span>Fólie na budovu – Bytča</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Pásy na motorke som nechával urobiť s obavami, ale zvládli to bez problémov. Výsledok je čistý a pevný. Budem odporúčať kamarátom.“</p>
+        <div class="testi-author">
+          <div class="testi-av">MP</div>
+          <div>
+            <strong>Marek P.</strong>
+            <span>Prešívanie pásov – Motorka</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Leštenie laku a keramika na Range Rover. Auto svietilo. Trvalo to celý deň ale výsledok zodpovedá cene. Odborníci na svojom mieste.“</p>
+        <div class="testi-author">
+          <div class="testi-av">JH</div>
+          <div>
+            <strong>Ján H.</strong>
+            <span>Detailing – Range Rover</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Tónovanie predných skiel na Mercedese. Skvelá práca, fólia je rovnomerne položená bez vzduchových bubliniek. Jednoznačne odporúčam.“</p>
+        <div class="testi-author">
+          <div class="testi-av">SL</div>
+          <div>
+            <strong>Samuel L.</strong>
+            <span>Tónovanie – Mercedes C</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Modré pásy na bielom Fordáku vyzerajú úžasne. Kamoši mysleli že je to originál. Cena bola rozumná a tempo práce rýchle. Paráda.“</p>
+        <div class="testi-author">
+          <div class="testi-av">PD</div>
+          <div>
+            <strong>Patrik D.</strong>
+            <span>Prešívanie pásov – Ford Mustang</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Robili sme fólie na okná celého rodinného domu. Letná horúčava sa stala znesiteľnou. Tím pracoval spoľahlivo a zákazku dodali presne podľa dohody.“</p>
+        <div class="testi-author">
+          <div class="testi-av">KN</div>
+          <div>
+            <strong>Katarína N.</strong>
+            <span>Fólie na rodinný dom</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Skvelá práca na vinyl wrape kapoty – čierny carbon look. Vyzerá to drahšie ako to stálo. Pán bol príjemný a poradil čo by vyzeralo najlepšie.“</p>
+        <div class="testi-author">
+          <div class="testi-av">AF</div>
+          <div>
+            <strong>Andrej F.</strong>
+            <span>Carbon vinyl – Audi A5</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Solárne fólie na výlohy predajne. Zákazníci si nevšimli rozdiel zvonku ale od nás tepelný komfort je oveľa lepší. Výborná investícia.“</p>
+        <div class="testi-author">
+          <div class="testi-av">MH</div>
+          <div>
+            <strong>Miroslav H.</strong>
+            <span>Solárne fólie – predajňa</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Fialové pásy na čierne Volvo. Všetci sa spytujú kde to nechám robiť. Práca bola čistá, pás sedí perfektne. Spokojný zákazník.“</p>
+        <div class="testi-author">
+          <div class="testi-av">VG</div>
+          <div>
+            <strong>Vladimír G.</strong>
+            <span>Prešívanie pásov – Volvo</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Detailing celého auta pred predajom. Kupca netreba dlho presviedčať keď auto vyzerá tak ako po aplikácii keramiky. Skvelá práca za skvelú cenu.“</p>
+        <div class="testi-author">
+          <div class="testi-av">IK</div>
+          <div>
+            <strong>Ivan K.</strong>
+            <span>Detailing pred predajom</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Pásy na auto dcéry – ružové na bielom Polo. Dcéra bola nadšená, ja tiež. Rýchlo, spoľahlivo, bez komplikácií. Vrátim sa s ďalším autom.“</p>
+        <div class="testi-author">
+          <div class="testi-av">EV</div>
+          <div>
+            <strong>Eva V.</strong>
+            <span>Prešívanie pásov – VW Polo</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Bezpečnostné fólie na vitríny v klenotníctve. Sklo ostáva pohromade aj po náraze. Pán všetko trpezlivo vysvetlil a poradil správnu hrúbku fólie.“</p>
+        <div class="testi-author">
+          <div class="testi-av">DP</div>
+          <div>
+            <strong>Dušan P.</strong>
+            <span>Bezpečnostné fólie – klenotníctvo</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">„Tónovanie SUVka – štyri okná za jeden dopoludňajší čas. Práca bez chýb, fólia drží. Cena zodpovedá kvalite. Odporúčam každému.“</p>
+        <div class="testi-author">
+          <div class="testi-av">BM</div>
+          <div>
+            <strong>Boris M.</strong>
+            <span>Tónovanie – Toyota RAV4</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="testi-nav anim anim-d2">
       <button class="testi-btn" id="testiPrev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="testi-dots" id="testiDots"></div>
       <button class="testi-btn" id="testiNext"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
+
+    <!-- Formulár na pridanie recenzie -->
+    <div class="review-form-wrap anim anim-d3">
+      <div class="review-form-hdr">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Pridajte svoju recenziu</h3>
+      </div>
+      <p class="review-form-sub">Boli ste u nás? Podeľte sa so svojím zážitkom — pomôžete ostatným zákazníkom.</p>
+      <form id="reviewForm" class="review-form" novalidate>
+        <div class="review-form-row">
+          <div class="fg">
+            <label for="rname">Vaše meno *</label>
+            <input type="text" id="rname" name="rname" required placeholder="Ján Novák"/>
+          </div>
+          <div class="fg">
+            <label for="rservice">Služba</label>
+            <select id="rservice" name="rservice">
+              <option value="">Vyberte službu…</option>
+              <option value="Tónovanie fólií">Tónovanie fólií</option>
+              <option value="Vinyl / Carbon wrap">Vinyl / Carbon wrap</option>
+              <option value="Prešívanie pásov">Prešívanie pásov</option>
+              <option value="Detailing">Detailing</option>
+              <option value="Fólie na budovu">Fólie na budovu</option>
+              <option value="Iné">Iné</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Hodnotenie *</label>
+          <div class="star-picker" id="starPicker" role="group" aria-label="Hodnotenie hviezdičkami">
+            <span class="star-pick" data-v="1" tabindex="0">★</span>
+            <span class="star-pick" data-v="2" tabindex="0">★</span>
+            <span class="star-pick" data-v="3" tabindex="0">★</span>
+            <span class="star-pick" data-v="4" tabindex="0">★</span>
+            <span class="star-pick" data-v="5" tabindex="0">★</span>
+          </div>
+          <input type="hidden" id="rrating" name="rrating" value=""/>
+        </div>
+        <div class="fg">
+          <label for="rtext">Vaša recenzia *</label>
+          <textarea id="rtext" name="rtext" required rows="4" placeholder="Opíšte vašu skúsenosť so službou…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="reviewSubmitBtn" style="width:100%;justify-content:center;">
+          Odoslať recenziu
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="review-form-note">Recenzie sú zasielané e-mailom a po overení zverejnené na webe.</p>
+      </form>
+      <div id="reviewSuccess" class="review-success" style="display:none;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Ďakujeme za recenziu!</h4>
+        <p>Po overení ju zverejníme na webe.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 

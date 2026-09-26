@@ -122,14 +122,14 @@
   animation: particleFly var(--dur, 15s) linear infinite;
   animation-delay: var(--delay, 0s);
 }
-.bg-particle.p1 { width:3px; height:3px; background:rgba(124,58,237,0.7); left:15%; --dur:18s; --delay:0s;   --dx:30px; }
-.bg-particle.p2 { width:2px; height:2px; background:rgba(6,182,212,0.8);  left:32%; --dur:14s; --delay:-4s;  --dx:-20px; }
-.bg-particle.p3 { width:4px; height:4px; background:rgba(0,102,255,0.6);  left:55%; --dur:20s; --delay:-8s;  --dx:15px; }
-.bg-particle.p4 { width:2px; height:2px; background:rgba(124,58,237,0.5); left:72%; --dur:16s; --delay:-12s; --dx:-25px; }
-.bg-particle.p5 { width:3px; height:3px; background:rgba(6,182,212,0.6);  left:88%; --dur:22s; --delay:-3s;  --dx:10px; }
-.bg-particle.p6 { width:2px; height:2px; background:rgba(255,255,255,0.4); left:44%; --dur:17s; --delay:-7s; --dx:-30px; }
-.bg-particle.p7 { width:3px; height:3px; background:rgba(124,58,237,0.5); left:8%;  --dur:25s; --delay:-2s;  --dx:20px; }
-.bg-particle.p8 { width:2px; height:2px; background:rgba(6,182,212,0.7);  left:63%; --dur:13s; --delay:-9s;  --dx:-15px; }
+.bg-particle.p1 { width:5px;  height:5px;  background:rgba(124,58,237,0.95); left:15%; --dur:18s; --delay:0s;   --dx:30px;  box-shadow:0 0 8px 2px rgba(124,58,237,0.5); }
+.bg-particle.p2 { width:4px;  height:4px;  background:rgba(6,182,212,1.0);   left:32%; --dur:14s; --delay:-4s;  --dx:-20px; box-shadow:0 0 8px 2px rgba(6,182,212,0.55); }
+.bg-particle.p3 { width:6px;  height:6px;  background:rgba(0,102,255,0.9);   left:55%; --dur:20s; --delay:-8s;  --dx:15px;  box-shadow:0 0 10px 3px rgba(0,102,255,0.45); }
+.bg-particle.p4 { width:4px;  height:4px;  background:rgba(124,58,237,0.85); left:72%; --dur:16s; --delay:-12s; --dx:-25px; box-shadow:0 0 8px 2px rgba(124,58,237,0.45); }
+.bg-particle.p5 { width:5px;  height:5px;  background:rgba(6,182,212,0.9);   left:88%; --dur:22s; --delay:-3s;  --dx:10px;  box-shadow:0 0 8px 2px rgba(6,182,212,0.5); }
+.bg-particle.p6 { width:3px;  height:3px;  background:rgba(255,255,255,0.7); left:44%; --dur:17s; --delay:-7s;  --dx:-30px; box-shadow:0 0 6px 2px rgba(255,255,255,0.3); }
+.bg-particle.p7 { width:5px;  height:5px;  background:rgba(124,58,237,0.85); left:8%;  --dur:25s; --delay:-2s;  --dx:20px;  box-shadow:0 0 8px 2px rgba(124,58,237,0.45); }
+.bg-particle.p8 { width:4px;  height:4px;  background:rgba(6,182,212,0.95);  left:63%; --dur:13s; --delay:-9s;  --dx:-15px; box-shadow:0 0 8px 2px rgba(6,182,212,0.5); }
 
 /* Horizontal aurora rays - disabled */
 .bg-ray { display: none; }
@@ -1193,6 +1193,56 @@ input, textarea, select { font-family: inherit; }
 .testi-dots { display:flex;gap:6px; }
 .testi-dot { width:8px;height:8px;border-radius:50%;background:var(--border);transition:var(--ease); }
 .testi-dot.active { background:var(--blue);width:24px;border-radius:4px; }
+
+/* === REVIEW FORM === */
+.review-form-wrap {
+  margin-top: 56px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-xl);
+  padding: 40px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+.review-form-hdr {
+  display: flex; align-items: center; gap: 12px;
+  color: #f59e0b; margin-bottom: 8px;
+}
+.review-form-hdr h3 { font-size: 20px; font-weight: 700; color: var(--text-1); }
+.review-form-sub { font-size: 14px; color: var(--text-2); margin-bottom: 28px; line-height: 1.6; }
+.review-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.review-form .fg { margin-bottom: 18px; }
+.review-form label { display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 7px; letter-spacing: .03em; }
+.review-form input, .review-form textarea, .review-form select {
+  width: 100%; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-sm);
+  padding: 11px 14px; color: var(--text-1); font-size: 14px;
+  font-family: inherit; transition: var(--ease);
+  -webkit-appearance: none;
+}
+.review-form input:focus, .review-form textarea:focus, .review-form select:focus {
+  outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,102,255,0.12);
+}
+.review-form select option { background: #1a1a2e; }
+.review-form textarea { resize: vertical; min-height: 110px; }
+.star-picker { display: flex; gap: 6px; margin-bottom: 4px; }
+.star-pick {
+  font-size: 30px; color: rgba(255,255,255,0.15); cursor: pointer;
+  transition: color .15s ease, transform .15s ease; line-height: 1;
+  user-select: none;
+}
+.star-pick.active, .star-pick.hover { color: #f59e0b; transform: scale(1.15); }
+.review-form-note { font-size: 12px; color: var(--text-3); text-align: center; margin-top: 12px; line-height: 1.5; }
+.review-success {
+  text-align: center; padding: 32px 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.review-success h4 { font-size: 18px; font-weight: 700; color: #4ade80; }
+.review-success p { color: var(--text-2); font-size: 14px; }
+@media (max-width: 600px) { .review-form-row { grid-template-columns: 1fr; } .review-form-wrap { padding: 24px 18px; } }
 
 /* === CONTACT === */
 .contact-grid { display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start; }
