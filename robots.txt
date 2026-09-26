@@ -1,3 +1,20 @@
 User-agent: *
 Allow: /
+Disallow: /ochrana-osobnych-udajov.html
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://detailfolie.com/sitemap.xml
