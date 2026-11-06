@@ -4,54 +4,81 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Autodetailing Podvysoká | DetailFolie – Keramická ochrana, leštenie, čistenie</title>
-  <meta name="description" content="Profesionálny autodetailing v Podvysokej. Keramická ochrana laku, korekcia laku, hĺbkové čistenie interiéru. Auto odchádza od nás ako nové. DetailFolie +421 947 969 264."/>
-  <meta name="robots" content="index, follow"/>
+  <title>Autodetailing Podvysoká – čistenie interiéru, tepovanie, leštenie, keramika | DetailFolie</title>
+  <meta name="description" content="Auto detailing Podvysoká: čistenie interiéru a exteriéru, tepovanie sedadiel, čistenie kože, dekontaminácia, renovácia (leštenie) laku a keramická ochrana Gyeon a Carbon Collective. Kysuce, Čadca, Turzovka. ☎ 0944 105 831"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <link rel="canonical" href="https://detailfolie.com/detailing"/>
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-  <link rel="icon" type="image/jpeg" href="favicon.jpg"/>
-  <link rel="shortcut icon" href="favicon.svg"/>
-  <link rel="apple-touch-icon" href="favicon.jpg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="apple-touch-icon" href="/favicon.jpg"/>
   <meta name="theme-color" content="#0a0f1e"/>
 
   <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="DetailFolie"/>
   <meta property="og:url" content="https://detailfolie.com/detailing"/>
-  <meta property="og:title" content="Autodetailing Podvysoká | DetailFolie"/>
-  <meta property="og:description" content="Keramická ochrana, korekcia laku a hĺbkové čistenie interiéru. Auto ako nové."/>
+  <meta property="og:title" content="Auto detailing Podvysoká – čistenie, leštenie, keramika"/>
+  <meta property="og:description" content="Čistenie interiéru a exteriéru, tepovanie, renovácia laku a keramická ochrana laku v Podvysokej."/>
   <meta property="og:image" content="https://detailfolie.com/assets/og/detailing.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
   <meta property="og:locale" content="sk_SK"/>
-
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Autodetailing | DetailFolie Podvysoká"/>
-  <meta name="twitter:description" content="Keramická ochrana, leštenie laku a čistenie interiéru v Podvysokej."/>
 
-  <meta name="geo.region" content="SK"/>
-  <meta name="geo.placename" content="Podvysoká"/>
+  <link rel="preload" as="image" href="/detailing/bmw-5-exterier.jpg" fetchpriority="high"/>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Autodetailing",
-    "description": "Profesionálny autodetailing – keramická ochrana laku, korekcia laku, hĺbkové čistenie interiéru v Podvysokej.",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "DetailFolie",
-      "url": "https://detailfolie.com",
-      "telephone": "+421947969264",
-      "address": { "@type": "PostalAddress", "addressLocality": "Podvysoká", "postalCode": "023 57", "addressRegion": "Žilinský kraj", "addressCountry": "SK" }
-    },
-    "areaServed": ["Podvysoká", "Turzovka", "Čadca", "Kysucké Nové Mesto", "Žilina", "Bytča", "Považská Bystrica", "Slovensko"],
-    "serviceType": "Automotive"
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://detailfolie.com/detailing#sluzba",
+        "name": "Auto detailing Podvysoká",
+        "serviceType": "Autodetailing",
+        "description": "Čistenie interiéru a exteriéru vozidla, tepovanie sedadiel a kobercov, hĺbkové čistenie kože, chemická dekontaminácia laku, jednokroková a viackroková strojná renovácia laku a keramická ochrana laku (Gyeon, Hydro 36, Carbon Collective).",
+        "provider": { "@id": "https://detailfolie.com/#firma" },
+        "areaServed": ["Podvysoká", "Turzovka", "Čadca", "Kysucké Nové Mesto", "Žilina", "Bytča"],
+        "url": "https://detailfolie.com/detailing",
+        "image": ["https://detailfolie.com/detailing/bmw-5-exterier.jpg", "https://detailfolie.com/detailing/audi-a6-interier-koza.jpg"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Domov", "item": "https://detailfolie.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Autá", "item": "https://detailfolie.com/auto" },
+          { "@type": "ListItem", "position": 3, "name": "Detailing", "item": "https://detailfolie.com/detailing" }
+        ]
+      }
+    ]
   }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .dt-hero { padding: 120px 0 64px; position: relative; overflow: hidden; }
+    .dt-hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .dt-hero h1 { text-align: left; font-size: clamp(32px, 4.6vw, 58px); }
+    .dt-hero .sec-sub { text-align: left; margin: 0 0 28px; }
+    .dt-hero-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .dt-hero-photos img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-c); }
+    .dt-hero-photos img:nth-child(2) { margin-top: 48px; }
+    .dt-ig { display: inline-flex; align-items: center; gap: 8px; color: var(--text-2); font-size: 14px; margin-top: 18px; }
+    .dt-ig a { color: var(--blue-h); font-weight: 700; }
+    .dt-list { margin: 10px 0 0; padding-left: 18px; color: var(--text-2); font-size: 14.5px; line-height: 1.8; }
+    .dt-badge { display: inline-block; font-size: 12px; font-weight: 700; color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25); padding: 3px 10px; border-radius: 999px; }
+    .dt-gal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+    .dt-gal figure { margin: 0; position: relative; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 3/4; }
+    .dt-gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .dt-gal figure:hover img { transform: scale(1.05); }
+    .dt-gal figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; font-size: 12.5px; font-weight: 600; background: linear-gradient(transparent, rgba(0,0,0,.85)); color: #fff; }
+    @media (max-width: 900px) {
+      .dt-hero-grid { grid-template-columns: 1fr; }
+      .dt-gal { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -74,7 +101,7 @@
         <div class="nav-dropdown">
           <a class="dropdown-link" data-page="/auto-folie" href="/auto-folie">
             <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovanie skiel, vinyl, carbon</span></div>
+            <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovanie skiel s certifikátom</span></div>
           </a>
           <div class="dropdown-sep"></div>
           <a class="dropdown-link" data-page="/presivanie" href="/presivanie">
@@ -84,7 +111,7 @@
           <div class="dropdown-sep"></div>
           <a class="dropdown-link" data-page="/detailing" href="/detailing">
             <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <div><span>Detailing</span><span class="dropdown-label">Keramika, leštenie, čistenie</span></div>
+            <div><span>Detailing</span><span class="dropdown-label">Čistenie, leštenie, keramika</span></div>
           </a>
         </div>
       </li>
@@ -109,111 +136,52 @@
   <a class="nav-link" href="#kontakt" style="color:var(--blue-h);font-weight:700">Cenová ponuka</a>
 </div>
 
-<div class="breadcrumb">
-  <div class="container">
-    <div class="breadcrumb-inner">
-      <a href="/">Domov</a>
-      <span class="breadcrumb-sep">/</span>
-      <a href="/auto">Autá</a>
-      <span class="breadcrumb-sep">/</span>
-      <span>Detailing</span>
-    </div>
-  </div>
-</div>
 
-<header class="page-hero">
-  <div class="page-hero-bg">
-    <div class="page-hero-grid"></div>
-    <div class="page-hero-orb"></div>
-  </div>
-  <img src="assets/car_detailing_hero.jpg" alt="Autodetailing – leštenie a keramická ochrana laku" class="page-hero-img" fetchpriority="high"/>
-  <div class="container">
-    <div class="page-hero-content anim">
-      <span class="tag">Detailing</span>
-      <h1 class="sec-title">Vrátime autu<br/><span style="color:var(--blue-h);">showroomový lesk.</span></h1>
-      <p class="sec-sub">Škrabance preč, lak ako zrkadlo, ochrana na roky. Vaše auto bude vyzerať lepšie, ako keď ste ho kúpili.</p>
-      <div style="margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap;">
-        <a href="/#kontakt" class="btn btn-primary" style="background:var(--blue-h);color:#000;box-shadow:0 4px 20px rgba(37,99,235,.4);">Nechajte si poradiť</a>
+<header class="dt-hero">
+  <div class="container dt-hero-grid">
+    <div class="anim">
+      <nav class="crumbs" style="padding:0 0 18px;" aria-label="Drobčeková navigácia"><a href="/">Domov</a><span aria-hidden="true">/</span><a href="/auto">Autá</a><span aria-hidden="true">/</span><span aria-current="page">Detailing</span></nav>
+      <span class="tag">Auto detailing Podvysoká</span>
+      <h1 class="sec-title">Autodetailing –<br/><span class="gt-blue">auto ako nové.</span></h1>
+      <p class="sec-sub">Čistenie interiéru aj exteriéru, tepovanie sedadiel, hĺbkové čistenie kože, renovácia laku a keramická ochrana. Pracujeme s profesionálnou chémiou <strong>Koch Chemie</strong> a keramikou <strong>Gyeon</strong> a <strong>Carbon Collective</strong>.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="#kontakt" class="btn btn-primary">Objednať detailing →</a>
+        <a href="tel:+421944105831" class="btn btn-ghost">☎ 0944 105 831</a>
       </div>
+      <p class="dt-ig">📸 Ďalšie práce nájdete na Instagrame <a href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">@detailing.podvysoka</a></p>
+    </div>
+    <div class="dt-hero-photos anim anim-d2">
+      <img src="/detailing/bmw-5-exterier.jpg" alt="BMW radu 5 po čistení exteriéru – auto detailing Podvysoká" width="480" height="640" fetchpriority="high"/>
+      <img src="/detailing/audi-a6-interier-koza.jpg" alt="Audi A6 – hĺbkové čistenie kožených sedadiel" width="480" height="640"/>
     </div>
   </div>
 </header>
 
-<section class="sec">
-  <div class="container">
-    <div class="svc-grid">
-      <div class="svc-txt-col anim">
-        <h2 class="sec-title">Korekcia laku a leštenie</h2>
-        <p class="svc-lead">Autoumyvárky sú nepriateľom laku. My škrabance, víry a matné miesta strojovo a bezpečne odstraňujeme — krok za krokom, kým lak nevyzerá ako dokonalé zrkadlo.</p>
-        <div class="feature-list">
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Meranie hrúbky laku</h4>
-              <p>Najprv meráme hrúbku laku — leštiť bez merania je ako operovať naslepo.</p>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Viacstupňový proces</h4>
-              <p>Viacstupňový proces, každá vrstva s iným leštidlom. Výsledok vidno na prvý pohľad.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="svc-img-col anim anim-d2">
-        <div class="svc-img-stack">
-          <img src="assets/car_detailing_hero.jpg" alt="Korekcia a leštenie laku" class="svc-img" loading="lazy" decoding="async"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sec-alt">
-  <div class="container">
-    <div class="svc-grid rev">
-      <div class="svc-txt-col anim anim-d1">
-        <h2 class="sec-title">Keramická ochrana (Coating)</h2>
-        <p class="svc-lead">Keramický coating vytvorí na laku tvrdú ochrannú vrstvu. Voda a špina stekajú samé, auto sa čistí omnoho ľahšie a lak je chránený roky.</p>
-        <div class="feature-list">
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Extrémna hydrofóbnosť</h4>
-              <p>Voda zo skleneného povrchu stečie okamžite, špina sa neprichytáva.</p>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h4>Dlhodobá ochrana (2-5 rokov)</h4>
-              <p>2 až 5 rokov ochrany bez starostí. Žiadne lacné vosky — len certifikovaná profesionálna keramika.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="svc-img-col anim">
-        <div class="svc-img-stack">
-          <img src="assets/car_detailing_hero.jpg" alt="Keramická ochrana laku auta" class="svc-img" loading="lazy" decoding="async"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
   <div class="container">
     <div class="sec-hdr anim">
       <span class="tag">Interiér</span>
-      <h2 class="sec-title">Hĺbkové čistenie interiéru</h2>
-      <p class="sec-sub">Sedadlá, koberce, strop aj plasty. Interiér vyčistíme do hĺbky, aby ste si znovu užívali ten pocit nového auta.</p>
+      <h2 class="sec-title">Čistenie interiéru a tepovanie</h2>
+      <p class="sec-sub">Od dôkladného vysatia až po demontáž sedadiel. Vyberte si, ako hlboko má čistenie ísť.</p>
     </div>
     <div class="hub3 anim anim-d1">
-      <div class="hub3-card"><div class="hub3-body"><h3>Sedadlá a čalúnenie</h3><p>Odstránime škvrny, prach a zápach z látkových aj kožených sedadiel.</p></div></div>
-      <div class="hub3-card"><div class="hub3-body"><h3>Koberce a podlahy</h3><p>Vyčistíme koberce a rohože – piesok, blato aj zabudnuté nečistoty.</p></div></div>
-      <div class="hub3-card"><div class="hub3-body"><h3>Plasty a detaily</h3><p>Prístrojová doska, dvere, výduchy a škáry – vyčistené a ošetrené.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Čistenie interiéru</h3><p>Dôkladné vysatie, odstránenie prachu, čistenie a výživa plastov, leštenie okien.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Mokré čistenie interiéru</h3><p>Všetko z čistenia interiéru plus tepovanie sedadiel a koberčekov alebo hĺbkové čistenie kože.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Detailing interiéru</h3><p>Mokré čistenie interiéru s demontážou sedadiel a tepovaním spodného koberca.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container">
+    <div class="sec-hdr anim">
+      <span class="tag">Exteriér</span>
+      <h2 class="sec-title">Umývanie a dekontaminácia</h2>
+    </div>
+    <div class="hub3 anim anim-d1">
+      <div class="hub3-card"><div class="hub3-body"><h3>Ručné umývanie</h3><p>Ručné umývanie karosérie, diskov, podbehov a medzidverných priestorov s aplikáciou tekutého vosku a ošetrením pneumatík.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Chemická dekontaminácia</h3><p>Ručné umývanie a chemická dekontaminácia laku od poletavej hrdze a asfaltu, s aplikáciou tekutého vosku a ošetrením pneumatík.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Čistenie motorového priestoru</h3><p>Šetrné vyčistenie motorového priestoru – auto vyzerá upravene aj pod kapotou.</p></div></div>
     </div>
   </div>
 </section>
@@ -221,19 +189,46 @@
 <section class="sec-alt">
   <div class="container">
     <div class="sec-hdr anim">
-      <span class="tag">Postup</span>
-      <h2 class="sec-title">Ako prebieha detailing u nás</h2>
+      <span class="tag">Lak</span>
+      <h2 class="sec-title">Renovácia laku a keramická ochrana</h2>
+      <p class="sec-sub">Pred renováciou je potrebná obhliadka vozidla – podľa stavu laku odporučíme vhodný postup.</p>
     </div>
-    <div class="steps-grid anim anim-d1">
-      <div class="step-card"><h3>Obhliadka a meranie</h3><p>Pozrieme stav laku, zmeriame jeho hrúbku a dohodneme, čo má zmysel robiť.</p></div>
-      <div class="step-card"><h3>Dôkladné umytie</h3><p>Auto bezpečne umyjeme a dekontaminujeme, aby sa pri leštení nič neškriabalo.</p></div>
-      <div class="step-card"><h3>Korekcia a leštenie</h3><p>Viacstupňovým leštením odstránime škrabance, víry a matné miesta.</p></div>
-      <div class="step-card"><h3>Ochrana</h3><p>Na záver nanesieme keramickú ochranu, ktorá lak chráni 2 až 5 rokov.</p></div>
+    <div class="hub3 anim anim-d1">
+      <div class="hub3-card"><div class="hub3-body"><h3>Jednokroková renovácia laku</h3><p>Detailné umytie vrátane chemickej a mechanickej dekontaminácie, oblepenie citlivých častí a strojové leštenie. U starších vozidiel odstráni približne 60 % poškodení.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Viackroková renovácia laku</h3><p>Viackroková strojová renovácia, ktorá odstráni približne 95 – 98 % poškodení laku. Riešime aj odstraňovanie hlbokých škrabancov.</p></div></div>
+      <div class="hub3-card"><div class="hub3-body"><h3>Keramická ochrana laku</h3>
+        <ul class="dt-list">
+          <li>Keramický sealant Gyeon Q2M Cure – 6 až 8 mesiacov</li>
+          <li>Gyeon ONE – 12 až 24 mesiacov</li>
+          <li>Hydro 36 – garancia životnosti 3 roky</li>
+          <li>Carbon Collective Molecule 9H – garancia 5 rokov</li>
+        </ul>
+      </div></div>
     </div>
   </div>
 </section>
 
 <section class="sec">
+  <div class="container">
+    <div class="sec-hdr anim">
+      <span class="tag">Galéria</span>
+      <h2 class="sec-title">Naše práce</h2>
+      <p class="sec-sub">Skutočné fotky áut, ktoré prešli našimi rukami.</p>
+    </div>
+    <div class="dt-gal anim">
+      <figure><img src="/detailing/audi-rs3-keramicky-vosk.jpg" alt="Audi RS3 – čistenie exteriéru a keramický vosk Koch Chemie" loading="lazy" decoding="async" width="512" height="640"/><figcaption>Audi RS3 – exteriér + keramický vosk</figcaption></figure>
+      <figure><img src="/detailing/bmw-interier-cistenie-koze.jpg" alt="BMW – hĺbkové čistenie koženého interiéru" loading="lazy" decoding="async" width="480" height="640"/><figcaption>BMW – čistenie kože</figcaption></figure>
+      <figure><img src="/detailing/vw-tiguan-exterier.jpg" alt="VW Tiguan – čistenie exteriéru a dekontaminácia laku" loading="lazy" decoding="async" width="483" height="640"/><figcaption>VW – exteriér a dekontaminácia</figcaption></figure>
+      <figure><img src="/detailing/interier-tepovanie.jpg" alt="Hĺbkové čistenie interiéru a tepovanie koberca" loading="lazy" decoding="async" width="480" height="640"/><figcaption>Interiér a tepovanie</figcaption></figure>
+      <figure><img src="/detailing/vw-interier-cistenie.jpg" alt="VW – čistenie interiéru a tepovanie sedadiel" loading="lazy" decoding="async" width="480" height="640"/><figcaption>VW – interiér</figcaption></figure>
+      <figure><img src="/detailing/audi-a6-interier-koza.jpg" alt="Audi A6 – čistenie kožených sedadiel" loading="lazy" decoding="async" width="480" height="640"/><figcaption>Audi A6 – koža</figcaption></figure>
+      <figure><img src="/detailing/bmw-5-exterier.jpg" alt="BMW radu 5 – čistenie exteriéru" loading="lazy" decoding="async" width="480" height="640"/><figcaption>BMW 5 – exteriér</figcaption></figure>
+      <figure style="display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;background:var(--bg-card);"><div><p style="color:var(--text-2);margin:0 0 12px;">Viac fotiek a noviniek</p><a class="btn btn-ghost" href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">@detailing.podvysoka</a></div></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt">
   <div class="container">
     <div class="sec-hdr anim">
       <span class="tag">Časté otázky</span>
@@ -242,19 +237,23 @@
     <div class="faq-list anim">
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false">Ako dlho vydrží keramická ochrana laku?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Profesionálna keramická ochrana vydrží 2 až 5 rokov v závislosti od zvoleného produktu, používania auta a starostlivosti.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Podľa zvoleného produktu – od 6 až 8 mesiacov (Gyeon Q2M Cure) cez 12 až 24 mesiacov (Gyeon ONE) až po 3 roky (Hydro 36) a 5 rokov (Carbon Collective Molecule 9H). Pri dlhodobých keramikách je potrebné lak najprv vyleštiť.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">Prečo meriate hrúbku laku pred leštením?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Každým leštením sa ubere tenká vrstva laku. Meraním zistíme, koľko laku je k dispozícii, a leštíme tak, aby sme ho zbytočne nepoškodili.</div></div>
+        <button class="faq-q" type="button" aria-expanded="false">Aký je rozdiel medzi jednokrokovou a viackrokovou renováciou laku?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Jednokroková renovácia u starších vozidiel odstráni približne 60 % poškodení laku. Viackroková renovácia odstráni približne 95 – 98 % poškodení. Pred renováciou je potrebná obhliadka vozidla.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false">Koľko stojí detailing auta?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Cena závisí od veľkosti auta, stavu laku a rozsahu prác. Napíšte nám model auta a čo by ste chceli dosiahnuť – pošleme cenovú ponuku zadarmo.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Cena závisí od veľkosti auta, jeho stavu a rozsahu prác. Napíšte nám model auta a čo by ste chceli – pošleme cenovú ponuku zadarmo. Aktuálny cenník nájdete aj na Instagrame <a href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">@detailing.podvysoka</a>.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">Dá sa detailing darovať?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Áno, ponúkame darčekové poukážky na detailing v ľubovoľnej hodnote. Ozvite sa nám a poukážku pripravíme.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false">Dá sa detailing skombinovať s inými službami?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Áno. Mnoho zákazníkov si k detailingu pridá <a href="/auto-folie">tónovanie autoskiel</a> alebo <a href="/presivanie">farebné bezpečnostné pásy</a> – auto tak odíde kompletne premenené.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Áno. K detailingu si môžete pridať <a href="/auto-folie">tónovanie zadných skiel</a> alebo <a href="/presivanie">farebné bezpečnostné pásy</a>.</div></div>
       </div>
     </div>
   </div>
@@ -284,7 +283,7 @@
           </a>
           <div class="contact-item">
             <div class="c-ico" style="background:rgba(0,102,255,.1);border-color:rgba(0,102,255,.2);color:var(--blue-h);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><span class="c-lbl">Kde nás nájdete</span><span class="c-val">Podvysoká, okres Čadca</span></div>
+            <div><span class="c-lbl">Kde nás nájdete</span><span class="c-val">Podvysoká 353, okres Čadca</span></div>
           </div>
           <div class="contact-item">
             <div class="c-ico" style="background:rgba(0,102,255,.1);border-color:rgba(0,102,255,.2);color:var(--blue-h);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
@@ -334,9 +333,8 @@
             <select id="cf-service" name="Služba">
               <option>Prešívanie bezpečnostných pásov</option>
               <option>Tónovanie autoskiel</option>
-              <option>Vinyl / carbon wrap</option>
-              <option selected>Detailing / keramika</option>
-              <option>Fólie na okná / budovu</option>
+              <option selected>Detailing (čistenie, leštenie, keramika)</option>
+              <option>Fólie na okná (solárne / mliečne)</option>
               <option>Iné / neviem, poraďte mi</option>
             </select>
           </div>
@@ -370,10 +368,10 @@
             <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
           </span>
         </a>
-        <p class="footer-tagline">Autofólie · Prešívanie pásov · Detailing · Fólie na budovy</p>
+        <p class="footer-tagline">Tónovanie skiel · Prešívanie pásov · Detailing · Fólie na okná</p>
         <address class="footer-nap">
           <strong>DetailFolie</strong><br/>
-          023 57 Podvysoká, okres Čadca<br/>
+          Podvysoká 353, 023 57 Podvysoká (okres Čadca)<br/>
           <a href="tel:+421947969264">+421 947 969 264</a> · <a href="tel:+421944105831">+421 944 105 831</a><br/>
           Po – Pi: 8:00 – 17:00
         </address>
@@ -382,9 +380,8 @@
         <h4>Služby pre autá</h4>
         <ul>
           <li><a href="/presivanie">Prešívanie bezpečnostných pásov</a></li>
-          <li><a href="/auto-folie">Tónovanie autoskiel</a></li>
-          <li><a href="/auto-folie">Vinyl a carbon wrap</a></li>
-          <li><a href="/detailing">Autodetailing a keramika</a></li>
+          <li><a href="/auto-folie">Tónovanie autoskiel s certifikátom</a></li>
+          <li><a href="/detailing">Autodetailing Podvysoká</a></li>
           <li><a href="/auto">Všetky služby pre autá</a></li>
         </ul>
       </div>
@@ -392,7 +389,7 @@
         <h4>Budovy</h4>
         <ul>
           <li><a href="/budovy">Fólie na okná a budovy</a></li>
-          <li><a href="/budovy#typy">Solárne a bezpečnostné fólie</a></li>
+          <li><a href="/budovy#typy">Solárne a mliečne fólie na okná</a></li>
           <li><a href="/vzorkovnik">Vzorkovník fólií</a></li>
         </ul>
       </div>
@@ -401,12 +398,13 @@
         <ul>
           <li><a href="tel:+421947969264">+421 947 969 264</a></li>
           <li><a href="mailto:mbazger85@gmail.com">mbazger85@gmail.com</a></li>
-          <li><a href="https://instagram.com/detailfolie" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://instagram.com/detailfolie" target="_blank" rel="noopener">Instagram @detailfolie</a></li>
+          <li><a href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">Instagram @detailing.podvysoka</a></li>
           <li><a href="https://facebook.com/detailfolie" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
       </div>
     </div>
-    <p class="footer-area">Pôsobíme na Kysuciach a v okolí – Podvysoká, Turzovka, Čadca, Kysucké Nové Mesto, Žilina, Bytča, Považská Bystrica. Prešívanie pásov robíme pre celé Slovensko (pásy stačí poslať poštou).</p>
+    <p class="footer-area">Pôsobíme na Kysuciach a v okolí – Podvysoká, Turzovka, Čadca, Kysucké Nové Mesto, Žilina, Bytča, Považská Bystrica. Prešívanie pásov robíme pre celé Slovensko – vymontované pásy nám stačí poslať poštou.</p>
     <div class="footer-bottom">
       <p>© 2026 DetailFolie.com – <a href="/ochrana-osobnych-udajov" style="color: inherit; text-decoration: underline;">Ochrana osobných údajov</a></p>
       <div class="footer-btm-links">
@@ -426,8 +424,7 @@
   <a href="#kontakt" class="mcb-quote">Cenová ponuka</a>
 </div>
 
-<script src="app.js"></script>
+
+<script src="/app.js"></script>
 </body>
 </html>
-
-
