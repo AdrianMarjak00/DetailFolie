@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stránka sa nenašla | DetailFolie</title>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="theme-color" content="#0a0f1e"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar" aria-label="Hlavné menu">
+  <div class="nav-inner">
+    <a aria-label="DetailFolie – domov" class="nav-logo" href="/">
+      <span style="display:inline-flex;align-items:center;gap:9px;">
+        <img src="/favicon.svg" alt="" width="32" height="32" style="border-radius:8px;vertical-align:middle;"/>
+        <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+      </span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item"><a class="nav-link" data-page="/" href="/">Domov</a></li>
+      <li class="nav-item">
+        <a href="/auto" class="nav-link" data-page="/auto" aria-haspopup="true">
+          Autá
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a class="dropdown-link" data-page="/auto-folie" href="/auto-folie">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6M3 11H1m20 0h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Fólie pre auto</span><span class="dropdown-label">Tónovanie skiel, vinyl, carbon</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a class="dropdown-link" data-page="/presivanie" href="/presivanie">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Prešívanie pásov</span><span class="dropdown-label">Farebné bezpečnostné pásy</span></div>
+          </a>
+          <div class="dropdown-sep"></div>
+          <a class="dropdown-link" data-page="/detailing" href="/detailing">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><span>Detailing</span><span class="dropdown-label">Keramika, leštenie, čistenie</span></div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" data-page="/budovy" href="/budovy">Budovy</a></li>
+      <li class="nav-item"><a class="nav-link" href="/#preco-my">O nás</a></li>
+      <li class="nav-item"><a class="nav-link nav-cta" href="/#kontakt">Cenová ponuka</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobileDrawer"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <a class="nav-link" href="/">Domov</a>
+  <div class="mobile-sep"></div>
+  <a class="mobile-group-title" href="/auto">Autá</a>
+  <a class="dropdown-link" href="/auto-folie"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l2-5h14l2 5M3 11v6h18v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Fólie pre auto</span></div></a>
+  <a class="dropdown-link" href="/presivanie"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><span>Prešívanie pásov</span></div></a>
+  <a class="dropdown-link" href="/detailing"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></div><div><span>Detailing</span></div></a>
+  <div class="mobile-sep"></div>
+  <a class="nav-link" href="/budovy">Fólie na budovy</a>
+  <a class="nav-link" href="/vzorkovnik">Vzorkovník fólií</a>
+  <a class="nav-link" href="/#kontakt" style="color:var(--blue-h);font-weight:700">Cenová ponuka</a>
+</div>
+
+
+<main class="sec" style="padding-top:140px;min-height:70vh;">
+  <div class="container">
+    <div class="sec-hdr">
+      <span class="tag">Chyba 404</span>
+      <h1 class="sec-title">Túto stránku sme <span class="gt-blue">nenašli.</span></h1>
+      <p class="sec-sub">Možno bola presunutá alebo adresa obsahuje preklep. Skúste niektorú z našich služieb:</p>
+    </div>
+    <div class="hub3">
+      <a class="hub3-card" href="/presivanie"><div class="hub3-body"><h2>Prešívanie pásov</h2><p>Farebné bezpečnostné pásy v 30+ farbách.</p><span class="hub3-link">Zobraziť →</span></div></a>
+      <a class="hub3-card" href="/auto-folie"><div class="hub3-body"><h2>Tónovanie autoskiel</h2><p>Fólie na auto, vinyl a carbon wrap.</p><span class="hub3-link">Zobraziť →</span></div></a>
+      <a class="hub3-card" href="/budovy"><div class="hub3-body"><h2>Fólie na budovy</h2><p>Solárne, bezpečnostné a matné fólie na okná.</p><span class="hub3-link">Zobraziť →</span></div></a>
+    </div>
+    <p style="text-align:center;margin-top:40px;"><a href="/" class="btn btn-primary">Späť na úvod</a></p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="/" style="margin-bottom:14px;display:inline-flex;">
+          <span style="display:inline-flex;align-items:center;gap:9px;">
+            <img src="/favicon.svg" alt="" width="32" height="32" style="border-radius:8px;vertical-align:middle;" loading="lazy"/>
+            <span class="logo-text">Detail<span class="logo-accent">Folie</span></span>
+          </span>
+        </a>
+        <p class="footer-tagline">Autofólie · Prešívanie pásov · Detailing · Fólie na budovy</p>
+        <address class="footer-nap">
+          <strong>DetailFolie</strong><br/>
+          023 57 Podvysoká, okres Čadca<br/>
+          <a href="tel:+421947969264">+421 947 969 264</a> · <a href="tel:+421944105831">+421 944 105 831</a><br/>
+          Po – Pi: 8:00 – 17:00
+        </address>
+      </div>
+      <div class="footer-col">
+        <h4>Služby pre autá</h4>
+        <ul>
+          <li><a href="/presivanie">Prešívanie bezpečnostných pásov</a></li>
+          <li><a href="/auto-folie">Tónovanie autoskiel</a></li>
+          <li><a href="/auto-folie">Vinyl a carbon wrap</a></li>
+          <li><a href="/detailing">Autodetailing a keramika</a></li>
+          <li><a href="/auto">Všetky služby pre autá</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Budovy</h4>
+        <ul>
+          <li><a href="/budovy">Fólie na okná a budovy</a></li>
+          <li><a href="/budovy#typy">Solárne a bezpečnostné fólie</a></li>
+          <li><a href="/vzorkovnik">Vzorkovník fólií</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+421947969264">+421 947 969 264</a></li>
+          <li><a href="mailto:mbazger85@gmail.com">mbazger85@gmail.com</a></li>
+          <li><a href="https://instagram.com/detailfolie" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://facebook.com/detailfolie" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-area">Pôsobíme na Kysuciach a v okolí – Podvysoká, Turzovka, Čadca, Kysucké Nové Mesto, Žilina, Bytča, Považská Bystrica. Prešívanie pásov robíme pre celé Slovensko (pásy stačí poslať poštou).</p>
+    <div class="footer-bottom">
+      <p>© 2026 DetailFolie.com – <a href="/ochrana-osobnych-udajov" style="color: inherit; text-decoration: underline;">Ochrana osobných údajov</a></p>
+      <div class="footer-btm-links">
+        <a href="/">Domov</a>
+        <a href="/auto">Autá</a>
+        <a href="/budovy">Budovy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta-bar" aria-label="Rýchly kontakt">
+  <a href="tel:+421947969264" class="mcb-call">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Zavolať
+  </a>
+  <a href="/#kontakt" class="mcb-quote">Cenová ponuka</a>
+</div>
+
+
+<script src="/app.js"></script>
+</body>
+</html>

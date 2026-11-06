@@ -1,0 +1,20 @@
+# Netlify presmerovania – DetailFolie
+# Staré .html adresy -> jedna čistá URL (žiadny duplicitný obsah v Googli)
+/index.html  /  301!
+/auto.html  /auto  301!
+/auto-folie.html  /auto-folie  301!
+/presivanie.html  /presivanie  301!
+/detailing.html  /detailing  301!
+/budovy.html  /budovy  301!
+/vzorkovnik.html  /vzorkovnik  301!
+/dakujeme.html  /dakujeme  301!
+/ochrana-osobnych-udajov.html  /ochrana-osobnych-udajov  301!
+
+# Alternatívne adresy, ktoré ľudia môžu písať
+/presivanie-pasov                 /presivanie  301
+/presivanie-bezpecnostnych-pasov  /presivanie  301
+/farebne-pasy                     /presivanie  301
+/tonovanie                        /auto-folie  301
+/tonovanie-skiel                  /auto-folie  301
+/folie-na-okna                    /budovy      301
+/kontakt                          /#kontakt    301

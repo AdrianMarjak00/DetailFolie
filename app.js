@@ -13,7 +13,8 @@ if (navbar) {
 
 // ── Active nav link ────────────────────────
 (function markActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  // Normalizuje /presivanie, /presivanie.html, /presivanie/ aj /index.html na rovnaký tvar
+  let path = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/(.)\/$/, '$1') || '/';
   document.querySelectorAll('.nav-link[data-page]').forEach(el => {
     if (el.dataset.page === path) el.classList.add('active');
   });
@@ -34,6 +35,7 @@ if (navToggle && drawer) {
   navToggle.addEventListener('click', () => {
     const open = drawer.classList.toggle('open');
     navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
   });
   drawer.querySelectorAll('a').forEach(a => {
@@ -152,6 +154,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     const ans  = item.querySelector('.faq-a');
     const open = item.classList.toggle('open');
     ans.style.maxHeight = open ? ans.scrollHeight + 'px' : '0';
+    btn.setAttribute('aria-expanded', String(open));
   });
 });
 
@@ -204,9 +207,17 @@ if (cform) {
   cform.addEventListener('submit', async e => {
     e.preventDefault();
     const required = cform.querySelectorAll('[required]');
-    let ok = true;
-    required.forEach(f => { f.style.borderColor=''; if (!f.value.trim()) { f.style.borderColor='#f87171'; ok=false; } });
-    if (!ok) return;
+    let ok = true, firstBad = null;
+    required.forEach(f => { f.style.borderColor=''; if (!f.value.trim()) { f.style.borderColor='#f87171'; ok=false; firstBad = firstBad || f; } });
+    if (!ok) { firstBad && firstBad.focus(); return; }
+    const showSuccess = () => {
+      cform.style.display='none';
+      const suc = document.getElementById('cformSuccess');
+      if (suc) suc.style.display='flex';
+      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'kontakt', page: location.pathname });
+    };
+    const honey = cform.querySelector('[name="_honey"]');
+    if (honey && honey.value) { showSuccess(); return; } // spam bot
     const btn = document.getElementById('cformBtn');
     if(btn) { btn.disabled=true; btn.innerHTML='Odosielam...'; btn.style.opacity='.7'; }
     
@@ -226,9 +237,7 @@ if (cform) {
       });
       
       if (res.ok) {
-        cform.style.display='none';
-        const suc = document.getElementById('cformSuccess');
-        if(suc) { suc.style.display='flex'; }
+        showSuccess();
       } else {
         throw new Error("AJAX failed, falling back to standard submit");
       }
@@ -305,6 +314,56 @@ if (reviewForm) {
     }
   });
 }
+
+// ── Star picker (recenzie) ────────────────
+(function initStars() {
+  const picker = document.getElementById('starPicker');
+  const input  = document.getElementById('rrating');
+  if (!picker || !input) return;
+  const stars = [...picker.querySelectorAll('.star-pick')];
+  const paint = v => stars.forEach(s => s.classList.toggle('active', Number(s.dataset.v) <= v));
+  stars.forEach(s => {
+    s.setAttribute('role', 'button');
+    s.setAttribute('aria-label', s.dataset.v + ' z 5 hviezdičiek');
+    const pick = () => { input.value = s.dataset.v; paint(Number(s.dataset.v)); picker.style.border = 'none'; };
+    s.addEventListener('click', pick);
+    s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+    s.addEventListener('mouseenter', () => paint(Number(s.dataset.v)));
+  });
+  picker.addEventListener('mouseleave', () => paint(Number(input.value || 0)));
+})();
+
+// ── Mapa až na kliknutie (rýchlejší web, bez cookies Googlu vopred) ──
+document.querySelectorAll('.map-wrap[data-map-src]').forEach(w => {
+  const btn = w.querySelector('.map-load');
+  btn && btn.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = w.dataset.mapSrc; f.title = 'Mapa – DetailFolie Podvysoká'; f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+    w.innerHTML = ''; w.appendChild(f);
+  });
+});
+
+// ── Mobilná lišta Zavolať / Cenová ponuka ──
+(function initMobileBar() {
+  const bar = document.querySelector('.mobile-cta-bar');
+  if (!bar) return;
+  const kontakt = document.getElementById('kontakt');
+  let kontaktVisible = false;
+  if (kontakt && 'IntersectionObserver' in window) {
+    new IntersectionObserver(es => { kontaktVisible = es[0].isIntersecting; toggle(); }, { threshold: 0.15 }).observe(kontakt);
+  }
+  const toggle = () => bar.classList.toggle('show', window.scrollY > 500 && !kontaktVisible);
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+})();
+
+// ── Meranie kliknutí na telefón / e-mail (ak je nasadené GA4) ──
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+  if (!a || typeof window.gtag !== 'function') return;
+  window.gtag('event', a.href.startsWith('tel:') ? 'click_call' : 'click_email', { page: location.pathname });
+});
 
 // ── Tilt effect on hub/why cards ──────────
 document.querySelectorAll('.hub-card, .why-card, .price-card').forEach(card => {
