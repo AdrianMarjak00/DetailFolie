@@ -56,6 +56,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (!t) return;
     e.preventDefault();
     const offset = (navbar ? navbar.offsetHeight : 0) + 20;
+    if (window.__lenis) { window.__lenis.scrollTo(t, { offset: -offset, duration: 1.2 }); return; }
     window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
   });
 });

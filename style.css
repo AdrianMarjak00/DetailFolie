@@ -2147,3 +2147,27 @@ a.mobile-group-title { display: block; }
 
 /* Odkaz na galériu */
 .see-gallery { display: flex; justify-content: center; margin-top: 28px; }
+
+/* =============== Mobil: cenník a drobnosti =============== */
+.dt-gal figure .btn { max-width: 100%; white-space: normal; justify-content: center; text-align: center; }
+@media (max-width: 600px) {
+  .pl-card { padding: 20px 16px; }
+  .pl-card h3 { font-size: 18px; }
+  .pl-row { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 6px; align-items: center; padding: 14px 0; }
+  .pl-row > div { display: contents; }
+  .pl-row b { grid-column: 1; grid-row: 1; font-size: 15px; line-height: 1.35; }
+  .pl-price { grid-column: 2; grid-row: 1; font-size: 15px; padding: 5px 10px; }
+  .pl-row p { grid-column: 1 / -1; grid-row: 2; margin: 0; font-size: 13.5px; }
+  .pl-foot p { font-size: 14.5px; }
+  .pl-btns .btn { flex: 1 1 100%; justify-content: center; }
+  .dt-gal figure .btn { padding: 9px 10px; font-size: 12.5px; width: 100%; }
+  .dt-gal figure p { font-size: 13px; }
+}
+
+/* =============== Motion: Lenis + GSAP efekty =============== */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.bw { display: inline-block; will-change: transform, filter, opacity; }
+.spot { background-image: radial-gradient(420px circle at var(--sx, -999px) var(--sy, -999px), rgba(56,189,248,.11), transparent 45%); }

@@ -96,9 +96,9 @@
     .gl-tab.active { color: #fff; background: var(--grad); box-shadow: 0 6px 20px rgba(0,102,255,.35); }
 
     /* Mriežka – masonry */
-    .gl-grid { columns: 4 260px; column-gap: 14px; }
-    .gl-item { break-inside: avoid; margin: 0 0 14px; position: relative; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.06); background: #0b0f19; cursor: zoom-in; display: block; width: 100%; padding: 0; color: inherit; font: inherit; text-align: left; }
-    .gl-item img { width: 100%; height: auto; display: block; transition: transform .5s ease, filter .3s ease; filter: brightness(.92); }
+    .gl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+    .gl-item { margin: 0; position: relative; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.06); background: #0b0f19; cursor: zoom-in; display: block; width: 100%; padding: 0; color: inherit; font: inherit; text-align: left; }
+    .gl-item img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; display: block; transition: transform .5s ease, filter .3s ease; filter: brightness(.92); }
     .gl-item:hover img { transform: scale(1.04); filter: brightness(1.04); }
     .gl-item figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 12px 10px; font-size: 12.5px; font-weight: 600; color: #fff; background: linear-gradient(transparent, rgba(0,10,30,.88)); opacity: 0; transform: translateY(6px); transition: var(--ease); }
     .gl-item:hover figcaption, .gl-item:focus-visible figcaption { opacity: 1; transform: none; }
@@ -127,10 +127,12 @@
 
     @media (max-width: 900px) { .gl-albums { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) {
-      .gl-grid { columns: 2 140px; column-gap: 10px; }
-      .gl-item { margin-bottom: 10px; }
+      .gl-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      
       .gl-item figcaption { opacity: 1; transform: none; font-size: 11px; padding: 22px 8px 7px; }
-      .gl-tabs { border-radius: 18px; top: 58px; }
+      .gl-tabs { top: 58px; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; width: 100%; border-radius: 14px; padding: 8px; scrollbar-width: none; }
+      .gl-tabs::-webkit-scrollbar { display: none; }
+      .gl-tab { flex-shrink: 0; }
       .gl-tab { padding: 8px 12px; font-size: 13px; }
       .gl-lb { padding: 50px 8px 90px; }
       .gl-lb-prev, .gl-lb-next { top: auto; bottom: 18px; transform: none; }
@@ -474,6 +476,10 @@
   <a class="btn btn-primary gl-lb-cta" id="glCta" href="/presivanie">Chcem to tiež →</a>
 </div>
 
+<script src="/vendor/gsap.min.js" defer></script>
+<script src="/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/lenis.min.js" defer></script>
+<script src="/motion.js" defer></script>
 <script src="/app.js"></script>
 <script>
 (function () {
