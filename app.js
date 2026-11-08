@@ -236,7 +236,8 @@ if (cform) {
         body: JSON.stringify(payload)
       });
       
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && String(data.success) === "true") {
         showSuccess();
       } else {
         throw new Error("AJAX failed, falling back to standard submit");
@@ -289,7 +290,8 @@ if (reviewForm) {
         body: JSON.stringify(payload)
       });
       
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && String(data.success) === "true") {
         reviewForm.style.display='none';
         const suc = document.getElementById('reviewSuccess');
         if(suc) { suc.style.display='flex'; }
