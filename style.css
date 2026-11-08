@@ -2128,3 +2128,22 @@ a.mobile-group-title { display: block; }
 /* Homepage H1 – dlhší text s kľúčovými slovami */
 .hero-title { font-size: clamp(34px, 5.2vw, 68px); max-width: 980px; margin-left: auto; margin-right: auto; }
 @media (max-width: 480px) { .hero-title { font-size: 31px; } }
+
+/* =============== Cenník detailingu =============== */
+.pl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pl-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-xl); padding: 26px 24px; }
+.pl-card h3 { font-size: 20px; margin: 0 0 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.pl-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px dashed rgba(255,255,255,.08); }
+.pl-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.pl-row b { color: #fff; font-size: 15.5px; }
+.pl-row p { color: var(--text-2); font-size: 13.5px; line-height: 1.6; margin: 4px 0 0; }
+.pl-price { flex-shrink: 0; font-weight: 800; font-size: 18px; color: #fff; background: rgba(0,102,255,.16); border: 1px solid rgba(0,102,255,.35); border-radius: 10px; padding: 6px 12px; white-space: nowrap; }
+.pl-hot .pl-price { background: var(--grad); border-color: transparent; box-shadow: 0 6px 18px rgba(0,102,255,.35); }
+.pl-foot { margin-top: 26px; text-align: center; }
+.pl-foot p { color: var(--text-2); margin: 0 auto 18px; max-width: 680px; }
+.pl-foot b { color: #fff; }
+.pl-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 860px) { .pl-grid { grid-template-columns: 1fr; } .pl-price { font-size: 16px; } }
+
+/* Odkaz na galériu */
+.see-gallery { display: flex; justify-content: center; margin-top: 28px; }
