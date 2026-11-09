@@ -99,14 +99,16 @@
 
   /* ── 4) CountUp – čísla sa napočítajú (React Bits) ── */
   document.querySelectorAll('.stat-num, .pas-trust b, .gl-stats b').forEach(function (el) {
-    var m = el.textContent.match(/^(\D*)(\d+)(.*)$/);
+    var txt = el.textContent.trim();
+    if (/\d[,.]\d/.test(txt)) return; // desatinné čísla (napr. 99,9 %) neanimujeme
+    var m = txt.match(/^(\D*)(\d+)(.*)$/);
     if (!m) return;
     var end = parseInt(m[2], 10), obj = { v: 0 };
-    el.textContent = m[1] + '0' + m[3];
     gsap.to(obj, {
-      v: end, duration: 1.6, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
-      onUpdate: function () { el.textContent = m[1] + Math.round(obj.v) + m[3]; }
+      v: end, duration: 1.6, ease: 'power2.out', immediateRender: false,
+      scrollTrigger: { trigger: el, start: 'top 95%', once: true },
+      onUpdate: function () { el.textContent = m[1] + Math.round(obj.v) + m[3]; },
+      onComplete: function () { el.textContent = txt; }
     });
   });
 

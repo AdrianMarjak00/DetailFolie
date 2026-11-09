@@ -2171,3 +2171,9 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 .bw { display: inline-block; will-change: transform, filter, opacity; }
 .spot { background-image: radial-gradient(420px circle at var(--sx, -999px) var(--sy, -999px), rgba(56,189,248,.11), transparent 45%); }
+
+/* Fotka certifikátu pri texte o tónovaní */
+.cert-photo { float: right; width: min(260px, 40%); margin: 4px 0 18px 26px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,102,255,.3); box-shadow: var(--shadow-b); background: #0b0f19; }
+.cert-photo img { width: 100%; height: auto; display: block; }
+.cert-photo figcaption { font-size: 13px; color: var(--text-2); padding: 10px 12px; text-align: center; }
+@media (max-width: 640px) { .cert-photo { float: none; width: 100%; max-width: 340px; margin: 0 auto 20px; } }

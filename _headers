@@ -27,3 +27,7 @@
   Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
 /detailing/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+/tonovanie/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+/okna/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
