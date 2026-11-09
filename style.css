@@ -2191,3 +2191,7 @@ html.lenis, html.lenis body { height: auto; }
 /* stabilné rozloženie – bez skákania pri načítaní */
 img { height: auto; }
 .anim { transition-duration: .5s !important; }
+
+/* Zobraziť viac */
+.more-hidden { display: none !important; }
+.more-wrap { display: flex; justify-content: center; margin-top: 26px; }

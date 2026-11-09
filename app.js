@@ -384,3 +384,21 @@ document.querySelectorAll('.hub-card, .why-card, .price-card').forEach(card => {
 
 console.log('%c DetailFolie.com ⚡ ', 'background:#0055DD;color:#fff;font-size:14px;padding:5px 10px;border-radius:5px;font-weight:700');
 
+
+// ── Zobraziť viac (kontajnery s data-more) ──
+document.querySelectorAll('[data-more]').forEach(function (box) {
+  var first = parseInt(box.dataset.more, 10) || 6, step = parseInt(box.dataset.step, 10) || first;
+  var kids = [].slice.call(box.children); if (kids.length <= first) return;
+  var shown = first;
+  var wrap = document.createElement('div'); wrap.className = 'more-wrap';
+  var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'btn btn-ghost more-btn';
+  function upd() {
+    kids.forEach(function (k, i) { k.classList.toggle('more-hidden', i >= shown); });
+    btn.textContent = shown >= kids.length ? 'Zobraziť menej' : 'Zobraziť viac (' + (kids.length - shown) + ')';
+  }
+  btn.addEventListener('click', function () {
+    if (shown >= kids.length) { shown = first; upd(); var t = box.getBoundingClientRect().top + window.scrollY - 100; if (window.__lenis) window.__lenis.scrollTo(t, { immediate: true }); else window.scrollTo(0, t); }
+    else { shown = Math.min(kids.length, shown + step); upd(); }
+  });
+  wrap.appendChild(btn); box.parentNode.insertBefore(wrap, box.nextSibling); upd();
+});
