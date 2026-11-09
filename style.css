@@ -2177,3 +2177,17 @@ html.lenis, html.lenis body { height: auto; }
 .cert-photo img { width: 100%; height: auto; display: block; }
 .cert-photo figcaption { font-size: 13px; color: var(--text-2); padding: 10px 12px; text-align: center; }
 @media (max-width: 640px) { .cert-photo { float: none; width: 100%; max-width: 340px; margin: 0 auto 20px; } }
+
+/* Pred a po – páry fotiek */
+.ba-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.ba-pair { margin: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-xl); padding: 12px; }
+.ba-pair-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ba-pair-imgs div { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 3/4; background: #0b0f19; }
+.ba-pair-imgs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ba-pair-imgs span { position: absolute; top: 8px; left: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: rgba(0,0,0,.65); color: #fff; }
+.ba-pair-imgs span.po { background: var(--blue); }
+.ba-pair figcaption { text-align: center; color: var(--text-2); font-size: 14px; font-weight: 600; padding: 10px 4px 2px; }
+@media (max-width: 760px) { .ba-pairs { grid-template-columns: 1fr; } }
+/* stabilné rozloženie – bez skákania pri načítaní */
+img { height: auto; }
+.anim { transition-duration: .5s !important; }
