@@ -80,13 +80,43 @@
     .dt-list { margin: 10px 0 0; padding-left: 18px; color: var(--text-2); font-size: 14.5px; line-height: 1.8; }
     .dt-badge { display: inline-block; font-size: 12px; font-weight: 700; color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25); padding: 3px 10px; border-radius: 999px; }
     .dt-gal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
-    .dt-gal figure { margin: 0; position: relative; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 3/4; }
-    .dt-gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-    .dt-gal figure:hover img { transform: scale(1.05); }
-    .dt-gal figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; font-size: 12.5px; font-weight: 600; background: linear-gradient(transparent, rgba(0,0,0,.85)); color: #fff; }
+    .dt-tile { display: block; margin: 0; position: relative; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 3/4; background: var(--bg-card); cursor: zoom-in; }
+    .dt-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .dt-tile:hover img, .dt-tile:focus-visible img { transform: scale(1.05); }
+    .dt-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; font-size: 12.5px; font-weight: 600; background: linear-gradient(transparent, rgba(0,0,0,.85)); color: #fff; }
+    .dt-tile-cta { display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; cursor: default; }
+    .dt-tile-cta p { color: var(--text-2); margin: 0 0 12px; font-weight: 600; }
+    .dt-tile-cta .btn { display: flex; justify-content: center; max-width: 100%; white-space: normal; text-align: center; margin-top: 10px; }
+    .dt-ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+    .dt-ba { margin: 0; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
+    .dt-ba-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .dt-ba-half { position: relative; display: block; aspect-ratio: 3/4; overflow: hidden; cursor: zoom-in; }
+    .dt-ba-half img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .dt-ba-half:hover img { transform: scale(1.05); }
+    .dt-ba-lbl { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 4px 9px; border-radius: 6px; color: #fff; background: rgba(0,0,0,.6); backdrop-filter: blur(4px); }
+    .dt-ba-lbl.is-po { background: var(--blue, #0066FF); }
+    .dt-ba figcaption { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 2px; }
+    .dt-ba figcaption b { font-size: 15px; }
+    .dt-ba figcaption span { font-size: 13px; color: var(--text-2); }
+    .dt-lb { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.92); padding: 56px 12px 64px; }
+    .dt-lb.open { display: flex; }
+    .dt-lb img { max-width: 100%; max-height: 100%; border-radius: 10px; object-fit: contain; }
+    .dt-lb-cap { position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; color: #fff; font-size: 14px; font-weight: 600; padding: 0 16px; }
+    .dt-lb-cap small { display: block; font-weight: 400; opacity: .7; margin-top: 2px; }
+    .dt-lb-btn { position: absolute; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .dt-lb-btn:hover { background: rgba(255,255,255,.22); }
+    .dt-lb-close { top: 12px; right: 12px; }
+    .dt-lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+    .dt-lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
     @media (max-width: 900px) {
       .dt-hero-grid { grid-template-columns: 1fr; }
       .dt-gal { grid-template-columns: 1fr 1fr; }
+      .dt-ba-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .dt-ba-grid { grid-template-columns: 1fr; }
+      .dt-tile-cta .btn { padding: 9px 10px; font-size: 12.5px; }
+      .dt-lb-prev, .dt-lb-next { top: auto; bottom: 64px; transform: none; }
     }
   </style>
 </head>
@@ -164,8 +194,8 @@
       <p class="dt-ig">📸 Ďalšie práce nájdete na Instagrame <a href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">@detailing.podvysoka</a></p>
     </div>
     <div class="dt-hero-photos anim anim-d2">
-      <img src="/detailing/bmw-5-exterier.jpg" alt="BMW radu 5 po čistení exteriéru – autodetailing" width="480" height="640" fetchpriority="high"/>
-      <img src="/detailing/audi-a6-interier-koza.jpg" alt="Audi A6 – hĺbkové čistenie kožených sedadiel" width="480" height="640"/>
+      <img src="/thumbs/detailing/audi-sq7-exterier.jpg" srcset="/thumbs/detailing/audi-sq7-exterier.jpg 450w, /detailing/audi-sq7-exterier.jpg 1200w" sizes="(max-width: 900px) 46vw, 260px" alt="Audi SQ7 po dekontaminácii a leštení laku – autodetailing" width="450" height="562" fetchpriority="high"/>
+      <img src="/thumbs/detailing/audi-a6-sedadla-koza.jpg" srcset="/thumbs/detailing/audi-a6-sedadla-koza.jpg 450w, /detailing/audi-a6-sedadla-koza.jpg 1200w" sizes="(max-width: 900px) 46vw, 260px" alt="Audi A6 – hĺbkové čistenie kožených sedadiel" width="450" height="594"/>
     </div>
   </div>
 </header>
@@ -264,23 +294,50 @@
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="galeria">
   <div class="container">
     <div class="sec-hdr anim">
       <span class="tag">Galéria</span>
       <h2 class="sec-title">Naše práce</h2>
-      <p class="sec-sub">Skutočné fotky áut, ktoré prešli našimi rukami.</p>
+      <p class="sec-sub">Skutočné fotky áut, ktoré prešli našimi rukami. Kliknutím fotku zväčšíte.</p>
     </div>
-    <div class="dt-gal anim">
-      <figure><img src="/detailing/audi-rs3-keramicky-vosk.jpg" alt="Audi RS3 – čistenie exteriéru a keramický vosk" loading="lazy" decoding="async" width="512" height="640"/><figcaption>Audi RS3 – exteriér + keramický vosk</figcaption></figure>
-      <figure><img src="/detailing/bmw-interier-cistenie-koze.jpg" alt="BMW – hĺbkové čistenie koženého interiéru" loading="lazy" decoding="async" width="480" height="640"/><figcaption>BMW – čistenie kože</figcaption></figure>
-      <figure><img src="/detailing/vw-tiguan-exterier.jpg" alt="VW Tiguan – čistenie exteriéru a dekontaminácia laku" loading="lazy" decoding="async" width="483" height="640"/><figcaption>VW – exteriér a dekontaminácia</figcaption></figure>
-      <figure><img src="/detailing/interier-tepovanie.jpg" alt="Hĺbkové čistenie interiéru a tepovanie koberca" loading="lazy" decoding="async" width="480" height="640"/><figcaption>Interiér a tepovanie</figcaption></figure>
-      <figure><img src="/detailing/vw-interier-cistenie.jpg" alt="VW – čistenie interiéru a tepovanie sedadiel" loading="lazy" decoding="async" width="480" height="640"/><figcaption>VW – interiér</figcaption></figure>
-      <figure><img src="/detailing/audi-a6-interier-koza.jpg" alt="Audi A6 – čistenie kožených sedadiel" loading="lazy" decoding="async" width="480" height="640"/><figcaption>Audi A6 – koža</figcaption></figure>
-      <figure><img src="/detailing/bmw-5-exterier.jpg" alt="BMW radu 5 – čistenie exteriéru" loading="lazy" decoding="async" width="480" height="640"/><figcaption>BMW 5 – exteriér</figcaption></figure>
-      <figure style="display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;background:var(--bg-card);"><div><p style="color:var(--text-2);margin:0 0 12px;">Viac fotiek a noviniek</p><a class="btn btn-primary" href="/galeria#detailing" style="margin-bottom:10px;">Galéria</a><br/><a class="btn btn-ghost" href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">@detailing.podvysoka</a></div></figure>
+    <div class="dt-gal anim" data-lb>
+      <a class="dt-tile" href="/detailing/porsche-cayenne-exterier.jpg" data-cap="Porsche Cayenne – čistenie exteriéru a vosk"><img src="/thumbs/detailing/porsche-cayenne-exterier.jpg" srcset="/thumbs/detailing/porsche-cayenne-exterier.jpg 450w, /detailing/porsche-cayenne-exterier.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Porsche Cayenne – čistenie exteriéru a vosk" loading="lazy" decoding="async" width="450" height="545"/><span class="dt-cap">Porsche Cayenne – exteriér a vosk</span></a>
+      <a class="dt-tile" href="/detailing/audi-sq7-exterier.jpg" data-cap="Audi SQ7 – dekontaminácia a leštenie laku"><img src="/thumbs/detailing/audi-sq7-exterier.jpg" srcset="/thumbs/detailing/audi-sq7-exterier.jpg 450w, /detailing/audi-sq7-exterier.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Audi SQ7 – dekontaminácia a leštenie laku" loading="lazy" decoding="async" width="450" height="562"/><span class="dt-cap">Audi SQ7 – leštenie laku</span></a>
+      <a class="dt-tile" href="/detailing/bmw-3-touring-keramicka-ochrana.jpg" data-cap="BMW radu 3 Touring – 3-ročná keramická ochrana"><img src="/thumbs/detailing/bmw-3-touring-keramicka-ochrana.jpg" srcset="/thumbs/detailing/bmw-3-touring-keramicka-ochrana.jpg 450w, /detailing/bmw-3-touring-keramicka-ochrana.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="BMW radu 3 Touring – 3-ročná keramická ochrana" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-cap">BMW 3 Touring – keramická ochrana</span></a>
+      <a class="dt-tile" href="/detailing/volvo-s90-lestenie.jpg" data-cap="Volvo S90 – jednokrokové leštenie"><img src="/thumbs/detailing/volvo-s90-lestenie.jpg" srcset="/thumbs/detailing/volvo-s90-lestenie.jpg 450w, /detailing/volvo-s90-lestenie.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Volvo S90 – jednokrokové leštenie" loading="lazy" decoding="async" width="450" height="562"/><span class="dt-cap">Volvo S90 – leštenie</span></a>
+      <a class="dt-tile" href="/detailing/audi-rs3-keramicky-vosk.jpg" data-cap="Audi RS3 – čistenie exteriéru a keramický vosk"><img src="/thumbs/detailing/audi-rs3-keramicky-vosk.jpg" srcset="/thumbs/detailing/audi-rs3-keramicky-vosk.jpg 450w, /detailing/audi-rs3-keramicky-vosk.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Audi RS3 – čistenie exteriéru a keramický vosk" loading="lazy" decoding="async" width="450" height="562"/><span class="dt-cap">Audi RS3 – exteriér + keramický vosk</span></a>
+      <a class="dt-tile" href="/detailing/audi-a6-exterier.jpg" data-cap="Audi A6 Avant – čistenie exteriéru"><img src="/thumbs/detailing/audi-a6-exterier.jpg" srcset="/thumbs/detailing/audi-a6-exterier.jpg 450w, /detailing/audi-a6-exterier.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Audi A6 Avant – čistenie exteriéru" loading="lazy" decoding="async" width="450" height="594"/><span class="dt-cap">Audi A6 Avant – exteriér</span></a>
+      <a class="dt-tile" href="/detailing/bmw-5-exterier.jpg" data-cap="BMW radu 5 – čistenie exteriéru"><img src="/thumbs/detailing/bmw-5-exterier.jpg" srcset="/thumbs/detailing/bmw-5-exterier.jpg 450w, /detailing/bmw-5-exterier.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="BMW radu 5 – čistenie exteriéru" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-cap">BMW 5 – exteriér</span></a>
+      <a class="dt-tile" href="/detailing/vw-tiguan-exterier.jpg" data-cap="VW Tiguan – exteriér a dekontaminácia"><img src="/thumbs/detailing/vw-tiguan-exterier.jpg" srcset="/thumbs/detailing/vw-tiguan-exterier.jpg 450w, /detailing/vw-tiguan-exterier.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="VW Tiguan – exteriér a dekontaminácia" loading="lazy" decoding="async" width="450" height="597"/><span class="dt-cap">VW Tiguan – dekontaminácia laku</span></a>
+      <a class="dt-tile" href="/detailing/audi-a6-sedadla-koza.jpg" data-cap="Audi A6 – vyčistené kožené sedadlá"><img src="/thumbs/detailing/audi-a6-sedadla-koza.jpg" srcset="/thumbs/detailing/audi-a6-sedadla-koza.jpg 450w, /detailing/audi-a6-sedadla-koza.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Audi A6 – vyčistené kožené sedadlá" loading="lazy" decoding="async" width="450" height="594"/><span class="dt-cap">Audi A6 – čistenie kože</span></a>
+      <a class="dt-tile" href="/detailing/bmw-x3-interier-koza.jpg" data-cap="BMW – hnedá koža po hĺbkovom čistení"><img src="/thumbs/detailing/bmw-x3-interier-koza.jpg" srcset="/thumbs/detailing/bmw-x3-interier-koza.jpg 450w, /detailing/bmw-x3-interier-koza.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="BMW – hnedá koža po hĺbkovom čistení" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-cap">BMW – hĺbkové čistenie kože</span></a>
+      <a class="dt-tile" href="/detailing/bmw-5-interier.jpg" data-cap="BMW radu 5 – čistenie interiéru"><img src="/thumbs/detailing/bmw-5-interier.jpg" srcset="/thumbs/detailing/bmw-5-interier.jpg 450w, /detailing/bmw-5-interier.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="BMW radu 5 – čistenie interiéru" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-cap">BMW 5 – interiér</span></a>
+      <a class="dt-tile" href="/detailing/audi-rs3-disk.jpg" data-cap="Audi RS3 – vyčistený disk a brzdový strmeň"><img src="/thumbs/detailing/audi-rs3-disk.jpg" srcset="/thumbs/detailing/audi-rs3-disk.jpg 450w, /detailing/audi-rs3-disk.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Audi RS3 – vyčistený disk a brzdový strmeň" loading="lazy" decoding="async" width="450" height="562"/><span class="dt-cap">Audi RS3 – disky</span></a>
+      <a class="dt-tile" href="/detailing/vw-sharan-zadne-sedadla.jpg" data-cap="VW – tepované zadné sedadlá"><img src="/thumbs/detailing/vw-sharan-zadne-sedadla.jpg" srcset="/thumbs/detailing/vw-sharan-zadne-sedadla.jpg 450w, /detailing/vw-sharan-zadne-sedadla.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="VW – tepované zadné sedadlá" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-cap">VW – tepovanie sedadiel</span></a>
+      <a class="dt-tile" href="/detailing/audi-a6-kufor.jpg" data-cap="Audi A6 – vysatý a tepovaný kufor"><img src="/thumbs/detailing/audi-a6-kufor.jpg" srcset="/thumbs/detailing/audi-a6-kufor.jpg 450w, /detailing/audi-a6-kufor.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="Audi A6 – vysatý a tepovaný kufor" loading="lazy" decoding="async" width="450" height="594"/><span class="dt-cap">Audi A6 – kufor</span></a>
+      <a class="dt-tile" href="/detailing/bmw-5-zadna-cast.jpg" data-cap="BMW radu 5 – exteriér po dekontaminácii laku"><img src="/thumbs/detailing/bmw-5-zadna-cast.jpg" srcset="/thumbs/detailing/bmw-5-zadna-cast.jpg 450w, /detailing/bmw-5-zadna-cast.jpg 1200w" sizes="(max-width: 900px) 46vw, 290px" alt="BMW radu 5 – exteriér po dekontaminácii laku" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-cap">BMW 5 – lak po dekontaminácii</span></a>
+      <div class="dt-tile dt-tile-cta"><div><p>Ďalších 77 fotiek</p><a class="btn btn-primary" href="/galeria#detailing">Celá galéria</a><a class="btn btn-ghost" href="https://www.instagram.com/detailing.podvysoka/" target="_blank" rel="noopener">@detailing.podvysoka</a></div></div>
     </div>
+  </div>
+</section>
+
+<section class="sec-alt" id="pred-po">
+  <div class="container">
+    <div class="sec-hdr anim">
+      <span class="tag">Pred a po</span>
+      <h2 class="sec-title">Rozdiel, ktorý je vidieť</h2>
+      <p class="sec-sub">To isté auto pred čistením a po ňom. Bez filtrov a úprav.</p>
+    </div>
+    <div class="dt-ba-grid anim" data-lb>
+      <figure class="dt-ba"><div class="dt-ba-imgs"><a class="dt-ba-half" href="/detailing/toyota-proace-kufor-pred.jpg" data-cap="Toyota – úložný priestor (pred)"><img src="/thumbs/detailing/toyota-proace-kufor-pred.jpg" srcset="/thumbs/detailing/toyota-proace-kufor-pred.jpg 450w, /detailing/toyota-proace-kufor-pred.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="Toyota – úložný priestor (pred)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-pred">Pred</span></a><a class="dt-ba-half" href="/detailing/toyota-proace-kufor.jpg" data-cap="Toyota – úložný priestor (po)"><img src="/thumbs/detailing/toyota-proace-kufor.jpg" srcset="/thumbs/detailing/toyota-proace-kufor.jpg 450w, /detailing/toyota-proace-kufor.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="Toyota – úložný priestor (po)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-po">Po</span></a></div><figcaption><b>Úložný priestor</b><span>Vysávanie a tepovanie</span></figcaption></figure>
+      <figure class="dt-ba"><div class="dt-ba-imgs"><a class="dt-ba-half" href="/detailing/vw-koza-interier-pred.jpg" data-cap="VW – kožený interiér (pred)"><img src="/thumbs/detailing/vw-koza-interier-pred.jpg" srcset="/thumbs/detailing/vw-koza-interier-pred.jpg 450w, /detailing/vw-koza-interier-pred.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="VW – kožený interiér (pred)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-pred">Pred</span></a><a class="dt-ba-half" href="/detailing/vw-koza-interier.jpg" data-cap="VW – kožený interiér (po)"><img src="/thumbs/detailing/vw-koza-interier.jpg" srcset="/thumbs/detailing/vw-koza-interier.jpg 450w, /detailing/vw-koza-interier.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="VW – kožený interiér (po)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-po">Po</span></a></div><figcaption><b>Kožený interiér</b><span>Hĺbkové čistenie kože</span></figcaption></figure>
+      <figure class="dt-ba"><div class="dt-ba-imgs"><a class="dt-ba-half" href="/detailing/bmw-x3-kufor-pred.jpg" data-cap="BMW – kufor (pred)"><img src="/thumbs/detailing/bmw-x3-kufor-pred.jpg" srcset="/thumbs/detailing/bmw-x3-kufor-pred.jpg 450w, /detailing/bmw-x3-kufor-pred.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="BMW – kufor (pred)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-pred">Pred</span></a><a class="dt-ba-half" href="/detailing/bmw-x3-kufor.jpg" data-cap="BMW – kufor po vysávaní a tepovaní (po)"><img src="/thumbs/detailing/bmw-x3-kufor.jpg" srcset="/thumbs/detailing/bmw-x3-kufor.jpg 450w, /detailing/bmw-x3-kufor.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="BMW – kufor po vysávaní a tepovaní (po)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-po">Po</span></a></div><figcaption><b>Kufor</b><span>Vysávanie a tepovanie koberca</span></figcaption></figure>
+      <figure class="dt-ba"><div class="dt-ba-imgs"><a class="dt-ba-half" href="/detailing/toyota-proace-interier-pred.jpg" data-cap="Toyota – interiér (pred)"><img src="/thumbs/detailing/toyota-proace-interier-pred.jpg" srcset="/thumbs/detailing/toyota-proace-interier-pred.jpg 450w, /detailing/toyota-proace-interier-pred.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="Toyota – interiér (pred)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-pred">Pred</span></a><a class="dt-ba-half" href="/detailing/toyota-proace-interier.jpg" data-cap="Toyota – interiér (po)"><img src="/thumbs/detailing/toyota-proace-interier.jpg" srcset="/thumbs/detailing/toyota-proace-interier.jpg 450w, /detailing/toyota-proace-interier.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="Toyota – interiér (po)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-po">Po</span></a></div><figcaption><b>Interiér dodávky</b><span>Čistenie plastov a tepovanie</span></figcaption></figure>
+      <figure class="dt-ba"><div class="dt-ba-imgs"><a class="dt-ba-half" href="/detailing/vw-koza-kufor-pred.jpg" data-cap="VW – batožinový priestor (pred)"><img src="/thumbs/detailing/vw-koza-kufor-pred.jpg" srcset="/thumbs/detailing/vw-koza-kufor-pred.jpg 450w, /detailing/vw-koza-kufor-pred.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="VW – batožinový priestor (pred)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-pred">Pred</span></a><a class="dt-ba-half" href="/detailing/vw-koza-kufor.jpg" data-cap="VW – batožinový priestor (po)"><img src="/thumbs/detailing/vw-koza-kufor.jpg" srcset="/thumbs/detailing/vw-koza-kufor.jpg 450w, /detailing/vw-koza-kufor.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="VW – batožinový priestor (po)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-po">Po</span></a></div><figcaption><b>Batožinový priestor</b><span>Tepovanie koberca</span></figcaption></figure>
+      <figure class="dt-ba"><div class="dt-ba-imgs"><a class="dt-ba-half" href="/detailing/vw-sharan-kufor-pred.jpg" data-cap="VW – kufor (pred)"><img src="/thumbs/detailing/vw-sharan-kufor-pred.jpg" srcset="/thumbs/detailing/vw-sharan-kufor-pred.jpg 450w, /detailing/vw-sharan-kufor-pred.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="VW – kufor (pred)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-pred">Pred</span></a><a class="dt-ba-half" href="/detailing/vw-sharan-kufor.jpg" data-cap="VW – kufor po tepovaní (po)"><img src="/thumbs/detailing/vw-sharan-kufor.jpg" srcset="/thumbs/detailing/vw-sharan-kufor.jpg 450w, /detailing/vw-sharan-kufor.jpg 1200w" sizes="(max-width: 900px) 46vw, 190px" alt="VW – kufor po tepovaní (po)" loading="lazy" decoding="async" width="450" height="600"/><span class="dt-ba-lbl is-po">Po</span></a></div><figcaption><b>Kufor rodinného auta</b><span>Tepovanie a impregnácia</span></figcaption></figure>
+    </div>
+    <div class="see-gallery"><a class="btn btn-ghost" href="/galeria#detailing">Všetky fotky detailingu →</a></div>
   </div>
 </section>
 
@@ -485,5 +542,46 @@
 <script src="/vendor/lenis.min.js" defer></script>
 <script src="/motion.js" defer></script>
 <script src="/app.js"></script>
+<div class="dt-lb" id="dtLb" role="dialog" aria-modal="true" aria-label="Zväčšená fotka">
+  <button class="dt-lb-btn dt-lb-close" id="dtLbClose" type="button" aria-label="Zavrieť">×</button>
+  <button class="dt-lb-btn dt-lb-prev" id="dtLbPrev" type="button" aria-label="Predchádzajúca">‹</button>
+  <img id="dtLbImg" src="" alt=""/>
+  <div class="dt-lb-cap" id="dtLbCap"></div>
+  <button class="dt-lb-btn dt-lb-next" id="dtLbNext" type="button" aria-label="Ďalšia">›</button>
+</div>
+<script>
+(function () {
+  'use strict';
+  var lb = document.getElementById('dtLb'), img = document.getElementById('dtLbImg'), cap = document.getElementById('dtLbCap');
+  var set = [], idx = 0;
+  function show(i) {
+    idx = (i + set.length) % set.length;
+    var a = set[idx];
+    img.src = a.getAttribute('href'); img.alt = a.dataset.cap;
+    cap.textContent = a.dataset.cap;
+    var sm = document.createElement('small'); sm.textContent = (idx + 1) + ' / ' + set.length; cap.appendChild(sm);
+  }
+  function close() { lb.classList.remove('open'); document.body.style.overflow = ''; img.src = ''; }
+  [].forEach.call(document.querySelectorAll('[data-lb]'), function (wrap) {
+    var links = [].slice.call(wrap.querySelectorAll('a[data-cap]'));
+    links.forEach(function (a, i) {
+      a.addEventListener('click', function (e) { e.preventDefault(); set = links; show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    });
+  });
+  document.getElementById('dtLbPrev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+  document.getElementById('dtLbNext').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+  document.getElementById('dtLbClose').addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  var sx = null;
+  lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); sx = null; });
+})();
+</script>
 </body>
 </html>
